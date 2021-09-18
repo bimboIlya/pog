@@ -1,0 +1,38 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+apply from: "$rootDir/gradle/application.gradle"
+
+android {
+    compileSdkVersion application.targetSdk
+    buildToolsVersion application.buildTools
+
+    defaultConfig {
+        minSdkVersion application.minSdk
+        targetSdkVersion application.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+    implementation libraries.kotlin.stdLib
+    implementation libraries.kotlinX.coroutinesAndroid
+
+    implementation libraries.timber
+
+    testRuntimeOnly testLibraries.jupiter.engine
+    testImplementation testLibraries.jupiter.api
+
+    testImplementation testLibraries.mockk.core
+    testImplementation testLibraries.turbine
+    testImplementation testLibraries.coroutines
+}

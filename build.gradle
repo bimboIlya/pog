@@ -1,0 +1,32 @@
+buildscript {
+    apply from: "$rootDir/gradle/dependencies.gradle"
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath classpaths.androidPlugin
+        classpath classpaths.hiltPlugin
+        classpath classpaths.kotlinPlugin
+        classpath classpaths.serializationPlugin
+    }
+}
+
+plugins {
+    id 'com.github.ben-manes.versions' version '0.39.0'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+subprojects {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+        }
+    }
+}

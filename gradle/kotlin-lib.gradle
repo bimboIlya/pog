@@ -1,0 +1,13 @@
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+dependencies {
+    implementation libraries.kotlin.stdLib
+    implementation libraries.kotlinX.coroutinesCore
+
+    testRuntimeOnly testLibraries.jupiter.engine
+    testImplementation testLibraries.jupiter.api
+
+    testImplementation testLibraries.mockk.core
+    testImplementation testLibraries.turbine
+    testImplementation testLibraries.coroutines
+}

@@ -1,0 +1,24 @@
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "pog"
+
+def modules = [
+        ":yacr"                 : "yacr/yacr",
+        ":feature-authorization": "yacr/feature/authorization",
+
+        ":common-navigation"    : "common/navigation",
+        ":common-error"         : "common/error",
+        ":common-ktx-jvm"       : "common/ktx/jvm",
+        ":common-ktx-android"   : "common/ktx/android",
+        ":common-test-jvm"      : "common/test/jvm",
+]
+
+modules.forEach { name, path ->
+    include(name)
+    project(name).projectDir = file(path)
+}

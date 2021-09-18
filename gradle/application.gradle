@@ -1,0 +1,9 @@
+ext {
+    application = [
+            "minSdk"     : 23,
+            "targetSdk"  : 30,
+            "buildTools" : "30.0.2",
+            "versionCode": 1,
+            "versionName": "1.0",
+    ]
+}

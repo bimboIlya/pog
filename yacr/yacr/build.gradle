@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+apply from: "$rootDir/gradle/application.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+apply from: "$rootDir/gradle/hilt.gradle"
+
+android {
+    compileSdkVersion application.targetSdk
+    buildToolsVersion application.buildTools
+
+    defaultConfig {
+        applicationId "com.bimboilya.pog.yacr"
+        minSdkVersion application.minSdk
+        targetSdkVersion application.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation libraries.androidX.core
+
+    implementation libraries.compose.ui
+    implementation libraries.compose.uiTooling
+    implementation libraries.compose.material
+    implementation libraries.compose.activity
+    implementation libraries.compose.viewmodel
+    implementation libraries.compose.navigation
+
+    implementation libraries.lifecycle.runtime
+
+    implementation libraries.timber
+
+    implementation project(":common-error")
+    implementation project(":common-ktx-jvm")
+    implementation project(":common-navigation")
+
+    implementation project(":feature-authorization")
+}

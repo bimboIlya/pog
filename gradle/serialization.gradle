@@ -1,0 +1,5 @@
+apply plugin: 'kotlinx-serialization'
+
+dependencies {
+    implementation libraries.kotlinX.serialization
+}

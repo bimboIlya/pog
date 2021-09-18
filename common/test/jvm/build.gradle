@@ -1,0 +1,6 @@
+apply from: "$rootDir/gradle/kotlin-lib.gradle"
+
+dependencies {
+    implementation testLibraries.jupiter.api
+    implementation testLibraries.coroutines
+}
