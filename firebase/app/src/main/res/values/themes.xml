@@ -1,5 +1,0 @@
-<resources>
-    <style name="Theme.Firebase" parent="@android:style/Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/status_bar</item>
-    </style>
-</resources>

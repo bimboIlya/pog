@@ -8,10 +8,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.yacr.navigation.NavCommandDispatcher
 import com.bimboilya.yacr.navigation.extenstions.composable
 import com.bimboilya.yacr.navigation.screens.authorization.AuthDirection
-import com.bimboilya.yacr.theme.YacrTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            YacrTheme {
+            PogTheme {
                 Navigation(navCommandDispatcher)
             }
         }
