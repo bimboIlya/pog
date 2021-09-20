@@ -11,6 +11,8 @@ def modules = [
         ":yacr-app"             : "yacr/app",
         ":feature-authorization": "yacr/feature/authorization",
 
+        ":firebase-app"         : "firebase/app",
+
         ":common-navigation"    : "common/navigation",
         ":common-error"         : "common/error",
         ":common-ktx-jvm"       : "common/ktx/jvm",
