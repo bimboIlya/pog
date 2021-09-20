@@ -18,6 +18,7 @@ def modules = [
         ":common-ktx-jvm"       : "common/ktx/jvm",
         ":common-ktx-android"   : "common/ktx/android",
         ":common-test-jvm"      : "common/test/jvm",
+        ":common-ui-theme"      : "common/ui/theme",
 ]
 
 modules.forEach { name, path ->
