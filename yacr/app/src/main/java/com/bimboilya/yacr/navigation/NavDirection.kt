@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr.navigation
+package com.bimboilya.yacr.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry

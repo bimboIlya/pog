@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr.navigation.screens.authorization
+package com.bimboilya.yacr.navigation.screens.authorization
 
 import com.bimboilya.common.navigation.AppRouter
 import com.bimboilya.common.navigation.Route

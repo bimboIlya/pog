@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr.navigation
+package com.bimboilya.yacr.navigation
 
 import android.content.ActivityNotFoundException
 import com.bimboilya.common.navigation.ActivityDestination

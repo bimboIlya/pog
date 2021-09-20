@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr
+package com.bimboilya.yacr
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -8,7 +8,7 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr"                 : "yacr/yacr",
+        ":yacr-app"             : "yacr/app",
         ":feature-authorization": "yacr/feature/authorization",
 
         ":common-navigation"    : "common/navigation",

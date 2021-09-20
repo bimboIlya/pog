@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr.theme
+package com.bimboilya.yacr.theme
 
 import androidx.compose.ui.graphics.Color
 

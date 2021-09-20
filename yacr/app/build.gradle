@@ -12,7 +12,7 @@ android {
     buildToolsVersion application.buildTools
 
     defaultConfig {
-        applicationId "com.bimboilya.pog.yacr"
+        applicationId "com.bimboilya.pog.app"
         minSdkVersion application.minSdk
         targetSdkVersion application.targetSdk
         versionCode application.versionCode

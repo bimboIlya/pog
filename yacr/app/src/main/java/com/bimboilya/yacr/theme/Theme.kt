@@ -1,4 +1,4 @@
-package com.bimboilya.pog.yacr.theme
+package com.bimboilya.yacr.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
