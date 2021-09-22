@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622542303703",
+    "project_id": "pog-monorepo",
+    "storage_bucket": "pog-monorepo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622542303703:android:6850d0ec3f2939c5105b92",
+        "android_client_info": {
+          "package_name": "com.bimboilya.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622542303703-c987mr15fank68fek1867fqevltv09cc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8me4Dv0RIs8FcdRFegtnqRmserXjqLIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622542303703-c987mr15fank68fek1867fqevltv09cc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

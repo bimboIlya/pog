@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 apply from: "$rootDir/gradle/application.gradle"
@@ -41,6 +43,16 @@ dependencies {
     implementation libraries.compose.navigation
 
     implementation libraries.lifecycle.runtime
+
+    implementation libraries.kotlinX.coroutinesTasks
+
+    implementation libraries.firebase.analytics
+    implementation libraries.firebase.auth
+    implementation libraries.firebase.config
+    implementation libraries.firebase.crashlytics
+    implementation libraries.firebase.database
+    implementation libraries.firebase.dynamicLinks
+    implementation libraries.firebase.messaging
 
     implementation libraries.timber
 

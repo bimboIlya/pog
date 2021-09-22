@@ -11,11 +11,13 @@ buildscript {
         classpath classpaths.hiltPlugin
         classpath classpaths.kotlinPlugin
         classpath classpaths.serializationPlugin
+        classpath classpaths.gmsPlugin
+        classpath classpaths.crashlyticsPlugin
     }
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.39.0'
+    id "com.github.ben-manes.versions" version "0.39.0"
 }
 
 task clean(type: Delete) {

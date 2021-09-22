@@ -20,6 +20,17 @@ ext {
             "okhttpLogging"       : "4.9.1",
             "kotlinxConverter"    : "0.8.0",
 
+            "fbAnalytics"         : "19.0.1",
+            "fbAuth"              : "21.0.1",
+            "fbConfig"            : "21.0.1",
+            "fbCrashlytics"       : "18.2.1",
+            "fbDatabase"          : "20.0.2",
+            "fbDynamicLinks"      : "20.1.1",
+            "fbMessaging"         : "22.0.0",
+
+            "gmsPlugin"           : "4.3.10",
+            "crashlyticsPlugin"   : "2.7.1",
+
             "timber"              : "4.7.1",
 
             // Testing
@@ -34,7 +45,9 @@ ext {
             "androidPlugin"      : "com.android.tools.build:gradle:$versions.AGP",
             "hiltPlugin"         : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt",
             "kotlinPlugin"       : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
-            "serializationPlugin": "org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin"
+            "serializationPlugin": "org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin",
+            "gmsPlugin"          : "com.google.gms:google-services:$versions.gmsPlugin",
+            "crashlyticsPlugin"  : "com.google.firebase:firebase-crashlytics-gradle:$versions.crashlyticsPlugin",
     ]
 
     libraries = [
@@ -48,6 +61,14 @@ ext {
                           "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.composeViewmodel",
                           "navigation": "androidx.navigation:navigation-compose:$versions.composeNavigation"],
 
+            "firebase" : ["analytics"   : "com.google.firebase:firebase-analytics-ktx:$versions.fbAnalytics",
+                          "auth"        : "com.google.firebase:firebase-auth-ktx:$versions.fbAuth",
+                          "config"      : "com.google.firebase:firebase-config-ktx:$versions.fbConfig",
+                          "crashlytics" : "com.google.firebase:firebase-crashlytics-ktx:$versions.fbCrashlytics",
+                          "database"    : "com.google.firebase:firebase-database-ktx:$versions.fbDatabase",
+                          "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
+                          "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
+
             "hilt"     : ["android"   : "com.google.dagger:hilt-android:$versions.hilt",
                           "navigation": "androidx.hilt:hilt-navigation-compose:$versions.hiltNavigation",
                           "compiler"  : "com.google.dagger:hilt-compiler:$versions.hilt"],
@@ -60,6 +81,7 @@ ext {
                           "reflect": "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"],
 
             "kotlinX"  : ["coroutinesCore"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
+                          "coroutinesTasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
                           "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
                           "serialization"    : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
 
