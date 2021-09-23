@@ -1,9 +1,9 @@
-package com.bimboilya.yacr.di
+package com.bimboilya.common.navigation.compose.di
 
+import com.bimboilya.common.navigation.compose.AppRouterImpl
+import com.bimboilya.common.navigation.compose.NavCommandDispatcher
+import com.bimboilya.common.navigation.compose.NavCommandDispatcherImpl
 import com.bimboilya.common.navigation.core.AppRouter
-import com.bimboilya.yacr.navigation.AppRouterImpl
-import com.bimboilya.yacr.navigation.NavCommandDispatcher
-import com.bimboilya.yacr.navigation.NavCommandDispatcherImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

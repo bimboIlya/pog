@@ -1,14 +1,14 @@
-package com.bimboilya.yacr.navigation.extenstions
+package com.bimboilya.common.navigation.compose.extenstions
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
-import com.bimboilya.yacr.navigation.NavDirection
+import com.bimboilya.common.navigation.compose.NavDirection
 
 fun NavGraphBuilder.composable(direction: NavDirection) {
-    composable(direction.route.value, direction.getArguments()) { backStackEntry ->
+    composable(direction.route, direction.getArguments()) { backStackEntry ->
         direction.CreateComposable(backStackEntry)
     }
 }

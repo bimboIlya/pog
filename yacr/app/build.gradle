@@ -47,6 +47,7 @@ dependencies {
     implementation project(":common-error")
     implementation project(":common-ktx-jvm")
     implementation project(":common-navigation-core")
+    implementation project(":common-navigation-compose")
     implementation project(":common-ui-theme")
 
     implementation project(":feature-authorization")

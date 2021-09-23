@@ -1,4 +1,4 @@
-package com.bimboilya.yacr.navigation
+package com.bimboilya.common.navigation.compose
 
 import android.app.Activity
 import androidx.navigation.NavHostController

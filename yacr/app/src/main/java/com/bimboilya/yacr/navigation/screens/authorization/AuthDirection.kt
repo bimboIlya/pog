@@ -2,8 +2,8 @@ package com.bimboilya.yacr.navigation.screens.authorization
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry
+import com.bimboilya.common.navigation.compose.NavDirection
 import com.bimboilya.yacr.feature.authorization.ui.AuthorizationScreen
-import com.bimboilya.yacr.navigation.NavDirection
 
 object AuthDirection : NavDirection {
 

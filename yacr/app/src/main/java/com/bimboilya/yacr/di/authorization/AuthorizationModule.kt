@@ -5,12 +5,14 @@ import com.bimboilya.yacr.navigation.screens.authorization.AuthorizationRouterIm
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 interface AuthorizationModule {
 
     @Binds
+    @ViewModelScoped
     fun bindRouter(router: AuthorizationRouterImpl): AuthorizationRouter
 }
