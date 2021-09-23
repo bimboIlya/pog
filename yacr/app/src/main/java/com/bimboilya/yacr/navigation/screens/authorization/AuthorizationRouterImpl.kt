@@ -1,7 +1,6 @@
 package com.bimboilya.yacr.navigation.screens.authorization
 
 import com.bimboilya.common.navigation.AppRouter
-import com.bimboilya.common.navigation.Route
 import com.bimboilya.yacr.feature.authorization.presentation.AuthorizationRouter
 import javax.inject.Inject
 
@@ -10,6 +9,6 @@ class AuthorizationRouterImpl @Inject constructor(
 ) : AuthorizationRouter {
 
     override fun openHome() {
-        appRouter.replace(Route(""))
+        appRouter.replace(AuthDirection.route) // todo change
     }
 }

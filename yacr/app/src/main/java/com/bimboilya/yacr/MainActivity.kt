@@ -51,7 +51,7 @@ fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
 
     NavHost(
         navController,
-        startDestination = AuthDirection.route.value,
+        startDestination = AuthDirection.route,
     ) {
         composable(AuthDirection)
     }

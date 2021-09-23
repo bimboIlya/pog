@@ -4,16 +4,16 @@ interface AppRouter {
 
     fun open(destination: Destination)
 
-    fun open(destinationRoute: Route)
+    fun open(destinationRoute: String)
 
-    fun replace(destinationRoute: Route)
+    fun replace(destinationRoute: String)
 
     /**
      * start: [A] - [B] - [C] - [D]
      * replace(E, B.route)
      * end: [A] - [B] - [E]
      */
-    fun replace(destinationRoute: Route, routeToPopUpTo: String)
+    fun replace(destinationRoute: String, routeToPopUpTo: String)
 
     fun pop()
 

@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException
 import com.bimboilya.common.navigation.ActivityDestination
 import com.bimboilya.common.navigation.AppRouter
 import com.bimboilya.common.navigation.Destination
-import com.bimboilya.common.navigation.Route
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -18,9 +17,9 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun open(destinationRoute: Route) {
+    override fun open(destinationRoute: String) {
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destinationRoute.value)
+            navigate(destinationRoute)
         }
     }
 
@@ -36,11 +35,11 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun replace(destinationRoute: Route) {
+    override fun replace(destinationRoute: String) {
         navCommandDispatcher.dispatchComposableNavCommand {
             val currentRoute = currentDestination?.route
 
-            navigate(destinationRoute.value) {
+            navigate(destinationRoute) {
                 currentRoute?.let {
                     popUpTo(currentRoute) {
                         inclusive = true
@@ -50,9 +49,9 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun replace(destinationRoute: Route, routeToPopUpTo: String) {
+    override fun replace(destinationRoute: String, routeToPopUpTo: String) {
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destinationRoute.value) {
+            navigate(destinationRoute) {
                 popUpTo(routeToPopUpTo)
             }
         }
