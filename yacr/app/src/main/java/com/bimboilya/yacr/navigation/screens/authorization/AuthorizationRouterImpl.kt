@@ -1,6 +1,6 @@
 package com.bimboilya.yacr.navigation.screens.authorization
 
-import com.bimboilya.common.navigation.AppRouter
+import com.bimboilya.common.navigation.core.AppRouter
 import com.bimboilya.yacr.feature.authorization.presentation.AuthorizationRouter
 import javax.inject.Inject
 

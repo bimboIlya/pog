@@ -8,17 +8,17 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr-app"             : "yacr/app",
-        ":feature-authorization": "yacr/feature/authorization",
+        ":yacr-app"              : "yacr/app",
+        ":feature-authorization" : "yacr/feature/authorization",
 
-        ":firebase-app"         : "firebase/app",
+        ":firebase-app"          : "firebase/app",
 
-        ":common-navigation"    : "common/navigation",
-        ":common-error"         : "common/error",
-        ":common-ktx-jvm"       : "common/ktx/jvm",
-        ":common-ktx-android"   : "common/ktx/android",
-        ":common-test-jvm"      : "common/test/jvm",
-        ":common-ui-theme"      : "common/ui/theme",
+        ":common-navigation-core": "common/navigation/core",
+        ":common-error"          : "common/error",
+        ":common-ktx-jvm"        : "common/ktx/jvm",
+        ":common-ktx-android"    : "common/ktx/android",
+        ":common-test-jvm"       : "common/test/jvm",
+        ":common-ui-theme"       : "common/ui/theme",
 ]
 
 modules.forEach { name, path ->

@@ -1,4 +1,4 @@
-package com.bimboilya.common.navigation
+package com.bimboilya.common.navigation.core
 
 interface AppRouter {
 

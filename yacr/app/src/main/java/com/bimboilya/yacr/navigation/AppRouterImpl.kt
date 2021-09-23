@@ -1,9 +1,9 @@
 package com.bimboilya.yacr.navigation
 
 import android.content.ActivityNotFoundException
-import com.bimboilya.common.navigation.ActivityDestination
-import com.bimboilya.common.navigation.AppRouter
-import com.bimboilya.common.navigation.Destination
+import com.bimboilya.common.navigation.core.ActivityDestination
+import com.bimboilya.common.navigation.core.AppRouter
+import com.bimboilya.common.navigation.core.Destination
 import timber.log.Timber
 import javax.inject.Inject
 

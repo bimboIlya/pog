@@ -1,6 +1,6 @@
 package com.bimboilya.yacr.di
 
-import com.bimboilya.common.navigation.AppRouter
+import com.bimboilya.common.navigation.core.AppRouter
 import com.bimboilya.yacr.navigation.AppRouterImpl
 import com.bimboilya.yacr.navigation.NavCommandDispatcher
 import com.bimboilya.yacr.navigation.NavCommandDispatcherImpl
