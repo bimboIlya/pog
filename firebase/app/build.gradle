@@ -62,6 +62,7 @@ dependencies {
     implementation project(":common-ui-theme")
 
     implementation project(":feature-fb-config")
+    implementation project(":feature-chooser")
 
     testImplementation project(":common-test-jvm")
 }
