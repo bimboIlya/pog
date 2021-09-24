@@ -12,6 +12,7 @@ def modules = [
         ":feature-authorization"    : "yacr/feature/authorization",
 
         ":firebase-app"             : "firebase/app",
+        ":feature-fb-config"        : "firebase/feature/config",
 
         ":common-navigation-core"   : "common/navigation/core",
         ":common-navigation-compose": "common/navigation/compose",
