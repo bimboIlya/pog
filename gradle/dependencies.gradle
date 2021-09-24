@@ -3,7 +3,7 @@ ext {
             "AGP"                 : "7.0.2",
 
             "kotlin"              : "1.5.21",
-            "kotlinx"             : "1.5.1",
+            "kotlinx"             : "1.5.2",
             "kotlinxSerialization": "1.2.2",
 
             "androidxCore"        : "1.6.0",
@@ -31,12 +31,12 @@ ext {
             "gmsPlugin"           : "4.3.10",
             "crashlyticsPlugin"   : "2.7.1",
 
-            "timber"              : "4.7.1",
+            "timber"              : "5.0.1",
 
             // Testing
-            "junit5"              : "5.7.0",
+            "junit5"              : "5.8.1",
             "mockk"               : "1.12.0",
-            "turbine"             : "0.6.0",
+            "turbine"             : "0.6.1",
 
             "androidxJunit"       : "1.1.2",
     ]
