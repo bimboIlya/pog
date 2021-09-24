@@ -1,3 +1,6 @@
 package com.bimboilya.firebase.feature.chooser.presentation
 
-interface ChooserRouter
+interface ChooserRouter {
+
+    fun openConfigScreen()
+}

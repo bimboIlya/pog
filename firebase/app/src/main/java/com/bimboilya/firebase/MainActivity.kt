@@ -12,6 +12,7 @@ import com.bimboilya.common.navigation.compose.NavCommandDispatcher
 import com.bimboilya.common.navigation.compose.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.firebase.navigation.chooser.ChooserDirection
+import com.bimboilya.firebase.navigation.config.ConfigDirection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
@@ -54,6 +55,6 @@ private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
         startDestination = ChooserDirection.route,
     ) {
         composable(ChooserDirection)
+        composable(ConfigDirection)
     }
 }
-

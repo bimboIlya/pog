@@ -9,4 +9,7 @@ class ChooserViewModel @Inject constructor(
     private val router: ChooserRouter
 ) : ViewModel() {
 
+    fun openConfigScreen() {
+        router.openConfigScreen()
+    }
 }
