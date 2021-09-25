@@ -63,6 +63,7 @@ dependencies {
 
     implementation project(":feature-fb-config")
     implementation project(":feature-chooser")
+    implementation project(":feature-crashlytics")
 
     testImplementation project(":common-test-jvm")
 }

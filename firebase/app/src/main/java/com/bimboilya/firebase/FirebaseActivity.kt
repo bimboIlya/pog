@@ -13,6 +13,7 @@ import com.bimboilya.common.navigation.compose.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.firebase.navigation.chooser.ChooserDirection
 import com.bimboilya.firebase.navigation.config.ConfigDirection
+import com.bimboilya.firebase.navigation.crashlytics.CrashDirection
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -55,5 +56,6 @@ private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
     ) {
         composable(ChooserDirection)
         composable(ConfigDirection)
+        composable(CrashDirection)
     }
 }

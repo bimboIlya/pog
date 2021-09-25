@@ -13,6 +13,7 @@ def modules = [
 
         ":firebase-app"             : "firebase/app",
         ":feature-chooser"          : "firebase/feature/chooser",
+        ":feature-crashlytics"      : "firebase/feature/crashlytics",
         ":feature-fb-config"        : "firebase/feature/config",
 
         ":common-navigation-core"   : "common/navigation/core",
@@ -28,3 +29,4 @@ modules.forEach { name, path ->
     include(name)
     project(name).projectDir = file(path)
 }
+include ':crashlytics'

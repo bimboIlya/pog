@@ -1,0 +1,11 @@
+apply from: "$rootDir/gradle/android-lib.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+apply from: "$rootDir/gradle/hilt.gradle"
+
+dependencies {
+    implementation libraries.compose.ui
+    implementation libraries.compose.uiTooling
+    implementation libraries.compose.material
+
+    implementation libraries.firebase.crashlytics
+}
