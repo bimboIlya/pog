@@ -1,4 +1,4 @@
-package com.bimboilya.yacr
+package com.bimboilya.firebase
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,13 @@ import androidx.navigation.compose.rememberNavController
 import com.bimboilya.common.navigation.compose.NavCommandDispatcher
 import com.bimboilya.common.navigation.compose.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
-import com.bimboilya.yacr.navigation.screens.authorization.AuthDirection
+import com.bimboilya.firebase.navigation.chooser.ChooserDirection
+import com.bimboilya.firebase.navigation.config.ConfigDirection
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class FirebaseActivity : ComponentActivity() {
 
     @Inject
     lateinit var navCommandDispatcher: NavCommandDispatcher
@@ -27,8 +26,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launchWhenResumed {
-            navCommandDispatcher.navCommandFlow
-                .collect { it(this@MainActivity) }
+            navCommandDispatcher.navCommandFlow.collect { command ->
+                command(this@FirebaseActivity) }
         }
 
         setContent {
@@ -39,8 +38,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
-fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
+private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
     val navController = rememberNavController()
 
     LaunchedEffect(navCommandDispatcher) {
@@ -51,8 +51,9 @@ fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
 
     NavHost(
         navController,
-        startDestination = AuthDirection.route,
+        startDestination = ChooserDirection.route,
     ) {
-        composable(AuthDirection)
+        composable(ChooserDirection)
+        composable(ConfigDirection)
     }
 }
