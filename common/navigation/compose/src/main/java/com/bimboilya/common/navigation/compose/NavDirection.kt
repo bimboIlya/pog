@@ -6,6 +6,7 @@ import androidx.navigation.compose.NamedNavArgument
 
 interface NavDirection {
 
+    // todo попробовать рефлексию, чтобы не писать везде ${this::class}
     val route: String
 
     fun getArguments(): List<NamedNavArgument> = emptyList()
