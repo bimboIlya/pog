@@ -12,4 +12,8 @@ class ChooserViewModel @Inject constructor(
     fun openConfigScreen() {
         router.openConfigScreen()
     }
+
+    fun openCrashScreen() {
+        router.openCrashScreen()
+    }
 }
