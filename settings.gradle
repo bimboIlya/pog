@@ -8,25 +8,25 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr-app"                 : "yacr/app",
-        ":feature-authorization"    : "yacr/feature/authorization",
+        ":yacr-app"                   : "yacr/app",
+        ":feature-authorization"      : "yacr/feature/authorization",
 
-        ":firebase-app"             : "firebase/app",
-        ":feature-chooser"          : "firebase/feature/chooser",
-        ":feature-crashlytics"      : "firebase/feature/crashlytics",
-        ":feature-fb-config"        : "firebase/feature/config",
+        ":firebase-app"               : "firebase/app",
+        ":feature-chooser"            : "firebase/feature/chooser",
+        ":feature-crashlytics"        : "firebase/feature/crashlytics",
+        ":feature-fb-config"          : "firebase/feature/config",
 
-        ":common-navigation-core"   : "common/navigation/core",
-        ":common-navigation-compose": "common/navigation/compose",
-        ":common-error"             : "common/error",
-        ":common-ktx-jvm"           : "common/ktx/jvm",
-        ":common-ktx-android"       : "common/ktx/android",
-        ":common-test-jvm"          : "common/test/jvm",
-        ":common-ui-theme"          : "common/ui/theme",
+        ":common-navigation-core"     : "common/navigation/core",
+        ":common-navigation-compose"  : "common/navigation/compose",
+        ":common-error"               : "common/error",
+        ":common-injection-qualifiers": "common/injection/qualifiers",
+        ":common-ktx-jvm"             : "common/ktx/jvm",
+        ":common-ktx-android"         : "common/ktx/android",
+        ":common-test-jvm"            : "common/test/jvm",
+        ":common-ui-theme"            : "common/ui/theme",
 ]
 
 modules.forEach { name, path ->
     include(name)
     project(name).projectDir = file(path)
 }
-include ':crashlytics'

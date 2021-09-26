@@ -85,6 +85,8 @@ ext {
                           "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
                           "serialization"    : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
 
+            "javaX"    : ["inject": "javax.inject:javax.inject:1"],
+
             "okhttp"   : ["logging": "com.squareup.okhttp3:logging-interceptor:$versions.okhttpLogging"],
 
             "retrofit" : ["client"          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
