@@ -14,6 +14,7 @@ import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.yacr.navigation.screens.authorization.AuthDirection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint

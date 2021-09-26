@@ -15,6 +15,7 @@ import com.bimboilya.firebase.navigation.chooser.ChooserDirection
 import com.bimboilya.firebase.navigation.config.ConfigDirection
 import com.bimboilya.firebase.navigation.crashlytics.CrashDirection
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
