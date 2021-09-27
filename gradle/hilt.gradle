@@ -9,6 +9,5 @@ android {
 
 dependencies {
     implementation libraries.hilt.android
-    implementation libraries.hilt.navigation
     kapt libraries.hilt.compiler
 }

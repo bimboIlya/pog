@@ -8,11 +8,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.bimboilya.feature.crashlytics.presentation.CrashViewModel
 
 @Composable
-fun CrashScreen(viewModel: CrashViewModel = hiltViewModel()) {
+fun CrashScreen(viewModel: CrashViewModel) {
     CrashScreen(
         onCrashClick = viewModel::crash,
         onLogErrorClick = viewModel::logError,

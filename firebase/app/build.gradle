@@ -44,6 +44,8 @@ dependencies {
 
     implementation libraries.lifecycle.runtime
 
+    implementation libraries.hilt.navigation
+
     implementation libraries.kotlinX.coroutinesTasks
 
     implementation libraries.firebase.analytics

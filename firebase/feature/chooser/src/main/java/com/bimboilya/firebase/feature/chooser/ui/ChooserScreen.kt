@@ -8,11 +8,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.bimboilya.firebase.feature.chooser.presentation.ChooserViewModel
 
 @Composable
-fun ChooserScreen(viewModel: ChooserViewModel = hiltViewModel()) {
+fun ChooserScreen(viewModel: ChooserViewModel) {
     ChooserScreen(
         viewModel::openConfigScreen,
         viewModel::openCrashScreen,

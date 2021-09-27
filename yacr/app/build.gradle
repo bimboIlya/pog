@@ -42,6 +42,8 @@ dependencies {
 
     implementation libraries.lifecycle.runtime
 
+    implementation libraries.hilt.navigation
+
     implementation libraries.timber
 
     implementation project(":common-error")
