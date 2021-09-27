@@ -61,7 +61,7 @@ dependencies {
     implementation project(":common-navigation-compose")
     implementation project(":common-ui-theme")
 
-    implementation project(":feature-fb-config")
+    implementation project(":feature-config")
     implementation project(":feature-chooser")
     implementation project(":feature-crashlytics")
 

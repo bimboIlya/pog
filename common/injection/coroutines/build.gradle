@@ -1,0 +1,11 @@
+apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "kotlin-kapt"
+
+dependencies {
+    implementation libraries.dagger.core
+    kapt libraries.dagger.compiler
+
+    implementation libraries.kotlinX.coroutinesCore
+
+    implementation project(":common-injection-qualifiers")
+}

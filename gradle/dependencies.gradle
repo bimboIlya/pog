@@ -8,6 +8,7 @@ ext {
 
             "androidxCore"        : "1.6.0",
             "androidxActivity"    : "1.3.1",
+            "dagger"              : "2.38.1",
             "hilt"                : "2.38.1",
             "hiltNavigation"      : "1.0.0-alpha03",
             "lifecycle"           : "2.4.0-alpha03",
@@ -68,6 +69,9 @@ ext {
                           "database"    : "com.google.firebase:firebase-database-ktx:$versions.fbDatabase",
                           "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
                           "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
+
+            "dagger"   : ["core"    : "com.google.dagger:dagger:$versions.dagger",
+                          "compiler": "com.google.dagger:dagger-compiler:$versions.dagger"],
 
             "hilt"     : ["android"   : "com.google.dagger:hilt-android:$versions.hilt",
                           "navigation": "androidx.hilt:hilt-navigation-compose:$versions.hiltNavigation",
