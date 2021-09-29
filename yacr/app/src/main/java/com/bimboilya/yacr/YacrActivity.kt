@@ -11,7 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.bimboilya.common.navigation.compose.NavCommandDispatcher
 import com.bimboilya.common.navigation.compose.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
-import com.bimboilya.yacr.navigation.screens.authorization.AuthDirection
+import com.bimboilya.yacr.navigation.screens.authorization.AuthDestination
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
@@ -51,8 +51,8 @@ fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
 
     NavHost(
         navController,
-        startDestination = AuthDirection.route,
+        startDestination = AuthDestination.route,
     ) {
-        composable(AuthDirection)
+        composable(AuthDestination)
     }
 }

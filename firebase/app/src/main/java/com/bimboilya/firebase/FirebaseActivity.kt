@@ -11,9 +11,9 @@ import androidx.navigation.compose.rememberNavController
 import com.bimboilya.common.navigation.compose.NavCommandDispatcher
 import com.bimboilya.common.navigation.compose.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
-import com.bimboilya.firebase.navigation.chooser.ChooserDirection
-import com.bimboilya.firebase.navigation.config.ConfigDirection
-import com.bimboilya.firebase.navigation.crashlytics.CrashDirection
+import com.bimboilya.firebase.navigation.chooser.ChooserDestination
+import com.bimboilya.firebase.navigation.config.ConfigDestination
+import com.bimboilya.firebase.navigation.crashlytics.CrashDestination
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
@@ -53,10 +53,10 @@ private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
 
     NavHost(
         navController,
-        startDestination = ChooserDirection.route,
+        startDestination = ChooserDestination.route,
     ) {
-        composable(ChooserDirection)
-        composable(ConfigDirection)
-        composable(CrashDirection)
+        composable(ChooserDestination)
+        composable(ConfigDestination)
+        composable(CrashDestination)
     }
 }

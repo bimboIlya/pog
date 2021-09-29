@@ -9,6 +9,6 @@ class AuthorizationRouterImpl @Inject constructor(
 ) : AuthorizationRouter {
 
     override fun openHome() {
-        appRouter.replace(AuthDirection.route) // todo change
+        appRouter.replace(AuthDestination.route) // todo change
     }
 }

@@ -5,16 +5,16 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
-import com.bimboilya.common.navigation.compose.NavDirection
+import com.bimboilya.common.navigation.compose.ComposableDestination
 
-fun NavGraphBuilder.composable(direction: NavDirection) {
-    composable(direction.route, direction.getArguments()) { backStackEntry ->
-        direction.CreateComposable(backStackEntry)
+fun NavGraphBuilder.composable(destination: ComposableDestination) {
+    composable(destination.route, destination.getArguments()) { backStackEntry ->
+        destination.CreateComposable(backStackEntry)
     }
 }
 
-fun NavGraphBuilder.addNavDirections(directions: Iterable<NavDirection>) {
-    directions.forEach(::composable)
+fun NavGraphBuilder.addDestinations(destinations: Iterable<ComposableDestination>) {
+    destinations.forEach(::composable)
 }
 
 inline fun <reified T> singleNavArgument(
