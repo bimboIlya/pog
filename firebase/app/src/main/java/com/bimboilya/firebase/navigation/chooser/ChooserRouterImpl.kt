@@ -11,10 +11,10 @@ class ChooserRouterImpl @Inject constructor(
 ) : ChooserRouter {
 
     override fun openConfigScreen() {
-        appRouter.open(ConfigDestination.route)
+        appRouter.open(ConfigDestination)
     }
 
     override fun openCrashScreen() {
-        appRouter.open(CrashDestination.route)
+        appRouter.open(CrashDestination)
     }
 }

@@ -13,13 +13,14 @@ class AppRouterImpl @Inject constructor(
 
     override fun open(destination: Destination) {
         when (destination) {
+            is ComposableDestination -> navigateComposable(destination)
             is ActivityDestination -> navigateActivity(destination)
         }
     }
 
-    override fun open(destinationRoute: String) {
+    private fun navigateComposable(destination: ComposableDestination) {
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destinationRoute)
+            navigate(destination.route)
         }
     }
 
@@ -35,11 +36,13 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun replace(destinationRoute: String) {
+    override fun replace(destination: Destination) {
+        if (destination !is ComposableDestination) return
+
         navCommandDispatcher.dispatchComposableNavCommand {
             val currentRoute = currentDestination?.route
 
-            navigate(destinationRoute) {
+            navigate(destination.route) {
                 currentRoute?.let {
                     popUpTo(currentRoute) {
                         inclusive = true
@@ -49,10 +52,12 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun replace(destinationRoute: String, routeToPopUpTo: String) {
+    override fun replace(destination: Destination, destinationToPopUpTo: Destination) {
+        if (destination !is ComposableDestination || destinationToPopUpTo !is ComposableDestination) return
+
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destinationRoute) {
-                popUpTo(routeToPopUpTo)
+            navigate(destination.route) {
+                popUpTo(destinationToPopUpTo.route)
             }
         }
     }
@@ -63,9 +68,11 @@ class AppRouterImpl @Inject constructor(
         }
     }
 
-    override fun popUpTo(destinationRoute: String, inclusive: Boolean) {
+    override fun popUpTo(destination: Destination, inclusive: Boolean) {
+        if (destination !is ComposableDestination) return
+
         navCommandDispatcher.dispatchComposableNavCommand {
-            popBackStack(destinationRoute, inclusive)
+            popBackStack(destination.route, inclusive)
         }
     }
 
