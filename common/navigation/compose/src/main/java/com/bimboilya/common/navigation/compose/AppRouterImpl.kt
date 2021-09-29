@@ -20,7 +20,7 @@ class AppRouterImpl @Inject constructor(
 
     private fun navigateComposable(destination: ComposableDestination) {
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destination.route)
+            navigate(destination.getRoute())
         }
     }
 
@@ -42,7 +42,7 @@ class AppRouterImpl @Inject constructor(
         navCommandDispatcher.dispatchComposableNavCommand {
             val currentRoute = currentDestination?.route
 
-            navigate(destination.route) {
+            navigate(destination.getRoute()) {
                 currentRoute?.let {
                     popUpTo(currentRoute) {
                         inclusive = true
@@ -56,8 +56,8 @@ class AppRouterImpl @Inject constructor(
         if (destination !is ComposableDestination || destinationToPopUpTo !is ComposableDestination) return
 
         navCommandDispatcher.dispatchComposableNavCommand {
-            navigate(destination.route) {
-                popUpTo(destinationToPopUpTo.route)
+            navigate(destination.getRoute()) {
+                popUpTo(destinationToPopUpTo.getRoute())
             }
         }
     }
@@ -72,7 +72,7 @@ class AppRouterImpl @Inject constructor(
         if (destination !is ComposableDestination) return
 
         navCommandDispatcher.dispatchComposableNavCommand {
-            popBackStack(destination.route, inclusive)
+            popBackStack(destination.getRoute(), inclusive)
         }
     }
 

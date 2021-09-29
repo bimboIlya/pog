@@ -8,7 +8,7 @@ import androidx.navigation.compose.navArgument
 import com.bimboilya.common.navigation.compose.ComposableDestination
 
 fun NavGraphBuilder.composable(destination: ComposableDestination) {
-    composable(destination.route, destination.getArguments()) { backStackEntry ->
+    composable(destination.getRoute(), destination.getArguments()) { backStackEntry ->
         destination.CreateComposable(backStackEntry)
     }
 }

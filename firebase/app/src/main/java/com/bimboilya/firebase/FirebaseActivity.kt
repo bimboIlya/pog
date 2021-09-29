@@ -53,7 +53,7 @@ private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
 
     NavHost(
         navController,
-        startDestination = ChooserDestination.route,
+        startDestination = ChooserDestination.getRoute(),
     ) {
         composable(ChooserDestination)
         composable(ConfigDestination)

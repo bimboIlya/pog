@@ -7,7 +7,6 @@ import com.bimboilya.common.navigation.compose.ComposableDestination
 import com.bimboilya.firebase.feature.chooser.ui.ChooserScreen
 
 object ChooserDestination : ComposableDestination {
-    override val route = "${this::class}"
 
     @Composable
     override fun CreateComposable(backStackEntry: NavBackStackEntry) {

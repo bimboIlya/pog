@@ -8,8 +8,6 @@ import com.bimboilya.feature.crashlytics.ui.CrashScreen
 
 object CrashDestination : ComposableDestination {
 
-    override val route = "${this::class}"
-
     @Composable
     override fun CreateComposable(backStackEntry: NavBackStackEntry) {
         CrashScreen(viewModel = hiltViewModel())

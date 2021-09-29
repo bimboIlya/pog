@@ -8,8 +8,6 @@ import com.bimboilya.yacr.feature.authorization.ui.AuthorizationScreen
 
 object AuthDestination : ComposableDestination {
 
-    override val route: String = "${this::class}"
-
     @Composable
     override fun CreateComposable(backStackEntry: NavBackStackEntry) {
         AuthorizationScreen(viewModel = hiltViewModel())
