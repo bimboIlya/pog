@@ -1,4 +1,4 @@
-package com.bimboilya.feature.crashlytics.presentation
+package com.bimboilya.feature.crashlytics.main.presentation
 
 import androidx.lifecycle.ViewModel
 import com.bimboilya.feature.crashlytics.ErrorLogger

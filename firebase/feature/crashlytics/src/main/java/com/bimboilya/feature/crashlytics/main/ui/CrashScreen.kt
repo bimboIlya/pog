@@ -1,4 +1,4 @@
-package com.bimboilya.feature.crashlytics.ui
+package com.bimboilya.feature.crashlytics.main.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,7 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.bimboilya.feature.crashlytics.presentation.CrashViewModel
+import com.bimboilya.feature.crashlytics.main.presentation.CrashViewModel
 
 @Composable
 fun CrashScreen(viewModel: CrashViewModel) {
