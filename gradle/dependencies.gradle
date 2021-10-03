@@ -12,6 +12,7 @@ ext {
             "hilt"                : "2.38.1",
             "hiltNavigation"      : "1.0.0-alpha03",
             "lifecycle"           : "2.4.0-alpha03",
+            "dataStore"           : "1.0.0",
 
             "compose"             : "1.0.2",
             "composeViewmodel"    : "1.0.0-alpha07",
@@ -52,8 +53,10 @@ ext {
     ]
 
     libraries = [
-            "androidX" : ["core"    : "androidx.core:core-ktx:$versions.androidxCore",
-                          "activity": "androidx.activity:activity-ktx:$versions.androidxActivity"],
+            "androidX" : ["core"     : "androidx.core:core-ktx:$versions.androidxCore",
+                          "activity" : "androidx.activity:activity-ktx:$versions.androidxActivity",
+                          "dataStore": "androidx.datastore:datastore-preferences:$versions.dataStore"
+            ],
 
             "compose"  : ["ui"        : "androidx.compose.ui:ui:$versions.compose",
                           "uiTooling" : "androidx.compose.ui:ui-tooling:$versions.compose",

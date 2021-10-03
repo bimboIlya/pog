@@ -34,6 +34,7 @@ android {
 dependencies {
 
     implementation libraries.androidX.core
+    implementation libraries.androidX.dataStore
 
     implementation libraries.compose.ui
     implementation libraries.compose.uiTooling
@@ -62,10 +63,14 @@ dependencies {
     implementation project(":common-navigation-core")
     implementation project(":common-navigation-compose")
     implementation project(":common-ui-theme")
+    implementation project(":common-preferences")
 
     implementation project(":feature-config")
     implementation project(":feature-chooser")
     implementation project(":feature-crashlytics")
+
+    implementation project(":common-injection-qualifiers")
+    implementation project(":common-injection-coroutines")
 
     testImplementation project(":common-test-jvm")
 }
