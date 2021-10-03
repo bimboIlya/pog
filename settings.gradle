@@ -18,7 +18,6 @@ def modules = [
 
         ":common-navigation-core"     : "common/navigation/core",
         ":common-navigation-compose"  : "common/navigation/compose",
-        ":common-error"               : "common/error",
         ":common-ktx-jvm"             : "common/ktx/jvm",
         ":common-ktx-android"         : "common/ktx/android",
         ":common-preferences"         : "common/preferences",

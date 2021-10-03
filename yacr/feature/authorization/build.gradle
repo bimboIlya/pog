@@ -16,7 +16,6 @@ dependencies {
 
     implementation project(":common-ktx-jvm")
     implementation project(":common-ktx-android")
-    implementation project(":common-error")
 
     testImplementation testLibraries.jupiter.parametrized
     testImplementation project(":common-test-jvm")
