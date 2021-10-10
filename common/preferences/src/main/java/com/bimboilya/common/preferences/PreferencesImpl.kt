@@ -20,23 +20,23 @@ class PreferencesImpl constructor(
         context.preferencesDataStoreFile(name)
     }
 
-    override suspend fun putBoolean(key: String, value: Boolean) {
+    override suspend fun saveBoolean(key: String, value: Boolean) {
         dataStore.put(booleanPreferencesKey(key), value)
     }
 
-    override suspend fun putInt(key: String, value: Int) {
+    override suspend fun saveInt(key: String, value: Int) {
         dataStore.put(intPreferencesKey(key), value)
     }
 
-    override suspend fun putLong(key: String, value: Long) {
+    override suspend fun saveLong(key: String, value: Long) {
         dataStore.put(longPreferencesKey(key), value)
     }
 
-    override suspend fun putDouble(key: String, value: Double) {
+    override suspend fun saveDouble(key: String, value: Double) {
         dataStore.put(doublePreferencesKey(key), value)
     }
 
-    override suspend fun putString(key: String, value: String) {
+    override suspend fun saveString(key: String, value: String) {
         dataStore.put(stringPreferencesKey(key), value)
     }
 
