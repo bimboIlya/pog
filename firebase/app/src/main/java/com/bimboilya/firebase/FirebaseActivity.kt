@@ -14,6 +14,7 @@ import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.firebase.navigation.chooser.ChooserDestination
 import com.bimboilya.firebase.navigation.config.ConfigDestination
 import com.bimboilya.firebase.navigation.crashlytics.CrashDestination
+import com.bimboilya.firebase.navigation.crashlytics.CrashSettingsDestination
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
@@ -58,5 +59,6 @@ private fun Navigation(navCommandDispatcher: NavCommandDispatcher) {
         composable(ChooserDestination)
         composable(ConfigDestination)
         composable(CrashDestination)
+        composable(CrashSettingsDestination)
     }
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CrashViewModel @Inject constructor(
+    private val router: CrashRouter,
     private val errorLogger: ErrorLogger
 ) : ViewModel() {
 
@@ -16,5 +17,9 @@ class CrashViewModel @Inject constructor(
 
     fun logError() {
         errorLogger.log(RuntimeException("Non critical error"))
+    }
+
+    fun openSettings() {
+        router.openSettings()
     }
 }

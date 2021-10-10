@@ -6,6 +6,10 @@ dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.uiTooling
     implementation libraries.compose.material
+    implementation libraries.lifecycle.viewmodel
 
     implementation libraries.firebase.crashlytics
+
+    implementation project(":common-preferences")
+    implementation project(":common-injection-qualifiers")
 }
