@@ -1,5 +1,6 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
 
 dependencies {
+    implementation libraries.androidX.core
     implementation libraries.lifecycle.stateHandle
 }

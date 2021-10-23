@@ -8,6 +8,7 @@ plugins {
 apply from: "$rootDir/gradle/application.gradle"
 apply from: "$rootDir/gradle/compose.gradle"
 apply from: "$rootDir/gradle/hilt.gradle"
+apply from: "$rootDir/gradle/serialization.gradle"
 
 android {
     compileSdkVersion application.targetSdk
@@ -27,6 +28,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
         }
     }
 }
@@ -60,6 +67,7 @@ dependencies {
     implementation libraries.timber
 
     implementation project(":common-ktx-jvm")
+    implementation project(":common-ktx-android")
     implementation project(":common-navigation-core")
     implementation project(":common-navigation-compose")
     implementation project(":common-ui-theme")
@@ -72,5 +80,8 @@ dependencies {
     implementation project(":common-injection-qualifiers")
     implementation project(":common-injection-coroutines")
 
+    testRuntimeOnly testLibraries.jupiter.engine
+    testImplementation testLibraries.jupiter.api
+    testImplementation testLibraries.mockk.core
     testImplementation project(":common-test-jvm")
 }

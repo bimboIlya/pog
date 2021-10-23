@@ -7,7 +7,7 @@ import com.bimboilya.common.navigation.core.Destination
 
 interface ComposableDestination : Destination {
 
-    fun getRoute(): String = "${this::class}"
+    fun getRoute(): String = javaClass.simpleName
 
     fun getArguments(): List<NamedNavArgument> = emptyList()
 
