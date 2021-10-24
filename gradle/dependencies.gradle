@@ -14,6 +14,10 @@ ext {
             "lifecycle"           : "2.4.0-alpha03",
             "dataStore"           : "1.0.0",
 
+            "accompanist"         : "0.20.0",
+
+            "coil"                : "1.4.0",
+
             "compose"             : "1.0.2",
             "composeViewmodel"    : "1.0.0-alpha07",
             "composeNavigation"   : "2.4.0-alpha06",
@@ -53,53 +57,63 @@ ext {
     ]
 
     libraries = [
-            "androidX" : ["core"     : "androidx.core:core-ktx:$versions.androidxCore",
-                          "activity" : "androidx.activity:activity-ktx:$versions.androidxActivity",
-                          "dataStore": "androidx.datastore:datastore-preferences:$versions.dataStore"
-            ],
+            "accompanist": ["insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
+                            "insets-ui"          : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
+                            "navigationAnimation": "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist",
+                            "pager"              : "com.google.accompanist:accompanist-pager",
+                            "pagerIndicators"    : "com.google.accompanist:accompanist-pager-indicators:$versions.accompanist",
+                            "permissions"        : "com.google.accompanist:accompanist-permissions:$versions.accompanist",
+                            "swipeRefresh"       : "com.google.accompanist:accompanist-swiperefresh:$versions.accompanist",
+                            "systemUi"           : "com.google.accompanist:accompanist-systemuicontroller:$versions.accompanist"],
 
-            "compose"  : ["ui"        : "androidx.compose.ui:ui:$versions.compose",
-                          "uiTooling" : "androidx.compose.ui:ui-tooling:$versions.compose",
-                          "material"  : "androidx.compose.material:material:$versions.compose",
-                          "activity"  : "androidx.activity:activity-compose:$versions.androidxActivity",
-                          "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.composeViewmodel",
-                          "navigation": "androidx.navigation:navigation-compose:$versions.composeNavigation"],
+            "androidX"   : ["core"     : "androidx.core:core-ktx:$versions.androidxCore",
+                            "activity" : "androidx.activity:activity-ktx:$versions.androidxActivity",
+                            "dataStore": "androidx.datastore:datastore-preferences:$versions.dataStore"],
 
-            "firebase" : ["analytics"   : "com.google.firebase:firebase-analytics-ktx:$versions.fbAnalytics",
-                          "auth"        : "com.google.firebase:firebase-auth-ktx:$versions.fbAuth",
-                          "config"      : "com.google.firebase:firebase-config-ktx:$versions.fbConfig",
-                          "crashlytics" : "com.google.firebase:firebase-crashlytics-ktx:$versions.fbCrashlytics",
-                          "database"    : "com.google.firebase:firebase-database-ktx:$versions.fbDatabase",
-                          "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
-                          "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
+            "coil"       : ["compose": "io.coil-kt:coil-compose:$versions.coil"],
 
-            "dagger"   : ["core"    : "com.google.dagger:dagger:$versions.dagger",
-                          "compiler": "com.google.dagger:dagger-compiler:$versions.dagger"],
+            "compose"    : ["ui"        : "androidx.compose.ui:ui:$versions.compose",
+                            "uiTooling" : "androidx.compose.ui:ui-tooling:$versions.compose",
+                            "material"  : "androidx.compose.material:material:$versions.compose",
+                            "activity"  : "androidx.activity:activity-compose:$versions.androidxActivity",
+                            "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.composeViewmodel",
+                            "navigation": "androidx.navigation:navigation-compose:$versions.composeNavigation"],
 
-            "hilt"     : ["android"   : "com.google.dagger:hilt-android:$versions.hilt",
-                          "navigation": "androidx.hilt:hilt-navigation-compose:$versions.hiltNavigation",
-                          "compiler"  : "com.google.dagger:hilt-compiler:$versions.hilt"],
+            "firebase"   : ["analytics"   : "com.google.firebase:firebase-analytics-ktx:$versions.fbAnalytics",
+                            "auth"        : "com.google.firebase:firebase-auth-ktx:$versions.fbAuth",
+                            "config"      : "com.google.firebase:firebase-config-ktx:$versions.fbConfig",
+                            "crashlytics" : "com.google.firebase:firebase-crashlytics-ktx:$versions.fbCrashlytics",
+                            "database"    : "com.google.firebase:firebase-database-ktx:$versions.fbDatabase",
+                            "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
+                            "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
 
-            "lifecycle": ["runtime"    : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
-                          "viewmodel"  : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
-                          "stateHandle": "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycle"],
+            "dagger"     : ["core"    : "com.google.dagger:dagger:$versions.dagger",
+                            "compiler": "com.google.dagger:dagger-compiler:$versions.dagger"],
 
-            "kotlin"   : ["stdLib" : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
-                          "reflect": "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"],
+            "hilt"       : ["android"   : "com.google.dagger:hilt-android:$versions.hilt",
+                            "navigation": "androidx.hilt:hilt-navigation-compose:$versions.hiltNavigation",
+                            "compiler"  : "com.google.dagger:hilt-compiler:$versions.hilt"],
 
-            "kotlinX"  : ["coroutinesCore"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
-                          "coroutinesTasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
-                          "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
-                          "serialization"    : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
+            "lifecycle"  : ["runtime"    : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+                            "viewmodel"  : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+                            "stateHandle": "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycle"],
 
-            "javaX"    : ["inject": "javax.inject:javax.inject:1"],
+            "kotlin"     : ["stdLib" : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+                            "reflect": "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"],
 
-            "okhttp"   : ["logging": "com.squareup.okhttp3:logging-interceptor:$versions.okhttpLogging"],
+            "kotlinX"    : ["coroutinesCore"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
+                            "coroutinesTasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
+                            "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
+                            "serialization"    : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
 
-            "retrofit" : ["client"          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-                          "kotlinxConverter": "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinxConverter"],
+            "javaX"      : ["inject": "javax.inject:javax.inject:1"],
 
-            "timber"   : "com.jakewharton.timber:timber:$versions.timber",
+            "okhttp"     : ["logging": "com.squareup.okhttp3:logging-interceptor:$versions.okhttpLogging"],
+
+            "retrofit"   : ["client"          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+                            "kotlinxConverter": "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinxConverter"],
+
+            "timber"     : "com.jakewharton.timber:timber:$versions.timber",
     ]
 
     testLibraries = [
