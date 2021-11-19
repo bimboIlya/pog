@@ -58,7 +58,7 @@ ext {
             "accompanist": ["insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
                             "insets-ui"          : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
                             "navigationAnimation": "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist",
-                            "pager"              : "com.google.accompanist:accompanist-pager",
+                            "pager"              : "com.google.accompanist:accompanist-pager:$versions.accompanist",
                             "pagerIndicators"    : "com.google.accompanist:accompanist-pager-indicators:$versions.accompanist",
                             "permissions"        : "com.google.accompanist:accompanist-permissions:$versions.accompanist",
                             "swipeRefresh"       : "com.google.accompanist:accompanist-swiperefresh:$versions.accompanist",
