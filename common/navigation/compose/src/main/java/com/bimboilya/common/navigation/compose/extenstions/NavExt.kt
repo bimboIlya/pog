@@ -1,10 +1,10 @@
 package com.bimboilya.common.navigation.compose.extenstions
 
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
-import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
+import androidx.navigation.navArgument
 import com.bimboilya.common.navigation.compose.ComposableDestination
 
 fun NavGraphBuilder.composable(destination: ComposableDestination) {
