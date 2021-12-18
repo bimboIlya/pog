@@ -2,7 +2,10 @@ package com.bimboilya.common.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val Orange = Color(0xFFF57C00)
+val LightOrange = Color(0xFFFFAD42)
+val DarkOrange = Color(0xFFBB4D00)
+
+val Black = Color(0xFF212121)
+
+val Red = Color(0xFFA00404)

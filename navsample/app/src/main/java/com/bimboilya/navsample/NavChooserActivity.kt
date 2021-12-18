@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.bimboilya.common.ktx.android.startActivity
+import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.navsample.jetpack.JetpackActivity
 import com.bimboilya.navsample.voyager.VoyagerActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,16 +22,18 @@ class NavChooserActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column(
-                Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceAround,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Button(onClick = { startActivity<JetpackActivity>() }) {
-                    Text(text = "Jetpack Navigation")
-                }
-                Button(onClick = { startActivity<VoyagerActivity>() }) {
-                    Text(text = "Voyager")
+            PogTheme {
+                Column(
+                    Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.SpaceAround,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Button(onClick = { startActivity<JetpackActivity>() }) {
+                        Text(text = "Jetpack Navigation")
+                    }
+                    Button(onClick = { startActivity<VoyagerActivity>() }) {
+                        Text(text = "Voyager")
+                    }
                 }
             }
         }

@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.bimboilya.common.ui.theme.PogTheme
 
 class JetpackActivity : ComponentActivity() {
 
@@ -15,8 +17,12 @@ class JetpackActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Box(Modifier.fillMaxSize(), Alignment.Center) {
-                Text(text = "Jetpack Navigation")
+            PogTheme {
+                Surface {
+                    Box(Modifier.fillMaxSize(), Alignment.Center) {
+                        Text(text = "Jetpack Navigation")
+                    }
+                }
             }
         }
     }
