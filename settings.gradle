@@ -16,6 +16,8 @@ def modules = [
         ":feature-crashlytics"        : "firebase/feature/crashlytics",
         ":feature-config"             : "firebase/feature/config",
 
+        ":navsample-app"              : "navsample/app",
+
         ":common-navigation-core"     : "common/navigation/core",
         ":common-navigation-compose"  : "common/navigation/compose",
         ":common-ktx-jvm"             : "common/ktx/jvm",

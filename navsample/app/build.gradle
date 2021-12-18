@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+apply from: "$rootDir/gradle/application.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+apply from: "$rootDir/gradle/hilt.gradle"
+
+android {
+    compileSdkVersion application.targetSdk
+    buildToolsVersion application.buildTools
+
+    defaultConfig {
+        applicationId "com.bimboilya.navsample"
+        minSdkVersion application.minSdk
+        targetSdkVersion application.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+
+    implementation libraries.androidX.core
+
+    implementation libraries.compose.ui
+    implementation libraries.compose.uiTooling
+    implementation libraries.compose.material
+    implementation libraries.compose.activity
+    implementation libraries.compose.viewmodel
+    implementation libraries.compose.navigation
+
+    implementation libraries.lifecycle.runtime
+
+    implementation libraries.hilt.navigation
+
+    implementation libraries.timber
+
+    implementation project(":common-ktx-jvm")
+    implementation project(":common-ktx-android")
+    implementation project(":common-navigation-core")
+    implementation project(":common-navigation-compose")
+    implementation project(":common-ui-theme")
+
+    implementation project(":common-injection-qualifiers")
+    implementation project(":common-injection-coroutines")
+
+    testRuntimeOnly testLibraries.jupiter.engine
+    testImplementation testLibraries.jupiter.api
+    testImplementation testLibraries.mockk.core
+    testImplementation project(":common-test-jvm")
+}
