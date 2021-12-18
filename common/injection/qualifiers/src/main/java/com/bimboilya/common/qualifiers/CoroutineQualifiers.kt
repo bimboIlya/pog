@@ -10,6 +10,3 @@ annotation class DefaultDispatcher
 
 @Qualifier
 annotation class MainDispatcher
-
-@Qualifier
-annotation class AppScope

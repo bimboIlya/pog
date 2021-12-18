@@ -1,6 +1,5 @@
 package com.bimboilya.injection.coroutines
 
-import com.bimboilya.common.qualifiers.AppScope
 import com.bimboilya.common.qualifiers.DefaultDispatcher
 import com.bimboilya.common.qualifiers.IoDispatcher
 import com.bimboilya.common.qualifiers.MainDispatcher
@@ -32,6 +31,5 @@ class CoroutinesModule {
 
     @Provides
     @Singleton
-    @AppScope
     fun provideAppScope(): CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 }
