@@ -3,11 +3,13 @@
     package="com.bimboilya.navsample">
 
     <application
+        android:name=".NavSampleApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Compose Navigation"
+        android:icon="@drawable/rose"
+        android:roundIcon="@drawable/rose"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pog">
+        android:theme="@style/Theme.NavSample">
         <activity
             android:name=".NavChooserActivity"
             android:exported="true">
@@ -17,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".jetpack.JetpackActivity" />
+        <activity android:name=".voyager.VoyagerActivity" />
     </application>
 
 </manifest>

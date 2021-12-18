@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.NavSample" parent="Theme.Pog">
+        <item name="android:windowSplashScreenBackground">#FFFFFF</item>
+    </style>
+</resources>
