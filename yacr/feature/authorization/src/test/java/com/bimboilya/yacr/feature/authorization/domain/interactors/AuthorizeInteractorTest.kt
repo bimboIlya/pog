@@ -1,26 +1,20 @@
 package com.bimboilya.yacr.feature.authorization.domain.interactors
 
-import com.bimboilya.common.test.CoroutineTestExtension
 import com.bimboilya.yacr.feature.authorization.domain.AuthException
 import io.mockk.coVerify
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.extension.RegisterExtension
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 
 @ExtendWith(MockKExtension::class)
 class AuthorizeInteractorTest {
 
-    @JvmField
-    @RegisterExtension
-    val testExt = CoroutineTestExtension()
-
-    private val fetchAccessTokenUseCase: FetchAccessTokenUseCase = mockk()
+    private val fetchAccessTokenUseCase: FetchAccessTokenUseCase = mockk(relaxUnitFun = true)
     private val authorizeInteractor = AuthorizeInteractor(fetchAccessTokenUseCase)
 
     companion object {
@@ -38,7 +32,7 @@ class AuthorizeInteractorTest {
 
     @ParameterizedTest
     @MethodSource("codes")
-    fun `correct url EXPECT fetch access token`(code: String) = testExt.runBlockingTest {
+    fun `correct url EXPECT fetch access token`(code: String) = runTest {
         val url = getUrl(code = code)
 
         authorizeInteractor(url)
@@ -47,7 +41,7 @@ class AuthorizeInteractorTest {
     }
 
     @Test
-    fun `redirect url is wrong EXPECT throw auth exception`() = testExt.runBlockingTest {
+    fun `redirect url is wrong EXPECT throw auth exception`() = runTest {
         val url = getUrl(redirectUrl = "poop lole")
 
         assertThrows<AuthException> {
@@ -56,7 +50,7 @@ class AuthorizeInteractorTest {
     }
 
     @Test
-    fun `state is wrong EXPECT throw auth exception`() = testExt.runBlockingTest {
+    fun `state is wrong EXPECT throw auth exception`() = runTest {
         val url = getUrl(state = "poop-lole")
 
         assertThrows<AuthException> {
@@ -65,7 +59,7 @@ class AuthorizeInteractorTest {
     }
 
     @Test
-    fun `code is empty EXPECT throw auth exception`() = testExt.runBlockingTest {
+    fun `code is empty EXPECT throw auth exception`() = runTest {
         val url = getUrl(code = "")
 
         assertThrows<AuthException> {

@@ -1,44 +1,44 @@
 ext {
     versions = [
-            "AGP"                 : "7.0.3",
+            "AGP"                 : "7.0.4",
 
-            "kotlin"              : "1.5.31",
-            "kotlinx"             : "1.5.2",
+            "kotlin"              : "1.6.0",
+            "kotlinx"             : "1.6.0-RC3",
             "kotlinxSerialization": "1.3.1",
 
             "androidxCore"        : "1.7.0",
             "androidxActivity"    : "1.4.0",
-            "dagger"              : "2.40.1",
-            "hiltNavigation"      : "1.0.0-beta01",
+            "dagger"              : "2.40.5",
+            "hiltNavigation"      : "1.0.0-rc01",
             "lifecycle"           : "2.4.0",
-            "navigation"          : "2.4.0-beta02",
+            "navigation"          : "2.4.0-rc01",
             "dataStore"           : "1.0.0",
 
-            "accompanist"         : "0.20.0",
+            "accompanist"         : "0.21.5-rc",
 
             "coil"                : "1.4.0",
 
-            "compose"             : "1.1.0-beta03",
+            "compose"             : "1.1.0-rc01",
 
             "retrofit"            : "2.9.0",
             "okhttpLogging"       : "4.9.1",
             "kotlinxConverter"    : "0.8.0",
 
-            "fbAnalytics"         : "20.0.0",
+            "fbAnalytics"         : "20.0.2",
             "fbAuth"              : "21.0.1",
             "fbConfig"            : "21.0.1",
-            "fbCrashlytics"       : "18.2.4",
-            "fbDatabase"          : "20.0.2",
+            "fbCrashlytics"       : "18.2.6",
+            "fbDatabase"          : "20.0.3",
             "fbDynamicLinks"      : "21.0.0",
             "fbMessaging"         : "23.0.0",
 
             "gmsPlugin"           : "4.3.10",
-            "crashlyticsPlugin"   : "2.8.0",
+            "crashlyticsPlugin"   : "2.8.1",
 
             "timber"              : "5.0.1",
 
             // Testing
-            "junit5"              : "5.8.1",
+            "junit5"              : "5.8.2",
             "mockk"               : "1.12.1",
             "turbine"             : "0.7.0",
 
