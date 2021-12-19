@@ -73,6 +73,7 @@ dependencies {
 
     implementation project(":common-injection-qualifiers")
     implementation project(":common-injection-coroutines")
+    implementation project(":common-preferences")
 
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api
