@@ -42,9 +42,22 @@ dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.uiTooling
     implementation libraries.compose.material
+    implementation libraries.compose.materialIcons
     implementation libraries.compose.activity
     implementation libraries.compose.viewmodel
     implementation libraries.compose.navigation
+
+    implementation libraries.accompanist.navigationAnimation
+    implementation libraries.accompanist.navigationMaterial
+    implementation libraries.accompanist.pager
+    implementation libraries.accompanist.pagerIndicators
+
+    implementation libraries.voyager.core
+    implementation libraries.voyager.bottomSheet
+    implementation libraries.voyager.hilt
+    implementation libraries.voyager.tab
+    implementation libraries.voyager.transitions
+    implementation libraries.voyager.viewmodel
 
     implementation libraries.lifecycle.runtime
 

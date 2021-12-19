@@ -14,6 +14,8 @@ ext {
             "navigation"          : "2.4.0-rc01",
             "dataStore"           : "1.0.0",
 
+            "voyager"             : "1.0.0-beta13",
+
             "accompanist"         : "0.21.5-rc",
 
             "coil"                : "1.4.0",
@@ -57,6 +59,7 @@ ext {
     libraries = [
             "accompanist": ["insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
                             "insets-ui"          : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
+                            "navigationMaterial" : "com.google.accompanist:accompanist-navigation-material:$versions.accompanist",
                             "navigationAnimation": "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist",
                             "pager"              : "com.google.accompanist:accompanist-pager:$versions.accompanist",
                             "pagerIndicators"    : "com.google.accompanist:accompanist-pager-indicators:$versions.accompanist",
@@ -70,12 +73,13 @@ ext {
 
             "coil"       : ["compose": "io.coil-kt:coil-compose:$versions.coil"],
 
-            "compose"    : ["ui"        : "androidx.compose.ui:ui:$versions.compose",
-                            "uiTooling" : "androidx.compose.ui:ui-tooling:$versions.compose",
-                            "material"  : "androidx.compose.material:material:$versions.compose",
-                            "activity"  : "androidx.activity:activity-compose:$versions.androidxActivity",
-                            "viewmodel" : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycle",
-                            "navigation": "androidx.navigation:navigation-compose:$versions.navigation"],
+            "compose"    : ["ui"           : "androidx.compose.ui:ui:$versions.compose",
+                            "uiTooling"    : "androidx.compose.ui:ui-tooling:$versions.compose",
+                            "material"     : "androidx.compose.material:material:$versions.compose",
+                            "materialIcons": "androidx.compose.material:material-icons-extended:$versions.compose",
+                            "activity"     : "androidx.activity:activity-compose:$versions.androidxActivity",
+                            "viewmodel"    : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycle",
+                            "navigation"   : "androidx.navigation:navigation-compose:$versions.navigation"],
 
             "firebase"   : ["analytics"   : "com.google.firebase:firebase-analytics-ktx:$versions.fbAnalytics",
                             "auth"        : "com.google.firebase:firebase-auth-ktx:$versions.fbAuth",
@@ -112,6 +116,13 @@ ext {
                             "kotlinxConverter": "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinxConverter"],
 
             "timber"     : "com.jakewharton.timber:timber:$versions.timber",
+
+            "voyager"    : ["core"       : "cafe.adriel.voyager:voyager-navigator:$versions.voyager",
+                            "bottomSheet": "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$versions.voyager",
+                            "hilt"       : "cafe.adriel.voyager:voyager-hilt:$versions.voyager",
+                            "tab"        : "cafe.adriel.voyager:voyager-tab-navigator:$versions.voyager",
+                            "transitions": "cafe.adriel.voyager:voyager-transitions:$versions.voyager",
+                            "viewmodel"  : "cafe.adriel.voyager:voyager-androidx:$versions.voyager"],
     ]
 
     testLibraries = [
