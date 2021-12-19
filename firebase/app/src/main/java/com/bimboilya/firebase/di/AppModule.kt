@@ -22,5 +22,5 @@ class AppModule {
         @ApplicationContext context: Context,
         scope: CoroutineScope,
     ): Preferences =
-        PreferencesImpl("application_store", context, scope)
+        PreferencesImpl("firebase_store", context, scope)
 }

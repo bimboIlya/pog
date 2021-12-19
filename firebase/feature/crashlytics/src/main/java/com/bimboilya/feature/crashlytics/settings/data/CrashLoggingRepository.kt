@@ -2,7 +2,6 @@ package com.bimboilya.feature.crashlytics.settings.data
 
 import com.bimboilya.common.preferences.Preferences
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class CrashLoggingRepository @Inject constructor(
@@ -18,7 +17,5 @@ class CrashLoggingRepository @Inject constructor(
     }
 
     fun observeEnabled(): Flow<Boolean> =
-        preferences.observeBoolean(IS_CRASH_LOGGING_ENABLED)
-            .map { it ?: false }
-
+        preferences.observeBoolean(IS_CRASH_LOGGING_ENABLED, default = false)
 }
