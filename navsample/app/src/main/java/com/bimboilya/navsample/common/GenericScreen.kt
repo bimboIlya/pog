@@ -1,11 +1,13 @@
 package com.bimboilya.navsample.common
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
@@ -43,7 +45,13 @@ fun GenericScreen(
     genericAction: (() -> Unit)? = null,
     specialButtonText: String = "Special action",
     specialAction: (() -> Unit)? = null,
+    topContent: @Composable () -> Unit = {},
+    bottomContent: @Composable () -> Unit = {},
 ) {
+    navAction?.let {
+        BackHandler(onBack = navAction)
+    }
+
     Scaffold(
         topBar = { AppBar(title, navIcon, navAction) }
     ) { padding ->
@@ -62,8 +70,12 @@ fun GenericScreen(
             Modifier.fillMaxSize().padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.weight(1f))
-            Column(verticalArrangement = Arrangement.SpaceEvenly) {
+            Box(Modifier.fillMaxWidth().weight(1f)) { topContent() }
+            Column(
+                Modifier.weight(1f),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
                 if (genericAction != null) {
                     Button(onClick = genericAction) {
                         Text(text = genericButtonText)
@@ -75,7 +87,7 @@ fun GenericScreen(
                     }
                 }
             }
-            Spacer(Modifier.weight(1f))
+            Box(Modifier.fillMaxWidth().weight(1f)) { bottomContent() }
         }
     }
 }
