@@ -4,6 +4,7 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/application.gradle"
+apply from: "$rootDir/gradle/serialization.gradle"
 apply from: "$rootDir/gradle/compose.gradle"
 apply from: "$rootDir/gradle/hilt.gradle"
 
@@ -67,8 +68,6 @@ dependencies {
 
     implementation project(":common-ktx-jvm")
     implementation project(":common-ktx-android")
-    implementation project(":common-navigation-core")
-    implementation project(":common-navigation-compose")
     implementation project(":common-ui-theme")
 
     implementation project(":common-injection-qualifiers")
