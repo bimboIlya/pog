@@ -16,12 +16,12 @@ import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.android.getOrDefault
 import com.bimboilya.navsample.common.GenericScreen
 import com.bimboilya.navsample.common.NavIcon.Back
-import com.bimboilya.navsample.common.navigation.Command.Open
-import com.bimboilya.navsample.common.navigation.Command.OpenRoute
-import com.bimboilya.navsample.common.navigation.Command.Pop
-import com.bimboilya.navsample.common.navigation.CommandDispatcher
-import com.bimboilya.navsample.common.navigation.SongResult
+import com.bimboilya.navsample.common.SongResult
 import com.bimboilya.navsample.jetpack.ComposableWithArgsDestination
+import com.bimboilya.navsample.jetpack.JetpackCommand.Open
+import com.bimboilya.navsample.jetpack.JetpackCommand.OpenRoute
+import com.bimboilya.navsample.jetpack.JetpackCommand.Pop
+import com.bimboilya.navsample.jetpack.JetpackCommandDispatcher
 import com.bimboilya.navsample.jetpack.navArgument
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -53,12 +53,12 @@ object SecondScreen : ComposableWithArgsDestination {
         GenericScreen(
             title = "Second Screen",
             navIcon = Back,
-            navAction = { CommandDispatcher.dispatch(Pop) },
+            navAction = { JetpackCommandDispatcher.dispatch(Pop) },
             genericAction = {
                 val song = Song(42, artist = "Nirvana", "Nevermind", "Poop")
-                CommandDispatcher.dispatch(OpenRoute(ThirdScreen.createRoute(song)))
+                JetpackCommandDispatcher.dispatch(OpenRoute(ThirdScreen.createRoute(song)))
             },
-            specialAction = { CommandDispatcher.dispatch(Open(ThirdScreen)) },
+            specialAction = { JetpackCommandDispatcher.dispatch(Open(ThirdScreen)) },
             specialButtonText = "With delay",
             topContent = {
                 val str by viewModel.flow.collectAsStateWithLifecycle()

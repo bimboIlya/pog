@@ -18,12 +18,12 @@ import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.android.getObjectOrThrow
 import com.bimboilya.navsample.common.GenericScreen
 import com.bimboilya.navsample.common.NavIcon.Back
-import com.bimboilya.navsample.common.navigation.Command.Open
-import com.bimboilya.navsample.common.navigation.Command.Pop
-import com.bimboilya.navsample.common.navigation.CommandDispatcher
-import com.bimboilya.navsample.common.navigation.SongResult
-import com.bimboilya.navsample.common.navigation.StringResult
+import com.bimboilya.navsample.common.SongResult
+import com.bimboilya.navsample.common.StringResult
 import com.bimboilya.navsample.jetpack.ComposableWithArgsDestination
+import com.bimboilya.navsample.jetpack.JetpackCommand.Open
+import com.bimboilya.navsample.jetpack.JetpackCommand.Pop
+import com.bimboilya.navsample.jetpack.JetpackCommandDispatcher
 import com.bimboilya.navsample.jetpack.navArgument
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,8 +54,8 @@ object ThirdScreen : ComposableWithArgsDestination {
         GenericScreen(
             title = "Third Screen",
             navIcon = Back,
-            navAction = { CommandDispatcher.dispatch(Pop) },
-            genericAction = { CommandDispatcher.dispatch(Open(FourthScreen)) },
+            navAction = { JetpackCommandDispatcher.dispatch(Pop) },
+            genericAction = { JetpackCommandDispatcher.dispatch(Open(FourthScreen)) },
             topContent = {
                 val song by vm.flow.collectAsStateWithLifecycle()
                 Box(modifier = Modifier.fillMaxSize(), Alignment.Center) {

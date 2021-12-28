@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavBackStackEntry
 import com.bimboilya.navsample.common.GenericScreen
 import com.bimboilya.navsample.common.NavIcon.Back
-import com.bimboilya.navsample.common.navigation.Command
-import com.bimboilya.navsample.common.navigation.Command.CloseFlow
-import com.bimboilya.navsample.common.navigation.Command.Pop
-import com.bimboilya.navsample.common.navigation.Command.PopUpToRoot
-import com.bimboilya.navsample.common.navigation.CommandDispatcher
 import com.bimboilya.navsample.jetpack.ComposableDestination
+import com.bimboilya.navsample.jetpack.JetpackCommand.CloseFlow
+import com.bimboilya.navsample.jetpack.JetpackCommand.Composite
+import com.bimboilya.navsample.jetpack.JetpackCommand.Pop
+import com.bimboilya.navsample.jetpack.JetpackCommand.PopUpToRoot
+import com.bimboilya.navsample.jetpack.JetpackCommandDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -22,11 +22,11 @@ object FifthScreen : ComposableDestination {
         GenericScreen(
             title = "Fifth Screen",
             navIcon = Back,
-            navAction = { CommandDispatcher.dispatch(Pop) },
-            genericAction = { CommandDispatcher.dispatch(PopUpToRoot) },
+            navAction = { JetpackCommandDispatcher.dispatch(Pop) },
+            genericAction = { JetpackCommandDispatcher.dispatch(PopUpToRoot) },
             specialAction = {
-                CommandDispatcher.dispatch(
-                    Command.Composite(
+                JetpackCommandDispatcher.dispatch(
+                    Composite(
                         listOf(
                             CloseFlow,
                         )

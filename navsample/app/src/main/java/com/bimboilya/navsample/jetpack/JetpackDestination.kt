@@ -1,9 +1,17 @@
 package com.bimboilya.navsample.jetpack
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
-import com.bimboilya.navsample.common.navigation.Destination
+
+interface Destination
+
+interface ActivityDestination : Destination {
+
+    fun createIntent(context: Context): Intent
+}
 
 interface JetpackDestination : Destination {
 

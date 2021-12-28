@@ -1,4 +1,4 @@
-package com.bimboilya.navsample.common.navigation
+package com.bimboilya.navsample.common
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable

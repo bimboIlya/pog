@@ -5,31 +5,27 @@ import androidx.activity.ComponentActivity
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.bimboilya.navsample.common.navigation.ActivityDestination
-import com.bimboilya.navsample.common.navigation.Command
-import com.bimboilya.navsample.common.navigation.Command.CloseFlow
-import com.bimboilya.navsample.common.navigation.Command.Composite
-import com.bimboilya.navsample.common.navigation.Command.Open
-import com.bimboilya.navsample.common.navigation.Command.OpenRoute
-import com.bimboilya.navsample.common.navigation.Command.Pop
-import com.bimboilya.navsample.common.navigation.Command.PopUpTo
-import com.bimboilya.navsample.common.navigation.Command.PopUpToRoot
-import com.bimboilya.navsample.common.navigation.Command.Replace
-import com.bimboilya.navsample.common.navigation.Command.ReplaceRoute
-import com.bimboilya.navsample.common.navigation.Destination
-import com.bimboilya.navsample.common.navigation.Navigator
+import com.bimboilya.navsample.jetpack.JetpackCommand.CloseFlow
+import com.bimboilya.navsample.jetpack.JetpackCommand.Composite
+import com.bimboilya.navsample.jetpack.JetpackCommand.Open
+import com.bimboilya.navsample.jetpack.JetpackCommand.OpenRoute
+import com.bimboilya.navsample.jetpack.JetpackCommand.Pop
+import com.bimboilya.navsample.jetpack.JetpackCommand.PopUpTo
+import com.bimboilya.navsample.jetpack.JetpackCommand.PopUpToRoot
+import com.bimboilya.navsample.jetpack.JetpackCommand.Replace
+import com.bimboilya.navsample.jetpack.JetpackCommand.ReplaceRoute
 import timber.log.Timber
 
 class JetpackNavigator(
     private val navController: NavHostController,
     context: Context,
-) : Navigator {
+) {
 
     private val activity: ComponentActivity = checkNotNull(context as? ComponentActivity) {
         "LocalContext is not an Activity but $context"
     }
 
-    override fun execute(command: Command) {
+    fun execute(command: JetpackCommand) {
         when (command) {
             is Open -> open(command.destination)
             is OpenRoute -> openRoute(command.route)
@@ -138,7 +134,7 @@ class JetpackNavigator(
             ?.let { navController.popBackStack(it, inclusive = false) }
     }
 
-    private fun composite(commands: List<Command>) {
+    private fun composite(commands: List<JetpackCommand>) {
         commands.forEach(::execute)
     }
 

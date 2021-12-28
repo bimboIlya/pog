@@ -9,13 +9,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.lifecycle.flowWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.bimboilya.common.ktx.android.observe
 import com.bimboilya.common.ui.theme.PogTheme
-import com.bimboilya.navsample.common.navigation.CommandDispatcher
 import com.bimboilya.navsample.jetpack.flow.FifthScreen
 import com.bimboilya.navsample.jetpack.flow.FirstScreen
 import com.bimboilya.navsample.jetpack.flow.FourthScreen
@@ -46,8 +45,7 @@ private fun AppNavigation() {
 
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     LaunchedEffect(navigator, lifecycle) {
-        CommandDispatcher.commandFlow.flowWithLifecycle(lifecycle)
-            .collect(navigator::execute)
+        JetpackCommandDispatcher.commandFlow.observe(lifecycle, navigator::execute)
     }
 
     NavHost(
