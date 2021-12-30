@@ -11,10 +11,7 @@ class CrashlyticsNavigationLogger @Inject constructor() {
     }
 
     fun setCurrentNavBackStackRoutes(navBackStackRoutes: List<String>) {
-        val navBackStackString = navBackStackRoutes.fold(initial = StringBuilder()) { builder, route ->
-            val baseRoute = route.substringBefore('/')
-            builder.append("$baseRoute → ")
-        }.run { substring(0, length - 3) }
+        val navBackStackString = navBackStackRoutes.joinToString(separator = " → ")
 
         Firebase.crashlytics.setCustomKey(NAVIGATION_BACKSTACK_KEY, navBackStackString)
     }
