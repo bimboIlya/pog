@@ -23,7 +23,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,7 +60,7 @@ fun GenericScreen(
             contentAlignment = Alignment.BottomCenter,
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                var checked by remember { mutableStateOf(false) }
+                var checked by rememberSaveable { mutableStateOf(false) }
                 Switch(checked, onCheckedChange = { checked = it })
                 Spacer(Modifier.width(4.dp))
                 Text(text = "Changed state representation")
@@ -76,15 +76,11 @@ fun GenericScreen(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                if (genericAction != null) {
-                    Button(onClick = genericAction) {
-                        Text(text = genericButtonText)
-                    }
+                Button(onClick = { genericAction?.invoke() }, enabled = genericAction != null) {
+                    Text(text = genericButtonText)
                 }
-                if (specialAction != null) {
-                    Button(onClick = specialAction) {
-                        Text(text = specialButtonText)
-                    }
+                Button(onClick = { specialAction?.invoke() }, enabled = specialAction != null) {
+                    Text(text = specialButtonText)
                 }
             }
             Box(Modifier.fillMaxWidth().weight(1f)) { bottomContent() }
@@ -100,10 +96,20 @@ private fun AppBar(
 ) {
     TopAppBar(
         title = { Text(title) },
-        navigationIcon = {
-            if (navIcon != null && navIconClick != null) {
-                IconButton(onClick = navIconClick, content = { Icon(imageVector = navIcon.icon, contentDescription = null) })
-            }
-        }
+        navigationIcon = navigationIcon(navIcon, navIconClick)
     )
+}
+
+@Composable
+private fun navigationIcon(navIcon: NavIcon?, navIconClick: (() -> Unit)?): @Composable (() -> Unit)? {
+    if (navIcon == null || navIconClick == null) {
+        return null
+    } else return {
+        IconButton(
+            onClick = navIconClick,
+            content = {
+                Icon(imageVector = navIcon.icon, contentDescription = null)
+            }
+        )
+    }
 }
