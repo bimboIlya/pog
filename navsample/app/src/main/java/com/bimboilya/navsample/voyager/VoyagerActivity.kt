@@ -3,14 +3,22 @@ package com.bimboilya.navsample.voyager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.FadeTransition
+import com.bimboilya.common.ktx.android.observe
 import com.bimboilya.common.ui.theme.PogTheme
+import com.bimboilya.navsample.voyager.flow.FirstDestination
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class VoyagerActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +26,30 @@ class VoyagerActivity : ComponentActivity() {
 
         setContent {
             PogTheme {
-                Surface {
-                    Box(Modifier.fillMaxSize(), Alignment.Center) {
-                        Text(text = "Voyager")
-                    }
-                }
+                NavigationContainer()
             }
+        }
+    }
+
+    @OptIn(ExperimentalAnimationApi::class)
+    @Composable
+    private fun NavigationContainer() {
+        Navigator(
+            screen = FirstDestination.createScreen(),
+            onBackPressed = null,
+        ) { navigator ->
+            val context = LocalContext.current
+            val navController = remember(navigator, context) {
+                VoyagerNavigationController(navigator, context)
+            }
+
+            val lifecycle = LocalLifecycleOwner.current.lifecycle
+            LaunchedEffect(navController) {
+                VoyagerCommandDispatcher.commandFlow
+                    .observe(lifecycle, navController::executeCommand)
+            }
+
+            FadeTransition(navigator, Modifier.fillMaxSize())
         }
     }
 }
