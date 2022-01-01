@@ -8,15 +8,15 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr-app"                   : "yacr/app",
-        ":feature-authorization"      : "yacr/feature/authorization",
+        ":yacr-app"                   : "apps/yacr/app",
+        ":feature-authorization"      : "apps/yacr/feature/authorization",
 
-        ":firebase-app"               : "firebase/app",
-        ":feature-chooser"            : "firebase/feature/chooser",
-        ":feature-crashlytics"        : "firebase/feature/crashlytics",
-        ":feature-config"             : "firebase/feature/config",
+        ":firebase-app"               : "apps/firebase/app",
+        ":feature-chooser"            : "apps/firebase/feature/chooser",
+        ":feature-crashlytics"        : "apps/firebase/feature/crashlytics",
+        ":feature-config"             : "apps/firebase/feature/config",
 
-        ":navsample-app"              : "navsample/app",
+        ":navsample-app"              : "apps/navsample/app",
 
         ":common-navigation-core"     : "common/navigation/core",
         ":common-navigation-compose"  : "common/navigation/compose",
