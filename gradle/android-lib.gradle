@@ -34,7 +34,7 @@ android {
 
 dependencies {
     implementation libraries.kotlin.stdLib
-    implementation libraries.kotlinX.coroutinesAndroid
+    implementation libraries.kotlinX.coroutines.android
 
     implementation libraries.timber
 

@@ -5,7 +5,7 @@ dependencies {
     implementation libraries.dagger.core
     kapt libraries.dagger.compiler
 
-    implementation libraries.kotlinX.coroutinesCore
+    implementation libraries.kotlinX.coroutines.core
 
     implementation project(":common-injection-qualifiers")
 }

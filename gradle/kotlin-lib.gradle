@@ -2,7 +2,7 @@ apply plugin: "org.jetbrains.kotlin.jvm"
 
 dependencies {
     implementation libraries.kotlin.stdLib
-    implementation libraries.kotlinX.coroutinesCore
+    implementation libraries.kotlinX.coroutines.core
 
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api

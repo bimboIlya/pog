@@ -58,7 +58,7 @@ ext {
 
     libraries = [
             "accompanist": ["insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
-                            "insets-ui"          : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
+                            "insetsUi"           : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
                             "navigationMaterial" : "com.google.accompanist:accompanist-navigation-material:$versions.accompanist",
                             "navigationAnimation": "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist",
                             "pager"              : "com.google.accompanist:accompanist-pager:$versions.accompanist",
@@ -103,10 +103,10 @@ ext {
             "kotlin"     : ["stdLib" : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
                             "reflect": "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"],
 
-            "kotlinX"    : ["coroutinesCore"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
-                            "coroutinesTasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
-                            "coroutinesAndroid": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
-                            "serialization"    : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
+            "kotlinX"    : ["coroutines"   : ["core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
+                                              "android": "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
+                                              "tasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx"],
+                            "serialization": "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
 
             "javaX"      : ["inject": "javax.inject:javax.inject:1"],
 

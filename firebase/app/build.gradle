@@ -63,7 +63,7 @@ dependencies {
 
     implementation libraries.hilt.navigation
 
-    implementation libraries.kotlinX.coroutinesTasks
+    implementation libraries.kotlinX.coroutines.tasks
 
     implementation libraries.firebase.analytics
     implementation libraries.firebase.auth
