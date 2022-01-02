@@ -1,10 +1,9 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
 apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
 
 dependencies {
     implementation libraries.compose.navigation
+    implementation libraries.javaX.inject
 
-    implementation project(":common-navigation-core")
     implementation project(":common-ktx-jvm")
 }

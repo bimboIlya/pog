@@ -1,9 +1,9 @@
-package com.bimboilya.common.navigation.compose.di
+package com.bimboilya.firebase.di.navigation
 
-import com.bimboilya.common.navigation.compose.AppRouterImpl
-import com.bimboilya.common.navigation.compose.NavCommandDispatcher
-import com.bimboilya.common.navigation.compose.NavCommandDispatcherImpl
-import com.bimboilya.common.navigation.core.AppRouter
+import com.bimboilya.common.navigation.jetpack.AppRouter
+import com.bimboilya.common.navigation.jetpack.AppRouterImpl
+import com.bimboilya.common.navigation.jetpack.NavCommandDispatcher
+import com.bimboilya.common.navigation.jetpack.NavCommandDispatcherImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

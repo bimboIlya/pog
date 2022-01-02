@@ -1,9 +1,16 @@
-package com.bimboilya.common.navigation.compose
+package com.bimboilya.common.navigation.jetpack
 
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
-import com.bimboilya.common.navigation.core.Destination
+
+interface Destination
+
+interface ActivityDestination : Destination {
+
+    fun createIntent(): Intent
+}
 
 interface ComposableDestination : Destination {
 

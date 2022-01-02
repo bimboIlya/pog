@@ -1,6 +1,6 @@
 package com.bimboilya.firebase.navigation.chooser
 
-import com.bimboilya.common.navigation.core.AppRouter
+import com.bimboilya.common.navigation.jetpack.AppRouter
 import com.bimboilya.firebase.feature.chooser.presentation.ChooserRouter
 import com.bimboilya.firebase.navigation.config.ConfigDestination
 import com.bimboilya.firebase.navigation.crashlytics.CrashDestination

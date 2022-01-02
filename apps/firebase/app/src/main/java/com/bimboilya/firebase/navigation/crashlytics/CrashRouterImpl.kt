@@ -1,6 +1,6 @@
 package com.bimboilya.firebase.navigation.crashlytics
 
-import com.bimboilya.common.navigation.core.AppRouter
+import com.bimboilya.common.navigation.jetpack.AppRouter
 import com.bimboilya.feature.crashlytics.main.presentation.CrashRouter
 import javax.inject.Inject
 

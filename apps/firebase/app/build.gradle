@@ -77,8 +77,7 @@ dependencies {
 
     implementation project(":common-ktx-jvm")
     implementation project(":common-ktx-android")
-    implementation project(":common-navigation-core")
-    implementation project(":common-navigation-compose")
+    implementation project(":common-navigation-jetpack")
     implementation project(":common-ui-theme")
     implementation project(":common-preferences")
 

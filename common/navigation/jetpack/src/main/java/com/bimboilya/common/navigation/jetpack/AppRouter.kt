@@ -1,11 +1,28 @@
-package com.bimboilya.common.navigation.compose
+package com.bimboilya.common.navigation.jetpack
 
 import android.content.ActivityNotFoundException
-import com.bimboilya.common.navigation.core.ActivityDestination
-import com.bimboilya.common.navigation.core.AppRouter
-import com.bimboilya.common.navigation.core.Destination
 import timber.log.Timber
 import javax.inject.Inject
+
+interface AppRouter {
+
+    fun open(destination: Destination)
+
+    fun replace(destination: Destination)
+
+    /**
+     * start: [A] - [B] - [C] - [D]
+     * replace(E, B)
+     * end: [A] - [B] - [E]
+     */
+    fun replace(destination: Destination, destinationToPopUpTo: Destination)
+
+    fun pop()
+
+    fun popUpTo(destination: Destination, inclusive: Boolean = false)
+
+    fun popToRoot(inclusive: Boolean = false)
+}
 
 class AppRouterImpl @Inject constructor(
     private val navCommandDispatcher: NavCommandDispatcher,

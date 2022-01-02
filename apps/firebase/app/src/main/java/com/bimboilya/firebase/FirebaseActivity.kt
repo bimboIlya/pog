@@ -11,8 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.bimboilya.common.ktx.android.hideKeyboard
-import com.bimboilya.common.navigation.compose.NavCommandDispatcher
-import com.bimboilya.common.navigation.compose.extenstions.composable
+import com.bimboilya.common.navigation.jetpack.NavCommandDispatcher
+import com.bimboilya.common.navigation.jetpack.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.firebase.navigation.chooser.ChooserDestination
 import com.bimboilya.firebase.navigation.config.ConfigDestination

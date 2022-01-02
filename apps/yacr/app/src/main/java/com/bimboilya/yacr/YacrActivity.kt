@@ -8,8 +8,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.bimboilya.common.navigation.compose.NavCommandDispatcher
-import com.bimboilya.common.navigation.compose.extenstions.composable
+import com.bimboilya.common.navigation.jetpack.NavCommandDispatcher
+import com.bimboilya.common.navigation.jetpack.extenstions.composable
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.yacr.navigation.screens.authorization.AuthDestination
 import dagger.hilt.android.AndroidEntryPoint
