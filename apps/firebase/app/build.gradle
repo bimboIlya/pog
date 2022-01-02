@@ -86,9 +86,6 @@ dependencies {
     implementation project(":feature-chooser")
     implementation project(":feature-crashlytics")
 
-    implementation project(":common-injection-qualifiers")
-    implementation project(":common-injection-coroutines")
-
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api
     testImplementation testLibraries.mockk.core

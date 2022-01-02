@@ -8,26 +8,23 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr-app"                   : "apps/yacr/app",
-        ":feature-authorization"      : "apps/yacr/feature/authorization",
+        ":yacr-app"                 : "apps/yacr/app",
+        ":feature-authorization"    : "apps/yacr/feature/authorization",
 
-        ":firebase-app"               : "apps/firebase/app",
-        ":feature-chooser"            : "apps/firebase/feature/chooser",
-        ":feature-crashlytics"        : "apps/firebase/feature/crashlytics",
-        ":feature-config"             : "apps/firebase/feature/config",
+        ":firebase-app"             : "apps/firebase/app",
+        ":feature-chooser"          : "apps/firebase/feature/chooser",
+        ":feature-crashlytics"      : "apps/firebase/feature/crashlytics",
+        ":feature-config"           : "apps/firebase/feature/config",
 
-        ":navsample-app"              : "apps/navsample/app",
+        ":navsample-app"            : "apps/navsample/app",
 
-        ":common-navigation-core"     : "common/navigation/core",
-        ":common-navigation-compose"  : "common/navigation/compose",
-        ":common-ktx-jvm"             : "common/ktx/jvm",
-        ":common-ktx-android"         : "common/ktx/android",
-        ":common-preferences"         : "common/preferences",
-        ":common-test-jvm"            : "common/test/jvm",
-        ":common-ui-theme"            : "common/ui/theme",
-
-        ":common-injection-qualifiers": "common/injection/qualifiers",
-        ":common-injection-coroutines": "common/injection/coroutines",
+        ":common-navigation-core"   : "common/navigation/core",
+        ":common-navigation-compose": "common/navigation/compose",
+        ":common-ktx-jvm"           : "common/ktx/jvm",
+        ":common-ktx-android"       : "common/ktx/android",
+        ":common-preferences"       : "common/preferences",
+        ":common-test-jvm"          : "common/test/jvm",
+        ":common-ui-theme"          : "common/ui/theme",
 ]
 
 modules.forEach { name, path ->

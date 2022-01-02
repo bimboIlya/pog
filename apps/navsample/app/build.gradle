@@ -79,8 +79,6 @@ dependencies {
     implementation project(":common-ktx-android")
     implementation project(":common-ui-theme")
 
-    implementation project(":common-injection-qualifiers")
-    implementation project(":common-injection-coroutines")
     implementation project(":common-preferences")
 
     testRuntimeOnly testLibraries.jupiter.engine
