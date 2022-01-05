@@ -84,6 +84,7 @@ dependencies {
     implementation project(":feature-config")
     implementation project(":feature-chooser")
     implementation project(":feature-crashlytics")
+    implementation project(":feature-firestore")
 
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api

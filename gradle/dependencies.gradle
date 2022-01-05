@@ -32,6 +32,7 @@ ext {
             "fbCrashlytics"       : "18.2.6",
             "fbDatabase"          : "20.0.3",
             "fbDynamicLinks"      : "21.0.0",
+            "fbFirestore"         : "24.0.0",
             "fbMessaging"         : "23.0.0",
 
             "gmsPlugin"           : "4.3.10",
@@ -87,6 +88,7 @@ ext {
                             "crashlytics" : "com.google.firebase:firebase-crashlytics-ktx:$versions.fbCrashlytics",
                             "database"    : "com.google.firebase:firebase-database-ktx:$versions.fbDatabase",
                             "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
+                            "firestore"   : "com.google.firebase:firebase-firestore-ktx:$versions.fbFirestore",
                             "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
 
             "dagger"     : ["core"    : "com.google.dagger:dagger:$versions.dagger",
