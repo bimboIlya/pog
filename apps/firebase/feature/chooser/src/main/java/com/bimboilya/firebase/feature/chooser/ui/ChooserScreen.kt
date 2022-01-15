@@ -8,20 +8,35 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import cafe.adriel.voyager.hilt.getViewModel
+import com.bimboilya.common.navigation.voyager.Destination
+import com.bimboilya.common.navigation.voyager.VmScreen
+import com.bimboilya.firebase.feature.chooser.ChooserDestination
 import com.bimboilya.firebase.feature.chooser.presentation.ChooserViewModel
+import kotlin.reflect.KClass
 
-@Composable
-fun ChooserScreen(viewModel: ChooserViewModel) {
-    ChooserScreen(
-        viewModel::openConfigScreen,
-        viewModel::openCrashScreen,
-    )
+class ChooserScreen : VmScreen() {
+    override val associatedDestination: KClass<out Destination>
+        get() = ChooserDestination::class
+
+    @Composable
+    override fun Content() {
+        val viewModel = getViewModel<ChooserViewModel>()
+
+        ChooserScreen(
+            viewModel::openConfigScreen,
+            viewModel::openCrashScreen,
+            viewModel::openFirestoreScreen,
+        )
+    }
+
 }
 
 @Composable
 private fun ChooserScreen(
     onConfigClick: () -> Unit,
-    onCrashClick: () ->Unit,
+    onCrashClick: () -> Unit,
+    onFirestoreClick: () -> Unit,
 ) {
     Column(
         Modifier.fillMaxSize(),
@@ -33,6 +48,9 @@ private fun ChooserScreen(
         }
         Button(onClick = onCrashClick) {
             Text(text = "Crashlytics Screen")
+        }
+        Button(onClick = onFirestoreClick) {
+            Text(text = "Firestore Screen")
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.bimboilya.firebase.navigation.crashlytics
 
-import com.bimboilya.common.navigation.jetpack.AppRouter
+import com.bimboilya.common.navigation.voyager.AppRouter
 import com.bimboilya.feature.crashlytics.main.presentation.CrashRouter
+import com.bimboilya.feature.crashlytics.settings.CrashSettingsDestination
 import javax.inject.Inject
 
 class CrashRouterImpl @Inject constructor(
@@ -9,6 +10,6 @@ class CrashRouterImpl @Inject constructor(
 ) : CrashRouter {
 
     override fun openSettings() {
-        appRouter.open(CrashSettingsDestination)
+        appRouter.open(CrashSettingsDestination())
     }
 }

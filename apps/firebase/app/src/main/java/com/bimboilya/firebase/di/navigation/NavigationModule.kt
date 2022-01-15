@@ -1,9 +1,9 @@
 package com.bimboilya.firebase.di.navigation
 
-import com.bimboilya.common.navigation.jetpack.AppRouter
-import com.bimboilya.common.navigation.jetpack.AppRouterImpl
-import com.bimboilya.common.navigation.jetpack.NavCommandDispatcher
-import com.bimboilya.common.navigation.jetpack.NavCommandDispatcherImpl
+import com.bimboilya.common.navigation.voyager.AppRouter
+import com.bimboilya.common.navigation.voyager.AppRouterImpl
+import com.bimboilya.common.navigation.voyager.CommandDispatcher
+import com.bimboilya.common.navigation.voyager.CommandDispatcherImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ interface NavigationModule {
 
     @Binds
     @Singleton
-    fun bindNavCommandDispatcher(navigatorImpl: NavCommandDispatcherImpl): NavCommandDispatcher
+    fun bindCommandDispatcher(dispatcher: CommandDispatcherImpl): CommandDispatcher
 
     @Binds
     @Singleton

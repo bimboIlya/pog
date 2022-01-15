@@ -10,13 +10,24 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import cafe.adriel.voyager.hilt.getViewModel
+import com.bimboilya.common.navigation.voyager.Destination
+import com.bimboilya.common.navigation.voyager.VmScreen
+import com.bimboilya.feature.crashlytics.settings.CrashSettingsDestination
 import com.bimboilya.feature.crashlytics.settings.presentation.CrashSettingsViewModel
+import kotlin.reflect.KClass
 
-@Composable
-fun CrashSettingsScreen(viewModel: CrashSettingsViewModel) {
-    val isCrashLoggingEnabled by viewModel.crashLoggingEnabled.collectAsState(initial = false)
+class CrashSettingsScreen : VmScreen() {
+    override val associatedDestination: KClass<out Destination>
+        get() = CrashSettingsDestination::class
 
-    CrashSettingsScreen(isCrashLoggingEnabled, onCrashSwitchCheckedChange = viewModel::setLoggingEnabled)
+    @Composable
+    override fun Content() {
+        val viewModel = getViewModel<CrashSettingsViewModel>()
+        val isCrashLoggingEnabled by viewModel.crashLoggingEnabled.collectAsState(initial = false)
+
+        CrashSettingsScreen(isCrashLoggingEnabled, onCrashSwitchCheckedChange = viewModel::setLoggingEnabled)
+    }
 }
 
 @Composable

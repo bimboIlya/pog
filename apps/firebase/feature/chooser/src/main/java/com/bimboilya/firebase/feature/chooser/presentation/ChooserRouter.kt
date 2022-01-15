@@ -5,4 +5,6 @@ interface ChooserRouter {
     fun openConfigScreen()
 
     fun openCrashScreen()
+
+    fun openFirestoreScreen()
 }

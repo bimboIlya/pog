@@ -16,4 +16,8 @@ class ChooserViewModel @Inject constructor(
     fun openCrashScreen() {
         router.openCrashScreen()
     }
+
+    fun openFirestoreScreen() {
+        router.openFirestoreScreen()
+    }
 }

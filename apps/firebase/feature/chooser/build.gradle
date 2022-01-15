@@ -6,4 +6,7 @@ dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.material
     implementation libraries.compose.viewmodel
+
+    implementation project(":common-navigation-voyager")
+    implementation libraries.voyager.hilt
 }

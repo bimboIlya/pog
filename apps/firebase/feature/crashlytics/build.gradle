@@ -11,4 +11,7 @@ dependencies {
     implementation libraries.firebase.crashlytics
 
     implementation project(":common-preferences")
+
+    implementation libraries.voyager.hilt
+    implementation project(":common-navigation-voyager")
 }

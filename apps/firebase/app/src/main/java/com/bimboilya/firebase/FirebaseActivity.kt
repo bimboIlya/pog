@@ -3,22 +3,20 @@ package com.bimboilya.firebase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
-import com.bimboilya.common.ktx.android.hideKeyboard
-import com.bimboilya.common.navigation.jetpack.NavCommandDispatcher
-import com.bimboilya.common.navigation.jetpack.extenstions.composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.navigator.Navigator
+import com.bimboilya.common.ktx.android.observe
+import com.bimboilya.common.navigation.voyager.CommandDispatcher
+import com.bimboilya.common.navigation.voyager.NavigationController
 import com.bimboilya.common.ui.theme.PogTheme
-import com.bimboilya.firebase.navigation.chooser.ChooserDestination
-import com.bimboilya.firebase.navigation.config.ConfigDestination
-import com.bimboilya.firebase.navigation.crashlytics.CrashDestination
-import com.bimboilya.firebase.navigation.crashlytics.CrashSettingsDestination
-import com.bimboilya.firebase.util.CrashlyticsNavigationLogger
+import com.bimboilya.firebase.feature.chooser.ChooserDestination
+import com.bimboilya.firebase.util.NavigationLogger
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,25 +24,18 @@ import javax.inject.Inject
 class FirebaseActivity : ComponentActivity() {
 
     @Inject
-    lateinit var navCommandDispatcher: NavCommandDispatcher
+    lateinit var commandDispatcher: CommandDispatcher
 
     @Inject
-    lateinit var crashlyticsNavigationLogger: CrashlyticsNavigationLogger
+    lateinit var navigationLogger: NavigationLogger
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lifecycleScope.launchWhenResumed {
-            navCommandDispatcher.navCommandFlow.collect { command ->
-                command(this@FirebaseActivity)
-            }
-        }
-
         setContent {
             PogTheme {
-                Navigation(navCommandDispatcher) { navBackStackRoutes ->
-                    hideKeyboard(clearFocus = true)
-                    crashlyticsNavigationLogger.setCurrentNavBackStackRoutes(navBackStackRoutes)
+                Surface {
+                    FirebaseApp(commandDispatcher, navigationLogger)
                 }
             }
         }
@@ -52,36 +43,26 @@ class FirebaseActivity : ComponentActivity() {
 }
 
 @Composable
-private fun Navigation(
-    navCommandDispatcher: NavCommandDispatcher,
-    onChangeDestination: (List<String>) -> Unit,
+private fun FirebaseApp(
+    commandDispatcher: CommandDispatcher,
+    navigationLogger: NavigationLogger
 ) {
-    val navController = rememberNavController()
-
-    LaunchedEffect(navCommandDispatcher) {
-        navCommandDispatcher.composableNavCommandFlow.collect { command ->
-            command(navController)
+    Navigator(ChooserDestination().createScreen()) { navigator ->
+        val context = LocalContext.current
+        val navController = remember(navigator, context) {
+            NavigationController(navigator, context)
         }
-    }
 
-    DisposableEffect(navController) {
-        val listener = NavController.OnDestinationChangedListener { controller, _, _ ->
-            val navBackStack = controller.backQueue.map { navBackStackEntry ->
-                navBackStackEntry.destination.route ?: ""
+        val lifecycle = LocalLifecycleOwner.current.lifecycle
+        LaunchedEffect(navController) {
+            commandDispatcher.commandFlow.observe(lifecycle) { command ->
+                navController.executeCommand(command)
+                navigator.items
+                    .map { screen -> screen.key.substringAfterLast('.') }
+                    .let(navigationLogger::setCurrentNavBackStack)
             }
-            onChangeDestination(navBackStack)
         }
-        navController.addOnDestinationChangedListener(listener)
-        onDispose { navController.removeOnDestinationChangedListener(listener) }
-    }
 
-    NavHost(
-        navController,
-        startDestination = ChooserDestination.getRoute(),
-    ) {
-        composable(ChooserDestination)
-        composable(ConfigDestination)
-        composable(CrashDestination)
-        composable(CrashSettingsDestination)
+        CurrentScreen()
     }
 }
