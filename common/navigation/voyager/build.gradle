@@ -1,0 +1,12 @@
+apply from: "$rootDir/gradle/android-lib.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+
+dependencies {
+    implementation libraries.compose.ui
+    implementation libraries.lifecycle.runtime
+    implementation libraries.voyager.core
+    implementation libraries.voyager.viewmodel
+    implementation libraries.javaX.inject
+
+    implementation project(":common-ktx-android")
+}

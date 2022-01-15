@@ -20,6 +20,7 @@ def modules = [
         ":navsample-app"            : "apps/navsample/app",
 
         ":common-navigation-jetpack": "common/navigation/jetpack",
+        ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",
         ":common-ktx-android"       : "common/ktx/android",
         ":common-preferences"       : "common/preferences",
