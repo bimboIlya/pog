@@ -1,6 +1,7 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
 apply from: "$rootDir/gradle/compose.gradle"
 apply from: "$rootDir/gradle/hilt.gradle"
+apply from: "$rootDir/gradle/serialization.gradle"
 
 dependencies {
     implementation libraries.compose.ui
@@ -8,8 +9,12 @@ dependencies {
     implementation libraries.compose.material
     implementation libraries.lifecycle.viewmodel
     implementation libraries.kotlinX.coroutines.tasks
+    implementation libraries.kotlin.reflect
 
     implementation libraries.firebase.firestore
+
+    implementation libraries.voyager.hilt
+    implementation project(":common-navigation-voyager")
 
     implementation project(":common-ktx-jvm")
     implementation project(":common-ktx-android")
