@@ -1,5 +1,8 @@
 package com.bimboilya.firebase.feature.firestore.ui
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.pm.ActivityInfo
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentScope.SlideDirection
 import androidx.compose.animation.AnimatedVisibility
@@ -26,9 +29,11 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.hilt.getViewModel
 import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
@@ -46,6 +51,16 @@ class FirestoreScreen : VmScreen() {
 
     @Composable
     override fun Content() {
+        val context = LocalContext.current
+        DisposableEffect(Unit) {
+            val startingOrientation = (context as? Activity)?.requestedOrientation
+            (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            onDispose {
+                @SuppressLint("SourceLockedOrientationActivity")
+                (context as? Activity)?.requestedOrientation = requireNotNull(startingOrientation)
+            }
+        }
+
         val viewModel: FirestoreViewModel = getViewModel()
         val state by viewModel.state.collectAsStateWithLifecycle()
 
