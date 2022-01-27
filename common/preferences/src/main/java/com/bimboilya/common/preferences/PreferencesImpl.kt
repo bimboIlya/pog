@@ -2,24 +2,21 @@ package com.bimboilya.common.preferences
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.doublePreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.longPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStoreFile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.json.Json
 import androidx.datastore.preferences.core.Preferences as DSPreferences
 
 class PreferencesImpl constructor(
     name: String,
     context: Context,
     scope: CoroutineScope,
+    private val json: Json,
 ) : Preferences {
 
     private val dataStore: DataStore<DSPreferences> = PreferenceDataStoreFactory.create(scope = scope) {
@@ -46,6 +43,11 @@ class PreferencesImpl constructor(
         dataStore.put(stringPreferencesKey(key), value)
     }
 
+    override suspend fun <T : Any> saveObject(key: String, value: T, serializer: KSerializer<T>) {
+        val jsonString = json.encodeToString(serializer, value)
+        saveString(key, jsonString)
+    }
+
     override suspend fun getBooleanOrNull(key: String) = dataStore.getOrNull(booleanPreferencesKey(key))
 
     override suspend fun getBooleanOrDefault(key: String, default: Boolean): Boolean = getBooleanOrNull(key) ?: default
@@ -66,6 +68,14 @@ class PreferencesImpl constructor(
 
     override suspend fun getStringOrDefault(key: String, default: String): String = getStringOrNull(key) ?: default
 
+    override suspend fun <T : Any> getObjectOrNull(key: String, serializer: KSerializer<T>): T? {
+        val jsonString = getStringOrNull(key) ?: return null
+        return json.decodeFromString(serializer, jsonString)
+    }
+
+    override suspend fun <T : Any> getObjectOrDefault(key: String, serializer: KSerializer<T>, default: T): T =
+        getObjectOrNull(key, serializer) ?: default
+
     override fun observeBoolean(key: String): Flow<Boolean?> = dataStore.observe(booleanPreferencesKey(key))
 
     override fun observeBoolean(key: String, default: Boolean): Flow<Boolean> = observeBoolean(key).orDefault(default)
@@ -85,6 +95,15 @@ class PreferencesImpl constructor(
     override fun observeString(key: String): Flow<String?> = dataStore.observe(stringPreferencesKey(key))
 
     override fun observeString(key: String, default: String): Flow<String> = observeString(key).orDefault(default)
+
+    override fun <T : Any> observeObject(key: String, serializer: KSerializer<T>): Flow<T?> =
+        observeString(key).map { jsonString ->
+            if (jsonString == null) return@map null
+            json.decodeFromString(serializer, jsonString)
+        }
+
+    override fun <T : Any> observeObject(key: String, serializer: KSerializer<T>, default: T): Flow<T> =
+        observeObject(key, serializer).orDefault(default)
 
     private suspend fun <T> DataStore<DSPreferences>.put(key: DSPreferences.Key<T>, value: T) {
         this.edit { prefs ->

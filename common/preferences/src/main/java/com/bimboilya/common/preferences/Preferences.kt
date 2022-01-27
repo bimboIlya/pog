@@ -1,10 +1,7 @@
 package com.bimboilya.common.preferences
 
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.KSerializer
 
 interface Preferences {
 
@@ -13,6 +10,7 @@ interface Preferences {
     suspend fun saveLong(key: String, value: Long)
     suspend fun saveDouble(key: String, value: Double)
     suspend fun saveString(key: String, value: String)
+    suspend fun <T : Any> saveObject(key: String, value: T, serializer: KSerializer<T>)
 
     suspend fun getBooleanOrNull(key: String): Boolean?
     suspend fun getBooleanOrDefault(key: String, default: Boolean): Boolean
@@ -29,6 +27,9 @@ interface Preferences {
     suspend fun getStringOrNull(key: String): String?
     suspend fun getStringOrDefault(key: String, default: String): String
 
+    suspend fun <T : Any> getObjectOrNull(key: String, serializer: KSerializer<T>): T?
+    suspend fun <T : Any> getObjectOrDefault(key: String, serializer: KSerializer<T>, default: T): T
+
     fun observeBoolean(key: String): Flow<Boolean?>
     fun observeBoolean(key: String, default: Boolean): Flow<Boolean>
 
@@ -44,26 +45,6 @@ interface Preferences {
     fun observeString(key: String): Flow<String?>
     fun observeString(key: String, default: String): Flow<String>
 
+    fun <T : Any> observeObject(key: String, serializer: KSerializer<T>): Flow<T?>
+    fun <T : Any> observeObject(key: String, serializer: KSerializer<T>, default: T): Flow<T>
 }
-
-suspend inline fun <reified T : Any> Preferences.saveObject(key: String, value: T, serializer: Json = Json) {
-    val jsonString = serializer.encodeToString(value)
-    saveString(key, jsonString)
-}
-
-suspend inline fun <reified T : Any> Preferences.getObjectOrNull(key: String, serializer: Json = Json): T? {
-    val jsonString = getStringOrNull(key) ?: return null
-    return serializer.decodeFromString(jsonString)
-}
-
-suspend inline fun <reified T : Any> Preferences.getObjectOrDefault(key: String, default: T, serializer: Json = Json): T =
-    getObjectOrNull(key, serializer) ?: default
-
-inline fun <reified T : Any> Preferences.observeObject(key: String, serializer: Json = Json): Flow<T?> =
-    observeString(key).map { jsonString ->
-        if (jsonString == null) return@map null
-        serializer.decodeFromString<T>(jsonString)
-    }
-
-inline fun <reified T : Any> Preferences.observeObject(key: String, default: T, serializer: Json = Json): Flow<T> =
-    observeObject<T>(key, serializer).map { it ?: default }

@@ -11,6 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
 @Module
@@ -23,9 +24,18 @@ class AppModule {
 
     @Provides
     @Singleton
+    fun provideJson(): Json =
+        Json {
+            ignoreUnknownKeys = true
+            explicitNulls = false
+        }
+
+    @Provides
+    @Singleton
     fun provideAppPreferences(
         @ApplicationContext context: Context,
         scope: CoroutineScope,
+        json: Json,
     ): Preferences =
-        PreferencesImpl("firebase_store", context, scope)
+        PreferencesImpl("firebase_store", context, scope, json)
 }
