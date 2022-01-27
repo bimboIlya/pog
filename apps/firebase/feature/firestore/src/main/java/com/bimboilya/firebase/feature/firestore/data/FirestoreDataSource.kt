@@ -11,13 +11,11 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-class FirestoreDataSource @Inject constructor() {
+class FirestoreDataSource @Inject constructor(
+    private val serializer: Json
+) {
 
     private val firestore = Firebase.firestore
-    private val serializer = Json {
-        ignoreUnknownKeys = true
-        explicitNulls = false
-    }
 
     suspend fun get(): List<Test> = withContext(Dispatchers.Default) {
         firestore
