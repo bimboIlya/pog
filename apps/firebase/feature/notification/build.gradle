@@ -1,0 +1,21 @@
+apply from: "$rootDir/gradle/android-lib.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+apply from: "$rootDir/gradle/hilt.gradle"
+
+dependencies {
+    implementation libraries.compose.ui
+    implementation libraries.compose.uiTooling
+    implementation libraries.compose.material
+
+    implementation libraries.androidX.core
+    implementation libraries.lifecycle.viewmodel
+
+    implementation libraries.firebase.messaging
+
+    implementation project(":common-preferences")
+    implementation project(":common-ktx-jvm")
+    implementation project(":common-ktx-android")
+
+    implementation libraries.voyager.hilt
+    implementation project(":common-navigation-voyager")
+}

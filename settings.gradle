@@ -16,6 +16,7 @@ def modules = [
         ":feature-crashlytics"      : "apps/firebase/feature/crashlytics",
         ":feature-config"           : "apps/firebase/feature/config",
         ":feature-firestore"        : "apps/firebase/feature/firestore",
+        ":feature-notification"     : "apps/firebase/feature/notification",
 
         ":navsample-app"            : "apps/navsample/app",
 
