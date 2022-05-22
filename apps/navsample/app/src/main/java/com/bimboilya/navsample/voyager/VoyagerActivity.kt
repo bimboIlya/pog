@@ -6,14 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.FadeTransition
-import com.bimboilya.common.ktx.android.observe
+import com.bimboilya.common.ktx.android.collectInComposition
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.navsample.voyager.flow.FirstDestination
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,11 +41,8 @@ class VoyagerActivity : ComponentActivity() {
                 VoyagerNavigationController(navigator, context)
             }
 
-            val lifecycle = LocalLifecycleOwner.current.lifecycle
-            LaunchedEffect(navController) {
-                VoyagerCommandDispatcher.commandFlow
-                    .observe(lifecycle, navController::executeCommand)
-            }
+            VoyagerCommandDispatcher.commandFlow
+                .collectInComposition(block = navController::executeCommand)
 
             FadeTransition(navigator, Modifier.fillMaxSize())
         }

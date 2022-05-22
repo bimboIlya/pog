@@ -5,13 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
-import com.bimboilya.common.ktx.android.observe
+import com.bimboilya.common.ktx.android.collectInComposition
 import com.bimboilya.common.navigation.voyager.CommandDispatcher
 import com.bimboilya.common.navigation.voyager.NavigationController
 import com.bimboilya.common.ui.theme.PogTheme
@@ -53,14 +51,11 @@ private fun FirebaseApp(
             NavigationController(navigator, context)
         }
 
-        val lifecycle = LocalLifecycleOwner.current.lifecycle
-        LaunchedEffect(navController) {
-            commandDispatcher.commandFlow.observe(lifecycle) { command ->
-                navController.executeCommand(command)
-                navigator.items
-                    .map { screen -> screen.key.substringAfterLast('.') }
-                    .let(navigationLogger::setCurrentNavBackStack)
-            }
+        commandDispatcher.commandFlow.collectInComposition { command ->
+            navController.executeCommand(command)
+            navigator.items
+                .map { screen -> screen.key.substringAfterLast('.') }
+                .let(navigationLogger::setCurrentNavBackStack)
         }
 
         CurrentScreen()
