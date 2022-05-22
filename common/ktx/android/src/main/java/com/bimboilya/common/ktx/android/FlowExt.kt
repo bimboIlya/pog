@@ -2,6 +2,8 @@ package com.bimboilya.common.ktx.android
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisallowComposableCalls
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -13,12 +15,37 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-suspend inline fun <T> Flow<T>.observe(lifecycle: Lifecycle, crossinline block: suspend (T) -> Unit) {
+suspend inline fun <T> Flow<T>.observe(
+    lifecycle: Lifecycle,
+    crossinline block: suspend (T) -> Unit
+) {
     flowWithLifecycle(lifecycle).collect { block(it) }
 }
 
 suspend inline fun Flow<Unit>.observe(lifecycle: Lifecycle, crossinline block: suspend () -> Unit) {
     flowWithLifecycle(lifecycle).collect { block() }
+}
+
+@SuppressLint("ComposableNaming")
+@Composable
+inline fun <T> Flow<T>.collectInComposition(
+    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+    crossinline block: @DisallowComposableCalls suspend (T) -> Unit
+) {
+    LaunchedEffect(this, lifecycle) {
+        observe(lifecycle, block)
+    }
+}
+
+@SuppressLint("ComposableNaming")
+@Composable
+inline fun Flow<Unit>.collectInComposition(
+    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+    crossinline block: @DisallowComposableCalls suspend () -> Unit
+) {
+    LaunchedEffect(this, lifecycle) {
+        observe(lifecycle, block)
+    }
 }
 
 @SuppressLint("StateFlowValueCalledInComposition")

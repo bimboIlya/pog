@@ -20,4 +20,8 @@ class ChooserViewModel @Inject constructor(
     fun openFirestoreScreen() {
         router.openFirestoreScreen()
     }
+
+    fun openNotificationScreen() {
+        router.openNotificationScreen()
+    }
 }

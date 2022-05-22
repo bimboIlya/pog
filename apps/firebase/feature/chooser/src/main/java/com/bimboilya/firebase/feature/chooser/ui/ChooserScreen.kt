@@ -27,6 +27,7 @@ class ChooserScreen : VmScreen() {
             viewModel::openConfigScreen,
             viewModel::openCrashScreen,
             viewModel::openFirestoreScreen,
+            viewModel::openNotificationScreen,
         )
     }
 
@@ -34,23 +35,27 @@ class ChooserScreen : VmScreen() {
 
 @Composable
 private fun ChooserScreen(
-    onConfigClick: () -> Unit,
-    onCrashClick: () -> Unit,
-    onFirestoreClick: () -> Unit,
+    openConfigScreen: () -> Unit,
+    openCrashScreen: () -> Unit,
+    openFirestoreScreen: () -> Unit,
+    openNotificationScreen: () -> Unit,
 ) {
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = onConfigClick) {
+        Button(onClick = openConfigScreen) {
             Text(text = "Config Screen")
         }
-        Button(onClick = onCrashClick) {
+        Button(onClick = openCrashScreen) {
             Text(text = "Crashlytics Screen")
         }
-        Button(onClick = onFirestoreClick) {
+        Button(onClick = openFirestoreScreen) {
             Text(text = "Firestore Screen")
+        }
+        Button(onClick = openNotificationScreen) {
+            Text(text = "Notification Screen")
         }
     }
 }

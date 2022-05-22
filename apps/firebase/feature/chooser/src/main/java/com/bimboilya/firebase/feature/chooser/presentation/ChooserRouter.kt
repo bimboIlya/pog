@@ -7,4 +7,6 @@ interface ChooserRouter {
     fun openCrashScreen()
 
     fun openFirestoreScreen()
+
+    fun openNotificationScreen()
 }

@@ -5,6 +5,7 @@ import com.bimboilya.feature.crashlytics.CrashDestination
 import com.bimboilya.firebase.feature.chooser.presentation.ChooserRouter
 import com.bimboilya.firebase.feature.config.ConfigDestination
 import com.bimboilya.firebase.feature.firestore.FirestoreDestination
+import com.bimboilya.firebase.feature.notification.NotificationDestination
 import javax.inject.Inject
 
 class ChooserRouterImpl @Inject constructor(
@@ -21,5 +22,9 @@ class ChooserRouterImpl @Inject constructor(
 
     override fun openFirestoreScreen() {
         appRouter.open(FirestoreDestination())
+    }
+
+    override fun openNotificationScreen() {
+        appRouter.open(NotificationDestination())
     }
 }
