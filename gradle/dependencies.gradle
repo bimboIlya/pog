@@ -1,39 +1,41 @@
 ext {
     versions = [
-            "AGP"                 : "7.1.0",
+            "AGP"                 : "7.2.0",
 
-            "kotlin"              : "1.6.10",
-            "kotlinx"             : "1.6.0",
-            "kotlinxSerialization": "1.3.2",
+            "kotlin"              : "1.6.21",
+            "kotlinx"             : "1.6.1",
+            "kotlinxSerialization": "1.3.3",
 
-            "androidxCore"        : "1.7.0",
-            "androidxActivity"    : "1.4.0",
-            "dagger"              : "2.40.5",
+            "androidxCore"        : "1.8.0-beta01",
+            "androidxActivity"    : "1.5.0-beta01",
+            "dagger"              : "2.42",
             "hiltNavigation"      : "1.0.0",
-            "lifecycle"           : "2.4.0",
-            "navigation"          : "2.4.0",
+            "lifecycle"           : "2.5.0-rc01",
+            "navigation"          : "2.5.0-beta01",
             "dataStore"           : "1.0.0",
 
-            "voyager"             : "1.0.0-beta13",
+            "voyager"             : "1.0.0-rc02",
 
-            "accompanist"         : "0.22.1-rc",
+            "accompanist"         : "0.24.9-beta",
 
             "coil"                : "1.4.0",
 
-            "compose"             : "1.1.0-rc03",
+            "compose"             : "1.2.0-beta02",
 
             "retrofit"            : "2.9.0",
             "okhttpLogging"       : "4.9.1",
             "kotlinxConverter"    : "0.8.0",
 
-            "fbAnalytics"         : "20.0.2",
-            "fbAuth"              : "21.0.1",
-            "fbConfig"            : "21.0.1",
-            "fbCrashlytics"       : "18.2.7",
-            "fbDatabase"          : "20.0.3",
-            "fbDynamicLinks"      : "21.0.0",
-            "fbFirestore"         : "24.0.1",
-            "fbMessaging"         : "23.0.0",
+            "fbAnalytics"         : "21.0.0",
+            "fbAuth"              : "21.0.4",
+            "fbConfig"            : "21.1.0",
+            "fbCrashlytics"       : "18.2.10",
+            "fbDatabase"          : "20.0.5",
+            "fbDynamicLinks"      : "21.0.1",
+            "fbFirestore"         : "24.1.2",
+            "fbMessaging"         : "23.0.5",
+
+            "gmsAuth"             : "20.2.0",
 
             "gmsPlugin"           : "4.3.10",
             "crashlyticsPlugin"   : "2.8.1",
@@ -42,8 +44,8 @@ ext {
 
             // Testing
             "junit5"              : "5.8.2",
-            "mockk"               : "1.12.2",
-            "turbine"             : "0.7.0",
+            "mockk"               : "1.12.4",
+            "turbine"             : "0.8.0",
 
             "androidxJunit"       : "1.1.2",
     ]
@@ -90,6 +92,8 @@ ext {
                             "dynamicLinks": "com.google.firebase:firebase-dynamic-links-ktx:$versions.fbDynamicLinks",
                             "firestore"   : "com.google.firebase:firebase-firestore-ktx:$versions.fbFirestore",
                             "messaging"   : "com.google.firebase:firebase-messaging-ktx:$versions.fbMessaging"],
+
+            "google"     : ["auth": "com.google.android.gms:play-services-auth:$versions.gmsAuth"],
 
             "dagger"     : ["core"    : "com.google.dagger:dagger:$versions.dagger",
                             "compiler": "com.google.dagger:dagger-compiler:$versions.dagger"],
