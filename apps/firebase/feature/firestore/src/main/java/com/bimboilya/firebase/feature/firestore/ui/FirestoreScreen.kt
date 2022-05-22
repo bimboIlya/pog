@@ -13,7 +13,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.with
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -94,12 +93,12 @@ private fun FirestoreScreen(
                 }
             }
         }
-    ) { padding ->
+    ) { paddingValues ->
         FadeVisibility(visible = state.data.isNotEmpty()) {
-            Content(padding, state.data)
+            Content(state.data, Modifier.padding(paddingValues))
         }
         FadeVisibility(visible = state.loading) {
-            Loading(padding)
+            Loading(Modifier.padding(paddingValues))
         }
     }
 }
@@ -116,8 +115,8 @@ private fun FadeVisibility(visible: Boolean, modifier: Modifier = Modifier, cont
 }
 
 @Composable
-private fun Content(padding: PaddingValues, data: List<Test>) {
-    LazyColumn(Modifier.padding(padding).fillMaxSize()) {
+private fun Content(data: List<Test>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier.fillMaxSize()) {
         items(data) { test ->
             Card(Modifier.padding(8.dp).fillMaxWidth()) {
                 Text(test.toString(), Modifier.padding(8.dp))
@@ -145,9 +144,9 @@ private fun BottomBar(loadData: () -> Unit, addRandom: () -> Unit) {
 }
 
 @Composable
-private fun Loading(padding: PaddingValues) {
+private fun Loading(modifier: Modifier = Modifier) {
     Box(
-        Modifier.padding(padding).fillMaxSize(),
+        modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator()
