@@ -20,6 +20,8 @@ def modules = [
 
         ":navsample-app"            : "apps/navsample/app",
 
+        ":authist-app"              : "apps/authist/app",
+
         ":common-navigation-jetpack": "common/navigation/jetpack",
         ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",

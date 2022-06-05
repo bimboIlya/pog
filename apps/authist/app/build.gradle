@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+apply from: "$rootDir/gradle/application.gradle"
+apply from: "$rootDir/gradle/compose.gradle"
+apply from: "$rootDir/gradle/hilt.gradle"
+apply from: "$rootDir/gradle/serialization.gradle"
+
+android {
+    compileSdkVersion application.targetSdk
+    buildToolsVersion application.buildTools
+
+    defaultConfig {
+        applicationId "com.bimboilya.authist"
+        minSdkVersion application.minSdk
+        targetSdkVersion application.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile rootProject.file("keystore/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+
+    implementation libraries.androidX.core
+    implementation libraries.androidX.dataStore
+
+    implementation libraries.compose.ui
+    debugImplementation libraries.compose.uiTooling
+    implementation libraries.compose.material
+    implementation libraries.compose.activity
+    implementation libraries.compose.viewmodel
+
+    implementation libraries.lifecycle.runtime
+
+    implementation libraries.kotlinX.coroutines.tasks
+
+    implementation libraries.timber
+
+    implementation libraries.voyager.core
+    implementation project(":common-navigation-voyager")
+
+    implementation project(":common-ktx-jvm")
+    implementation project(":common-ktx-android")
+    implementation project(":common-ui-theme")
+    implementation project(":common-preferences")
+
+    testRuntimeOnly testLibraries.jupiter.engine
+    testImplementation testLibraries.jupiter.api
+    testImplementation testLibraries.mockk.core
+    testImplementation project(":common-test-jvm")
+}
