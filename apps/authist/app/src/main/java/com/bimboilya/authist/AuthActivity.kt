@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
+import com.bimboilya.authist.ui.AuthScreen
 import com.bimboilya.common.ui.theme.PogTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,11 +14,12 @@ class AuthActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        lifecycle.addObserver(ActivityProvider)
 
         setContent {
             PogTheme {
                 Surface {
-
+                    AuthScreen()
                 }
             }
         }
