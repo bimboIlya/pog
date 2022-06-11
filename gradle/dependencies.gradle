@@ -40,6 +40,8 @@ ext {
             "gmsPlugin"           : "4.3.10",
             "crashlyticsPlugin"   : "2.8.1",
 
+            "vkSdk"               : "3.5.2",
+
             "timber"              : "5.0.1",
 
             // Testing
@@ -122,6 +124,9 @@ ext {
                             "kotlinxConverter": "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinxConverter"],
 
             "timber"     : "com.jakewharton.timber:timber:$versions.timber",
+
+            "vkSdk"      : ["core": "com.vk:android-sdk-core:$versions.vkSdk",
+                            "api" : "com.vk:android-sdk-api:$versions.vkSdk"],
 
             "voyager"    : ["core"       : "cafe.adriel.voyager:voyager-navigator:$versions.voyager",
                             "bottomSheet": "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$versions.voyager",

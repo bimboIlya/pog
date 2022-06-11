@@ -19,6 +19,12 @@ android {
         versionCode application.versionCode
         versionName application.versionName
 
+        def properties = new Properties()
+        properties.load(project.file('secret.properties').newDataInputStream())
+
+        resValue "string", "google_cliend_id", "\"${properties.GoogleClientId}\""
+        resValue "integer", "com_vk_sdk_AppId","${properties.VkAppId}"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -70,6 +76,9 @@ dependencies {
     implementation libraries.kotlinX.coroutines.tasks
 
     implementation libraries.timber
+
+    implementation libraries.google.auth
+    implementation libraries.vkSdk.core
 
     implementation libraries.voyager.core
     implementation project(":common-navigation-voyager")
