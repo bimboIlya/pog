@@ -112,8 +112,8 @@ ext {
                             "reflect": "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"],
 
             "kotlinX"    : ["coroutines"   : ["core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinx",
-                                              "android": "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx",
-                                              "tasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx"],
+                                              "android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx",
+                                              "tasks"  : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$versions.kotlinx"],
                             "serialization": "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinxSerialization"],
 
             "javaX"      : ["inject": "javax.inject:javax.inject:1"],

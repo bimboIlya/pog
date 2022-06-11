@@ -10,6 +10,8 @@ dependencies {
     implementation libraries.androidX.core
     implementation libraries.lifecycle.viewmodel
 
+    implementation libraries.kotlinX.coroutines.tasks
+
     implementation libraries.firebase.messaging
 
     implementation project(":common-preferences")
