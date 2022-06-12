@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,22 +23,25 @@ class AuthViewModel @Inject constructor(
     private val _state = MutableStateFlow(AuthState.Initial)
     val state = _state.asStateFlow()
 
-    private val _event = Channel<Unit>(UNLIMITED)
+    private val _event = Channel<String>(UNLIMITED)
     val event = _event.receiveAsFlow()
 
     fun signIn(socialNetwork: SocialNetwork) {
         viewModelScope.launchCatching(::onLoginError) {
             applyLoadingState(true)
 
-            signIn.invoke(socialNetwork)
+            val user = signIn.invoke(socialNetwork)
 
-            applyLoadingState(false)
+            _state.update { state ->
+                state.copy(isLoading = false, user = user)
+            }
         }
     }
 
     private fun onLoginError(error: Throwable) {
+        Timber.e(error)
         applyLoadingState(false)
-        _event.trySend(Unit)
+        _event.trySend(error.message ?: "SignIn error lole")
     }
 
     private fun applyLoadingState(isLoading: Boolean) {

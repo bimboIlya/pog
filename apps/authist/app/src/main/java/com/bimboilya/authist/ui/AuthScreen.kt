@@ -43,9 +43,9 @@ fun AuthScreen() {
     val viewModel: AuthViewModel = viewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    var showSnackbar: () -> Unit by notNull()
-    viewModel.event.collectInComposition {
-        showSnackbar()
+    var showSnackbar: (String) -> Unit by notNull()
+    viewModel.event.collectInComposition { message ->
+        showSnackbar(message)
     }
 
     AuthScreen(
@@ -59,14 +59,14 @@ fun AuthScreen() {
 private fun AuthScreen(
     state: AuthState,
     signIn: (SocialNetwork) -> Unit,
-    snackbarCallbackProvider: (() -> Unit) -> Unit,
+    snackbarCallbackProvider: ((String) -> Unit) -> Unit,
 ) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 
-    snackbarCallbackProvider {
+    snackbarCallbackProvider { message ->
         scope.launch {
-            scaffoldState.snackbarHostState.showSnackbar(message = "SignIn error lole")
+            scaffoldState.snackbarHostState.showSnackbar(message)
         }
     }
 
