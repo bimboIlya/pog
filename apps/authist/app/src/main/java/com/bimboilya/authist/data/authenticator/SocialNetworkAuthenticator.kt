@@ -1,8 +1,8 @@
 package com.bimboilya.authist.data.authenticator
 
 import com.bimboilya.authist.data.SocialAccount
-import com.bimboilya.authist.data.authenticator.turbooop.GoogleAuthenticator
-import com.bimboilya.authist.data.authenticator.turbooop.VkAuthenticator
+import com.bimboilya.authist.data.authenticator.composition.GoogleAuthenticator
+import com.bimboilya.authist.data.authenticator.composition.VkAuthenticator
 import com.bimboilya.authist.domain.entity.SocialNetwork
 import javax.inject.Inject
 

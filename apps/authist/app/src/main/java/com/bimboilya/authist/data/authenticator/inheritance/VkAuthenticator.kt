@@ -1,4 +1,4 @@
-package com.bimboilya.authist.data.authenticator.turbooop
+package com.bimboilya.authist.data.authenticator.inheritance
 
 import com.bimboilya.authist.data.SocialAccount
 import com.vk.api.sdk.VK

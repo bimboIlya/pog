@@ -1,4 +1,4 @@
-package com.bimboilya.authist.data.authenticator.turbooop
+package com.bimboilya.authist.data.authenticator.inheritance
 
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract

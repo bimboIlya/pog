@@ -1,7 +1,6 @@
-package com.bimboilya.authist.data.authenticator.turbooop
+package com.bimboilya.authist.data.authenticator.composition
 
 import android.content.Context
-import android.content.Intent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import com.bimboilya.authist.R
@@ -16,10 +15,19 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class GoogleAuthenticator @Inject constructor(
-    @ApplicationContext private val context: Context
-) : Authenticator<GoogleSignInAccount, SocialAccount.Google, Intent, ActivityResult>(StartActivityForResult()) {
+    @ApplicationContext private val context: Context,
+) {
 
     private val signInClient: GoogleSignInClient = createSignInClient()
+
+    private val authenticator = Authenticator(
+        activityResultContract = StartActivityForResult(),
+        launcherResultKey = "google_result_key",
+        launcherInput = signInClient.signInIntent,
+        beforeAuthorization = ::signOut,
+        onAuthorizationResult = ::getGoogleAccountFromIntent,
+        transformResult = SocialAccount::Google,
+    )
 
     private fun createSignInClient(): GoogleSignInClient {
         val clientId = context.getString(R.string.google_cliend_id)
@@ -33,27 +41,21 @@ class GoogleAuthenticator @Inject constructor(
         return GoogleSignIn.getClient(context, signInOptions)
     }
 
-    override val launcherResultKey: String
-        get() = "google_result_key"
+    private fun getGoogleAccountFromIntent(activityResult: ActivityResult): Result<GoogleSignInAccount> =
+        runCatching {
+            activityResult.data
+                .let(::requireNotNull)
+                .let(GoogleSignIn::getSignedInAccountFromIntent)
+                .run { getResult(ApiException::class.java) }
+        }
 
-    override val launcherInput: Intent
-        get() = signInClient.signInIntent
-
-    override suspend fun beforeAuthorization() {
+    private suspend fun signOut() {
         if (GoogleSignIn.getLastSignedInAccount(context) != null) {
             signInClient.revokeAccess().await()
             signInClient.signOut().await()
         }
     }
 
-    override fun onAuthorizationResult(launcherResult: ActivityResult): Result<GoogleSignInAccount> =
-        runCatching {
-            launcherResult.data
-                .let(::requireNotNull)
-                .let(GoogleSignIn::getSignedInAccountFromIntent)
-                .run { getResult(ApiException::class.java) }
-        }
-
-    override suspend fun transformResult(signInResult: GoogleSignInAccount): SocialAccount.Google =
-        SocialAccount.Google(signInResult)
+    suspend fun signIn(): SocialAccount.Google =
+        authenticator.signIn()
 }
