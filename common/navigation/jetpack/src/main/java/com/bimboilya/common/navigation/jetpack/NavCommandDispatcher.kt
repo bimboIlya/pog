@@ -2,9 +2,9 @@ package com.bimboilya.common.navigation.jetpack
 
 import android.app.Activity
 import androidx.navigation.NavHostController
-import com.bimboilya.common.ktx.jvm.SingleMutableEvent
-import com.bimboilya.common.ktx.jvm.invoke
-import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 typealias NavCommand = Activity.() -> Unit
@@ -12,9 +12,9 @@ typealias ComposableNavCommand = NavHostController.() -> Unit
 
 interface NavCommandDispatcher {
 
-    val navCommandFlow: SharedFlow<NavCommand>
+    val navCommandFlow: Flow<NavCommand>
 
-    val composableNavCommandFlow: SharedFlow<ComposableNavCommand>
+    val composableNavCommandFlow: Flow<ComposableNavCommand>
 
     fun dispatchNavCommand(command: NavCommand)
 
@@ -23,15 +23,17 @@ interface NavCommandDispatcher {
 
 class NavCommandDispatcherImpl @Inject constructor() : NavCommandDispatcher {
 
-    override val navCommandFlow = SingleMutableEvent<NavCommand>()
+    private val _navCommandFlow = Channel<NavCommand>(Channel.CONFLATED)
+    override val navCommandFlow = _navCommandFlow.receiveAsFlow()
 
-    override val composableNavCommandFlow = SingleMutableEvent<ComposableNavCommand>()
+    private val _composableNavCommandFlow = Channel<ComposableNavCommand>(Channel.CONFLATED)
+    override val composableNavCommandFlow = _composableNavCommandFlow.receiveAsFlow()
 
     override fun dispatchNavCommand(command: NavCommand) {
-        navCommandFlow(command)
+        _navCommandFlow.trySend(command)
     }
 
     override fun dispatchComposableNavCommand(command: ComposableNavCommand) {
-        composableNavCommandFlow(command)
+        _composableNavCommandFlow.trySend(command)
     }
 }
