@@ -1,9 +1,9 @@
-package com.bimboilya.common.preferences
+package com.bimboilya.common.preferences.async
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.KSerializer
 
-interface Preferences {
+interface AsyncPreferences {
 
     suspend fun saveBoolean(key: String, value: Boolean)
     suspend fun saveInt(key: String, value: Int)

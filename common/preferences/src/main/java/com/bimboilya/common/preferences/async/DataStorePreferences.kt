@@ -1,8 +1,14 @@
-package com.bimboilya.common.preferences
+package com.bimboilya.common.preferences.async
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.doublePreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStoreFile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -12,12 +18,12 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 import androidx.datastore.preferences.core.Preferences as DSPreferences
 
-class PreferencesImpl constructor(
+class DataStorePreferences constructor(
     name: String,
     context: Context,
     scope: CoroutineScope,
     private val json: Json,
-) : Preferences {
+) : AsyncPreferences {
 
     private val dataStore: DataStore<DSPreferences> = PreferenceDataStoreFactory.create(scope = scope) {
         context.preferencesDataStoreFile(name)

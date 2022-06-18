@@ -1,8 +1,8 @@
 package com.bimboilya.navsample.di
 
 import android.content.Context
-import com.bimboilya.common.preferences.Preferences
-import com.bimboilya.common.preferences.PreferencesImpl
+import com.bimboilya.common.preferences.async.AsyncPreferences
+import com.bimboilya.common.preferences.async.DataStorePreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +32,6 @@ class AppModule {
         @ApplicationContext context: Context,
         scope: CoroutineScope,
         json: Json,
-    ): Preferences =
-        PreferencesImpl("navsample_store", context, scope, json)
+    ): AsyncPreferences =
+        DataStorePreferences("navsample_store", context, scope, json)
 }

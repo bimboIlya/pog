@@ -1,11 +1,11 @@
 package com.bimboilya.feature.crashlytics.settings.data
 
-import com.bimboilya.common.preferences.Preferences
+import com.bimboilya.common.preferences.async.AsyncPreferences
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CrashLoggingRepository @Inject constructor(
-    private val preferences: Preferences
+    private val preferences: AsyncPreferences
 ) {
 
     private companion object {
