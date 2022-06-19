@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
@@ -27,31 +28,28 @@ class Authenticator<T, S : SocialAccount, I, O>(
         /** нужно обязательно вызывать [ActivityResultLauncher.unregister], иначе будут непредсказуемые сайд-эффекты */
         var launcher: ActivityResultLauncher<I>? = null
 
-        try {
-            ActivityProvider.activity
-                .mapLatest { activity ->
-                    beforeAuthorization()
+        ActivityProvider.activity
+            .mapLatest { activity ->
+                beforeAuthorization()
 
-                    suspendCancellableCoroutine<T> { continuation ->
-                        launcher = activity.activityResultRegistry.register(launcherResultKey, activityResultContract) { result ->
-                            isAuthLaunched = false
+                suspendCancellableCoroutine<T> { continuation ->
+                    launcher = activity.activityResultRegistry.register(launcherResultKey, activityResultContract) { result ->
+                        isAuthLaunched = false
 
-                            onAuthorizationResult(result)
-                                .let(continuation::resumeWith)
-                        }
-
-                        if (!isAuthLaunched) {
-                            isAuthLaunched = true
-                            launcher?.launch(launcherInput)
-                        }
-
-                        continuation.invokeOnCancellation { launcher?.unregister() }
+                        onAuthorizationResult(result)
+                            .let(continuation::resumeWith)
                     }
+
+                    if (!isAuthLaunched) {
+                        isAuthLaunched = true
+                        launcher?.launch(launcherInput)
+                    }
+
+                    continuation.invokeOnCancellation { launcher?.unregister() }
                 }
-                .map { transformResult(it) }
-                .first()
-        } finally {
-            launcher?.unregister()
-        }
+            }
+            .map { transformResult(it) }
+            .onCompletion { launcher?.unregister() }
+            .first()
     }
 }
