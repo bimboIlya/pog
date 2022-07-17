@@ -1,7 +1,7 @@
 ext {
     application = [
             "minSdk"     : 23,
-            "targetSdk"  : 31,
+            "targetSdk"  : 32,
             "buildTools" : "30.0.3",
             "versionCode": 1,
             "versionName": "1.0",
