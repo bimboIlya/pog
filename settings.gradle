@@ -22,6 +22,8 @@ def modules = [
 
         ":authist-app"              : "apps/authist/app",
 
+        ":compost-app"              : "apps/compost/app",
+
         ":common-navigation-jetpack": "common/navigation/jetpack",
         ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",
