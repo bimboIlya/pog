@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
-abstract class Authenticator<T, S : SocialAccount, I, O>(
-    private val activityResultContract: ActivityResultContract<I, O>
-) {
+abstract class Authenticator<T, S : SocialAccount, I, O> {
+
+    abstract val activityResultContract: ActivityResultContract<I, O>
 
     abstract val launcherResultKey: String
 

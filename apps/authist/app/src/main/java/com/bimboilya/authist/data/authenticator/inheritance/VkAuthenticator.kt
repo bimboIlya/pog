@@ -7,14 +7,13 @@ import com.vk.api.sdk.auth.VKAuthenticationResult
 import com.vk.api.sdk.auth.VKScope
 import javax.inject.Inject
 
-class VkAuthenticator @Inject constructor() :
-    Authenticator<VKAccessToken, SocialAccount.Vk, Collection<VKScope>, VKAuthenticationResult>(VK.getVKAuthActivityResultContract()) {
+class VkAuthenticator @Inject constructor() : Authenticator<VKAccessToken, SocialAccount.Vk, Collection<VKScope>, VKAuthenticationResult>() {
 
-    override val launcherResultKey: String
-        get() = "vk_result_key"
+    override val activityResultContract = VK.getVKAuthActivityResultContract()
 
-    override val launcherInput: Collection<VKScope>
-        get() = setOf(VKScope.EMAIL, VKScope.OFFLINE)
+    override val launcherResultKey = "vk_result_key"
+
+    override val launcherInput = setOf(VKScope.EMAIL, VKScope.OFFLINE)
 
     override fun onAuthorizationResult(launcherResult: VKAuthenticationResult): Result<VKAccessToken> =
         when (launcherResult) {

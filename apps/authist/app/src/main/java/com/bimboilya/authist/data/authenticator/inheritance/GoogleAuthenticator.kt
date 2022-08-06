@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class GoogleAuthenticator @Inject constructor(
     @ApplicationContext private val context: Context
-) : Authenticator<GoogleSignInAccount, SocialAccount.Google, Intent, ActivityResult>(StartActivityForResult()) {
+) : Authenticator<GoogleSignInAccount, SocialAccount.Google, Intent, ActivityResult>() {
 
     private val signInClient: GoogleSignInClient = createSignInClient()
 
@@ -33,11 +33,11 @@ class GoogleAuthenticator @Inject constructor(
         return GoogleSignIn.getClient(context, signInOptions)
     }
 
-    override val launcherResultKey: String
-        get() = "google_result_key"
+    override val activityResultContract = StartActivityForResult()
 
-    override val launcherInput: Intent
-        get() = signInClient.signInIntent
+    override val launcherResultKey = "google_result_key"
+
+    override val launcherInput = signInClient.signInIntent
 
     override suspend fun beforeAuthorization() {
         if (GoogleSignIn.getLastSignedInAccount(context) != null) {
