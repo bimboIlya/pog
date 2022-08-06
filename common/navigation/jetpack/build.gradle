@@ -1,9 +1,0 @@
-apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-
-dependencies {
-    implementation libraries.compose.navigation
-    implementation libraries.javaX.inject
-
-    implementation project(":common-ktx-jvm")
-}

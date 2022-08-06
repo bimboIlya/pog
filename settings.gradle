@@ -8,9 +8,6 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":yacr-app"                 : "apps/yacr/app",
-        ":feature-authorization"    : "apps/yacr/feature/authorization",
-
         ":firebase-app"             : "apps/firebase/app",
         ":feature-chooser"          : "apps/firebase/feature/chooser",
         ":feature-crashlytics"      : "apps/firebase/feature/crashlytics",
@@ -24,7 +21,6 @@ def modules = [
 
         ":compost-app"              : "apps/compost/app",
 
-        ":common-navigation-jetpack": "common/navigation/jetpack",
         ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",
         ":common-ktx-android"       : "common/ktx/android",
