@@ -2,21 +2,18 @@ package com.bimboilya.authist.ui
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomAppBar
 import androidx.compose.material.Button
 import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProgressIndicatorDefaults
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
@@ -30,11 +27,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bimboilya.authist.domain.entity.SocialNetwork
 import com.bimboilya.authist.domain.entity.SocialNetwork.GOOGLE
 import com.bimboilya.authist.domain.entity.SocialNetwork.VK
+import com.bimboilya.authist.domain.entity.SocialNetwork.YANDEX
 import com.bimboilya.authist.domain.entity.User
 import com.bimboilya.authist.presentation.AuthState
 import com.bimboilya.authist.presentation.AuthViewModel
 import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.android.collectInComposition
+import com.google.accompanist.flowlayout.FlowMainAxisAlignment
+import com.google.accompanist.flowlayout.FlowRow
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates.notNull
 
@@ -95,17 +95,23 @@ private fun LoadingTopBar(isLoading: Boolean) {
 
 @Composable
 private fun BottomBar(isLoading: Boolean, signIn: (SocialNetwork) -> Unit) {
-    BottomAppBar(backgroundColor = MaterialTheme.colors.surface) {
-        Row(
-            Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly,
+    Surface(
+        Modifier.fillMaxWidth(),
+        elevation = 8.dp
+    ) {
+        FlowRow(
+            Modifier.fillMaxWidth().padding(4.dp),
+            mainAxisAlignment = FlowMainAxisAlignment.Center,
+            mainAxisSpacing = 8.dp,
         ) {
             Button(onClick = { signIn(GOOGLE) }, enabled = !isLoading) {
                 Text("Google SignIn")
             }
             Button(onClick = { signIn(VK) }, enabled = !isLoading) {
                 Text("VK SignIn")
+            }
+            Button(onClick = { signIn(YANDEX) }, enabled = !isLoading) {
+                Text("Yandex SignIn")
             }
         }
     }

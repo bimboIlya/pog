@@ -42,7 +42,9 @@ ext {
             "crashlyticsPlugin"   : "2.8.1",
 
             "vkSdk"               : "3.5.2",
+            "yandexAuth"          : "2.3.1",
 
+            "leakCanary"          : "2.9.1",
             "timber"              : "5.0.1",
 
             // Testing
@@ -63,7 +65,8 @@ ext {
     ]
 
     libraries = [
-            "accompanist": ["insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
+            "accompanist": ["flowLayout"         : "com.google.accompanist:accompanist-flowlayout:$versions.accompanist",
+                            "insets"             : "com.google.accompanist:accompanist-insets:$versions.accompanist",
                             "insetsUi"           : "com.google.accompanist:accompanist-insets-ui:$versions.accompanist",
                             "navigationMaterial" : "com.google.accompanist:accompanist-navigation-material:$versions.accompanist",
                             "navigationAnimation": "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist",
@@ -105,6 +108,8 @@ ext {
                             "navigation": "androidx.hilt:hilt-navigation-compose:$versions.hiltNavigation",
                             "compiler"  : "com.google.dagger:hilt-compiler:$versions.dagger"],
 
+            "leakCanary" : "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary",
+
             "lifecycle"  : ["runtime"    : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
                             "viewmodel"  : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
                             "stateHandle": "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycle"],
@@ -135,6 +140,8 @@ ext {
                             "tab"        : "cafe.adriel.voyager:voyager-tab-navigator:$versions.voyager",
                             "transitions": "cafe.adriel.voyager:voyager-transitions:$versions.voyager",
                             "viewmodel"  : "cafe.adriel.voyager:voyager-androidx:$versions.voyager"],
+
+            "yandex"     : ["auth": "com.yandex.android:authsdk:$versions.yandexAuth"],
     ]
 
     testLibraries = [

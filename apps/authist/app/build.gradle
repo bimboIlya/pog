@@ -22,8 +22,10 @@ android {
         def properties = new Properties()
         properties.load(project.file('secret.properties').newDataInputStream())
 
-        resValue "string", "google_cliend_id", "\"${properties.GoogleClientId}\""
+        resValue "string", "google_cliend_id", "${properties.GoogleClientId}"
         resValue "integer", "com_vk_sdk_AppId","${properties.VkAppId}"
+
+        manifestPlaceholders = [YANDEX_CLIENT_ID:"${properties.YandexClientId}"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -71,14 +73,18 @@ dependencies {
     implementation libraries.compose.activity
     implementation libraries.compose.viewmodel
 
+    implementation libraries.accompanist.flowLayout
+
     implementation libraries.lifecycle.runtime
 
     implementation libraries.kotlinX.coroutines.tasks
 
     implementation libraries.timber
+    debugImplementation libraries.leakCanary
 
     implementation libraries.google.auth
     implementation libraries.vkSdk.core
+    implementation libraries.yandex.auth
 
     implementation libraries.voyager.core
     implementation project(":common-navigation-voyager")
