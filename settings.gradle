@@ -8,6 +8,12 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
+        ":authist-app"              : "apps/authist/app",
+
+        ":compost-app"              : "apps/compost/app",
+
+        ":dbpg-app"                 : "apps/dbpg/app",
+
         ":firebase-app"             : "apps/firebase/app",
         ":feature-chooser"          : "apps/firebase/feature/chooser",
         ":feature-crashlytics"      : "apps/firebase/feature/crashlytics",
@@ -16,10 +22,6 @@ def modules = [
         ":feature-notification"     : "apps/firebase/feature/notification",
 
         ":navsample-app"            : "apps/navsample/app",
-
-        ":authist-app"              : "apps/authist/app",
-
-        ":compost-app"              : "apps/compost/app",
 
         ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",

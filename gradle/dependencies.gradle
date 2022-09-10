@@ -13,6 +13,7 @@ ext {
             "lifecycle"           : "2.5.0",
             "navigation"          : "2.5.0",
             "dataStore"           : "1.0.0",
+            "room"                : "2.4.3",
 
             "voyager"             : "1.0.0-rc02",
 
@@ -20,7 +21,7 @@ ext {
 
             "coil"                : "1.4.0",
 
-            "compose"             : "1.2.0-rc03",
+            "compose"             : "1.2.0",
             "composeCompiler"     : "1.2.0",
 
             "retrofit"            : "2.9.0",
@@ -128,6 +129,9 @@ ext {
 
             "retrofit"   : ["client"          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
                             "kotlinxConverter": "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinxConverter"],
+
+            "room"       : ["db"      : "androidx.room:room-ktx:$versions.room",
+                            "compiler": "androidx.room:room-compiler:$versions.room"],
 
             "timber"     : "com.jakewharton.timber:timber:$versions.timber",
 
