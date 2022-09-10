@@ -28,11 +28,11 @@ class Authenticator<T, S : SocialAccount, I, O>(
         /** нужно обязательно вызывать [ActivityResultLauncher.unregister], иначе будут непредсказуемые сайд-эффекты */
         var launcher: ActivityResultLauncher<I>? = null
 
+        beforeAuthorization()
+
         ActivityProvider.activity
             .mapLatest { activity ->
-                beforeAuthorization()
-
-                suspendCancellableCoroutine<T> { continuation ->
+                suspendCancellableCoroutine { continuation ->
                     launcher = activity.activityResultRegistry.register(launcherResultKey, activityResultContract) { result ->
                         isAuthLaunched = false
 
