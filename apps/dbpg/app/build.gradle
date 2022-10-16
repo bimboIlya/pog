@@ -36,9 +36,18 @@ android {
             useJUnitPlatform()
         }
     }
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 }
 
 dependencies {
+    debugImplementation 'com.facebook.flipper:flipper:0.163.0'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.4'
+
     implementation libraries.androidX.core
 
     implementation libraries.compose.ui
