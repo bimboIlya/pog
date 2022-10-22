@@ -45,6 +45,7 @@ dependencies {
     implementation libraries.compose.ui
     debugImplementation libraries.compose.uiTooling
     implementation libraries.compose.material
+    implementation libraries.compose.material3
     implementation libraries.compose.activity
     implementation libraries.compose.viewmodel
 

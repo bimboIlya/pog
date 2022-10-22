@@ -2,13 +2,13 @@ ext {
     versions = [
             "AGP"                 : "7.2.1",
 
-            "kotlin"              : "1.7.0",
+            "kotlin"              : "1.7.20",
             "kotlinx"             : "1.6.4",
-            "kotlinxSerialization": "1.3.3",
+            "kotlinxSerialization": "1.4.1",
 
-            "androidxCore"        : "1.8.0",
-            "androidxActivity"    : "1.5.0",
-            "dagger"              : "2.42",
+            "androidxCore"        : "1.9.0",
+            "androidxActivity"    : "1.6.0",
+            "dagger"              : "2.44",
             "hiltNavigation"      : "1.0.0",
             "lifecycle"           : "2.5.0",
             "navigation"          : "2.5.0",
@@ -21,8 +21,9 @@ ext {
 
             "coil"                : "1.4.0",
 
-            "compose"             : "1.2.0",
-            "composeCompiler"     : "1.2.0",
+            "compose"             : "1.3.0-rc01",
+            "composeCompiler"     : "1.3.2",
+            "composeMaterial3"    : "1.0.0-rc01",
 
             "retrofit"            : "2.9.0",
             "okhttpLogging"       : "4.9.1",
@@ -39,19 +40,21 @@ ext {
 
             "gmsAuth"             : "20.2.0",
 
-            "gmsPlugin"           : "4.3.10",
+            "gmsPlugin"           : "4.3.14",
             "crashlyticsPlugin"   : "2.8.1",
 
             "vkSdk"               : "3.5.2",
             "yandexAuth"          : "2.3.1",
 
+            "flipper"             : "0.171.1",
+            "soLoader"            : "0.10.4",
             "leakCanary"          : "2.9.1",
             "timber"              : "5.0.1",
 
             // Testing
-            "junit5"              : "5.8.2",
-            "mockk"               : "1.12.4",
-            "turbine"             : "0.8.0",
+            "junit5"              : "5.9.1",
+            "mockk"               : "1.13.2",
+            "turbine"             : "0.12.0",
 
             "androidxJunit"       : "1.1.2",
     ]
@@ -86,10 +89,14 @@ ext {
             "compose"    : ["ui"           : "androidx.compose.ui:ui:$versions.compose",
                             "uiTooling"    : "androidx.compose.ui:ui-tooling:$versions.compose",
                             "material"     : "androidx.compose.material:material:$versions.compose",
+                            "material3"    : "androidx.compose.material3:material3:$versions.composeMaterial3",
                             "materialIcons": "androidx.compose.material:material-icons-extended:$versions.compose",
                             "activity"     : "androidx.activity:activity-compose:$versions.androidxActivity",
                             "viewmodel"    : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.lifecycle",
                             "navigation"   : "androidx.navigation:navigation-compose:$versions.navigation"],
+
+            "facebook"   : ["flipper" : "com.facebook.flipper:flipper:$versions.flipper",
+                            "soLoader": "com.facebook.soloader:soloader:$versions.soLoader"],
 
             "firebase"   : ["analytics"   : "com.google.firebase:firebase-analytics-ktx:$versions.fbAnalytics",
                             "auth"        : "com.google.firebase:firebase-auth-ktx:$versions.fbAuth",
