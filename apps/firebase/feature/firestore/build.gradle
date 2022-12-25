@@ -18,4 +18,5 @@ dependencies {
 
     implementation project(":common-ktx-jvm")
     implementation project(":common-ktx-android")
+    implementation project(":common-ktx-compose")
 }

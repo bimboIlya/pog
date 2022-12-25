@@ -14,8 +14,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
-import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.android.getObjectOrThrow
+import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
 import com.bimboilya.navsample.common.GenericScreen
 import com.bimboilya.navsample.common.NavIcon.Back
 import com.bimboilya.navsample.common.SongResult

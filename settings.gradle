@@ -26,6 +26,7 @@ def modules = [
         ":common-navigation-voyager": "common/navigation/voyager",
         ":common-ktx-jvm"           : "common/ktx/jvm",
         ":common-ktx-android"       : "common/ktx/android",
+        ":common-ktx-compose"       : "common/ktx/compose",
         ":common-preferences"       : "common/preferences",
         ":common-test-jvm"          : "common/test/jvm",
         ":common-ui-theme"          : "common/ui/theme",

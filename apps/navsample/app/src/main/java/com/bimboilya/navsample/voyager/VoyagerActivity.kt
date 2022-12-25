@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.FadeTransition
-import com.bimboilya.common.ktx.android.collectInComposition
+import com.bimboilya.common.ktx.compose.collectInComposition
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.navsample.voyager.flow.FirstDestination
 import dagger.hilt.android.AndroidEntryPoint

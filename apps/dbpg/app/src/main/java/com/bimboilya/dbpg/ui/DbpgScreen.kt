@@ -28,8 +28,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
-import com.bimboilya.common.ktx.android.collectInComposition
+import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
+import com.bimboilya.common.ktx.compose.collectInComposition
 import com.bimboilya.dbpg.domain.entity.TripClass
 import com.bimboilya.dbpg.domain.entity.TripClass.BUSINESS
 import com.bimboilya.dbpg.domain.entity.TripClass.ECONOMY

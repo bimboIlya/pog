@@ -1,9 +1,7 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
 
 dependencies {
     implementation libraries.androidX.core
-    implementation libraries.compose.ui
     implementation libraries.kotlinX.serialization
     implementation libraries.lifecycle.runtime
     implementation libraries.lifecycle.viewmodel

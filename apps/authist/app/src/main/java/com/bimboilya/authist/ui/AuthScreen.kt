@@ -31,8 +31,8 @@ import com.bimboilya.authist.domain.entity.SocialNetwork.YANDEX
 import com.bimboilya.authist.domain.entity.User
 import com.bimboilya.authist.presentation.AuthState
 import com.bimboilya.authist.presentation.AuthViewModel
-import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
-import com.bimboilya.common.ktx.android.collectInComposition
+import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
+import com.bimboilya.common.ktx.compose.collectInComposition
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import kotlinx.coroutines.launch

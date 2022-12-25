@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
-import com.bimboilya.common.ktx.android.collectInComposition
+import com.bimboilya.common.ktx.compose.collectInComposition
 import com.bimboilya.common.navigation.voyager.CommandDispatcher
 import com.bimboilya.common.navigation.voyager.NavigationController
 import com.bimboilya.common.ui.theme.PogTheme

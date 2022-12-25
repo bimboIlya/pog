@@ -35,7 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.hilt.getViewModel
-import com.bimboilya.common.ktx.android.collectAsStateWithLifecycle
+import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
 import com.bimboilya.common.navigation.voyager.Destination
 import com.bimboilya.common.navigation.voyager.VmScreen
 import com.bimboilya.firebase.feature.firestore.FirestoreDestination

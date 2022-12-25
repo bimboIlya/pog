@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.bimboilya.common.ktx.android.collectInComposition
+import com.bimboilya.common.ktx.compose.collectInComposition
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.navsample.jetpack.flow.FifthScreen
 import com.bimboilya.navsample.jetpack.flow.FirstScreen
