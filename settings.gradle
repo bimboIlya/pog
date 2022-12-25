@@ -8,28 +8,29 @@ dependencyResolutionManagement {
 rootProject.name = "pog"
 
 def modules = [
-        ":authist-app"              : "apps/authist/app",
+        ":authist-app"               : "apps/authist/app",
 
-        ":compost-app"              : "apps/compost/app",
+        ":compost-app"               : "apps/compost/app",
 
-        ":dbpg-app"                 : "apps/dbpg/app",
+        ":dbpg-app"                  : "apps/dbpg/app",
 
-        ":firebase-app"             : "apps/firebase/app",
-        ":feature-chooser"          : "apps/firebase/feature/chooser",
-        ":feature-crashlytics"      : "apps/firebase/feature/crashlytics",
-        ":feature-config"           : "apps/firebase/feature/config",
-        ":feature-firestore"        : "apps/firebase/feature/firestore",
-        ":feature-notification"     : "apps/firebase/feature/notification",
+        ":firebase-app"              : "apps/firebase/app",
+        ":feature-chooser"           : "apps/firebase/feature/chooser",
+        ":feature-crashlytics"       : "apps/firebase/feature/crashlytics",
+        ":feature-config"            : "apps/firebase/feature/config",
+        ":feature-firestore"         : "apps/firebase/feature/firestore",
+        ":feature-notification"      : "apps/firebase/feature/notification",
 
-        ":navsample-app"            : "apps/navsample/app",
+        ":navsample-app"             : "apps/navsample/app",
 
-        ":common-navigation-voyager": "common/navigation/voyager",
-        ":common-ktx-jvm"           : "common/ktx/jvm",
-        ":common-ktx-android"       : "common/ktx/android",
-        ":common-ktx-compose"       : "common/ktx/compose",
-        ":common-preferences"       : "common/preferences",
-        ":common-test-jvm"          : "common/test/jvm",
-        ":common-ui-theme"          : "common/ui/theme",
+        ":common-navigation-launcher": "common/navigation/launcher",
+        ":common-navigation-voyager" : "common/navigation/voyager",
+        ":common-ktx-jvm"            : "common/ktx/jvm",
+        ":common-ktx-android"        : "common/ktx/android",
+        ":common-ktx-compose"        : "common/ktx/compose",
+        ":common-preferences"        : "common/preferences",
+        ":common-test-jvm"           : "common/test/jvm",
+        ":common-ui-theme"           : "common/ui/theme",
 ]
 
 modules.forEach { name, path ->
