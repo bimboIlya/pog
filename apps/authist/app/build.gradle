@@ -87,6 +87,7 @@ dependencies {
     implementation libraries.yandex.auth
 
     implementation libraries.voyager.core
+    implementation project(":common-navigation-launcher")
     implementation project(":common-navigation-voyager")
 
     implementation project(":common-ktx-jvm")

@@ -14,8 +14,6 @@ class AuthActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lifecycle.addObserver(ActivityProvider)
-
         setContent {
             PogTheme {
                 Surface {
