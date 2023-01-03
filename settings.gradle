@@ -23,6 +23,8 @@ def modules = [
 
         ":navsample-app"             : "apps/navsample/app",
 
+        ":permissions-app"           : "apps/permissions/app",
+
         ":common-navigation-launcher": "common/navigation/launcher",
         ":common-navigation-voyager" : "common/navigation/voyager",
         ":common-ktx-jvm"            : "common/ktx/jvm",
