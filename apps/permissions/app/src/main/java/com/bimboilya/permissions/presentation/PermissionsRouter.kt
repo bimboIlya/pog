@@ -1,9 +1,7 @@
 package com.bimboilya.permissions.presentation
 
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import androidx.activity.ComponentActivity
+import com.bimboilya.common.ktx.android.openSettings
 import com.bimboilya.common.navigation.launcher.ActivityProvider
 import javax.inject.Inject
 
@@ -15,10 +13,6 @@ class PermissionsRouter @Inject constructor(
         get() = activityProvider.activity
 
     fun openSettings() {
-        activity?.let { activity ->
-            Intent(ACTION_APPLICATION_DETAILS_SETTINGS)
-                .apply { data = Uri.parse("package:${activity.packageName}") }
-                .let(activity::startActivity)
-        }
+        activity?.openSettings()
     }
 }
