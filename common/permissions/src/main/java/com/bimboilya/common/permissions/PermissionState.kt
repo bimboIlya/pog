@@ -14,7 +14,11 @@ sealed class PermissionState {
         override val permission: Permission,
         val shouldShowRationale: Boolean,
         val isDeniedPermanently: Boolean,
-    ) : PermissionState()
+    ) : PermissionState() {
+
+        val notRequestedBefore: Boolean
+            get() = !shouldShowRationale && !isDeniedPermanently
+    }
 }
 
 @OptIn(ExperimentalContracts::class)
