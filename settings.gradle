@@ -10,6 +10,8 @@ rootProject.name = "pog"
 def modules = [
         ":authist-app"               : "apps/authist/app",
 
+        ":bluepoop-app"              : "apps/bluepoop/app",
+
         ":compost-app"               : "apps/compost/app",
 
         ":dbpg-app"                  : "apps/dbpg/app",
