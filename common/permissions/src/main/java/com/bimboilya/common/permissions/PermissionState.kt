@@ -30,3 +30,12 @@ fun PermissionState.isGranted(): Boolean {
 
     return this is Granted
 }
+
+@OptIn(ExperimentalContracts::class)
+fun PermissionState.isPotentiallyPermanentlyDenied(): Boolean {
+    contract {
+        returns(true) implies (this@isPotentiallyPermanentlyDenied is Denied)
+    }
+
+    return !isGranted() && !shouldShowRationale
+}

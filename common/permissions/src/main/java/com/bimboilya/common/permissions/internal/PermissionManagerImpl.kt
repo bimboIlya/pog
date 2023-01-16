@@ -3,6 +3,11 @@ package com.bimboilya.common.permissions.internal
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Lifecycle.Event.ON_DESTROY
+import androidx.lifecycle.Lifecycle.Event.ON_RESUME
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import com.bimboilya.common.navigation.launcher.ActivityLauncher
 import com.bimboilya.common.navigation.launcher.ActivityProvider
 import com.bimboilya.common.permissions.MultipleRequestResult
@@ -11,6 +16,11 @@ import com.bimboilya.common.permissions.PermissionManager
 import com.bimboilya.common.permissions.PermissionState
 import com.bimboilya.common.permissions.PermissionState.Denied
 import com.bimboilya.common.permissions.PermissionState.Granted
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 class PermissionManagerImpl @Inject constructor(
@@ -22,6 +32,26 @@ class PermissionManagerImpl @Inject constructor(
 
     override fun getPermissionState(permission: Permission): PermissionState =
         if (permission.isGranted()) permission.grantedState else permission.deniedState
+
+    override fun observePermissionState(permission: Permission): Flow<PermissionState> =
+        activityProvider.observeActivity()
+            .flatMapLatest { activity ->
+                callbackFlow {
+                    val observer = object : LifecycleEventObserver {
+                        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+                            when (event) {
+                                ON_RESUME -> trySend(getPermissionState(permission))
+                                ON_DESTROY -> activity.lifecycle.removeObserver(this)
+                                else -> Unit
+                            }
+                        }
+                    }
+
+                    activity.lifecycle.addObserver(observer)
+
+                    awaitClose { activity.lifecycle.removeObserver(observer) }
+                }.onStart { emit(getPermissionState(permission)) }
+            }
 
     override suspend fun requestPermission(permission: Permission): PermissionState {
         val isGranted = activityLauncher.launchAndAwaitResult(PermissionContract(), permission)
