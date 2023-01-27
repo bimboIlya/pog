@@ -2,7 +2,7 @@ package com.bimboilya.dbpg.domain.repository
 
 import androidx.room.withTransaction
 import com.bimboilya.dbpg.data.converter.SubConverter
-import com.bimboilya.dbpg.data.converter.toDbSubParams
+import com.bimboilya.dbpg.data.converter.toDbSegments
 import com.bimboilya.dbpg.data.db.SubDatabase
 import com.bimboilya.dbpg.domain.entity.SubParams
 import com.bimboilya.dbpg.domain.entity.Subscription
@@ -46,7 +46,11 @@ class SubRepository @Inject constructor(
             ?.let(subConverter::convert)
 
     suspend fun getByParams(params: SubParams): Subscription? =
-        subDao.selectAll()
-            .firstOrNull { it.params == params.toDbSubParams() }
-            ?.let(subConverter::convert)
+        subDao.selectByParams(
+            segments = params.segments.toDbSegments(),
+            adults = params.passengers.adults,
+            children = params.passengers.children,
+            infants = params.passengers.infants,
+            tripClass = params.tripClass,
+        )?.let(subConverter::convert)
 }
