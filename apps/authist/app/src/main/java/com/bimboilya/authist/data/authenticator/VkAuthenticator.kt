@@ -8,12 +8,10 @@ import com.vk.api.sdk.auth.VKAuthenticationResult
 import com.vk.api.sdk.auth.VKScope
 import javax.inject.Inject
 
-class VkAuthenticator @Inject constructor(
-    private val activityLauncher: ActivityLauncher,
-) {
+class VkAuthenticator @Inject constructor() {
 
     suspend fun signIn(): SocialAccount.Vk =
-        activityLauncher.launchAndAwaitResult(
+        ActivityLauncher.launchAndAwaitResult(
             contract = VK.getVKAuthActivityResultContract(),
             input = setOf(VKScope.EMAIL, VKScope.OFFLINE)
         )

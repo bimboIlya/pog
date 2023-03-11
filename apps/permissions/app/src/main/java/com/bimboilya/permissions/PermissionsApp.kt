@@ -9,12 +9,9 @@ import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPl
 import com.facebook.soloader.SoLoader
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltAndroidApp
 class PermissionsApp : Application() {
-
-    @Inject lateinit var activityProvider: ActivityProvider
 
     override fun onCreate() {
         super.onCreate()
@@ -29,7 +26,7 @@ class PermissionsApp : Application() {
     }
 
     private fun initActivityProvider() {
-        activityProvider.init(this)
+        ActivityProvider.init(this)
     }
 
     private fun initFlipper() {

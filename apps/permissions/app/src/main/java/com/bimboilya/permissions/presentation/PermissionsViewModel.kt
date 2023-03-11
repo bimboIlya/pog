@@ -21,7 +21,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PermissionsViewModel @Inject constructor(
-    private val permissionManager: PermissionManager,
     private val router: PermissionsRouter,
 ) : ViewModel() {
 
@@ -33,14 +32,14 @@ class PermissionsViewModel @Inject constructor(
 
     private fun getPermissionsInitialStates(): List<PermissionState> =
         Permission::class.sealedSubclasses.mapNotNull { it.objectInstance }
-            .map(permissionManager::getPermissionState)
+            .map(PermissionManager::getPermissionState)
 
     private val _state = MutableStateFlow(defaultState)
     val state = _state.asStateFlow()
 
     fun requestPermission(permission: Permission) {
         viewModelScope.launch {
-            val result = permissionManager.requestPermission(permission)
+            val result = PermissionManager.requestPermission(permission)
             replace(result)
 
             if (!result.isGranted() && result.isDeniedPermanently) {
@@ -69,7 +68,7 @@ class PermissionsViewModel @Inject constructor(
 
     fun requestMultiple() {
         viewModelScope.launch {
-            val result = permissionManager.requestPermissions(Notification, ReadContacts, Camera)
+            val result = PermissionManager.requestPermissions(Notification, ReadContacts, Camera)
             val notificationState = result.getResultFor(Notification)
             val contactsState = result.getResultFor(ReadContacts)
             val cameraState = result.getResultFor(Camera)

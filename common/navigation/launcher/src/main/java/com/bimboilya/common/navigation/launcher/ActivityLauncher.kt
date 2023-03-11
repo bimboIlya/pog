@@ -9,25 +9,18 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import java.util.concurrent.atomic.AtomicInteger
-import javax.inject.Inject
 import kotlin.coroutines.resume
 
-interface ActivityLauncher {
-    suspend fun <I, O> launchAndAwaitResult(contract: ActivityResultContract<I, O>, input: I): O
-}
-
-class ActivityLauncherImpl @Inject constructor(
-    private val activityProvider: ActivityProvider,
-) : ActivityLauncher {
+object ActivityLauncher {
 
     private val requestCount = AtomicInteger()
 
-    override suspend fun <I, O> launchAndAwaitResult(contract: ActivityResultContract<I, O>, input: I): O = withContext(Dispatchers.Main.immediate) {
+    suspend fun <I, O> launchAndAwaitResult(contract: ActivityResultContract<I, O>, input: I): O = withContext(Dispatchers.Main.immediate) {
         val key = "activity_result_request#${requestCount.incrementAndGet()}"
         var isResultActivityLaunched = false
         var launcher: ActivityResultLauncher<I>? = null
 
-        activityProvider.observeActivity()
+        ActivityProvider.observeActivity()
             .mapLatest { activity ->
                 suspendCancellableCoroutine { continuation ->
                     launcher = activity.activityResultRegistry.register(key, contract, continuation::resume)

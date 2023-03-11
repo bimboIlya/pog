@@ -5,12 +5,10 @@ import com.bimboilya.common.ktx.android.openSettings
 import com.bimboilya.common.navigation.launcher.ActivityProvider
 import javax.inject.Inject
 
-class PermissionsRouter @Inject constructor(
-    private val activityProvider: ActivityProvider,
-) {
+class PermissionsRouter @Inject constructor() {
 
     private val activity: ComponentActivity?
-        get() = activityProvider.activity
+        get() = ActivityProvider.activity
 
     fun openSettings() {
         activity?.openSettings()

@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 class YandexAuthenticator @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val activityLauncher: ActivityLauncher,
 ) {
 
     private val yandexSdk = YandexAuthSdk(
@@ -23,7 +22,7 @@ class YandexAuthenticator @Inject constructor(
     )
 
     suspend fun signIn(): SocialAccount.Yandex =
-        activityLauncher.launchAndAwaitResult(StartActivityForResult(), yandexSdk.createLoginIntent(context, setOf()))
+        ActivityLauncher.launchAndAwaitResult(StartActivityForResult(), yandexSdk.createLoginIntent(context, setOf()))
             .let { result -> yandexSdk.extractToken(result.resultCode, result.data) }
             ?.value
             ?.let(SocialAccount::Yandex)

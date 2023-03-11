@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 class GoogleAuthenticator @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val activityLauncher: ActivityLauncher,
 ) {
 
     private val signInClient: GoogleSignInClient = createSignInClient()
@@ -35,7 +34,7 @@ class GoogleAuthenticator @Inject constructor(
     suspend fun signIn(): SocialAccount.Google {
         signOut()
 
-        return activityLauncher.launchAndAwaitResult(StartActivityForResult(), signInClient.signInIntent)
+        return ActivityLauncher.launchAndAwaitResult(StartActivityForResult(), signInClient.signInIntent)
             .data
             .let(::requireNotNull)
             .let(GoogleSignIn::getSignedInAccountFromIntent)

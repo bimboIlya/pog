@@ -6,13 +6,9 @@ import com.bimboilya.common.ktx.android.shortToast
 import com.bimboilya.common.navigation.launcher.ActivityProvider
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltAndroidApp
 class BluepoopApp : Application() {
-
-    @Inject
-    lateinit var activityProvider: ActivityProvider
 
     override fun onCreate() {
         super.onCreate()
@@ -35,6 +31,6 @@ class BluepoopApp : Application() {
     }
 
     private fun initActivityProvider() {
-        activityProvider.init(this)
+        ActivityProvider.init(this)
     }
 }
