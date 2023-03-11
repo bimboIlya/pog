@@ -10,7 +10,7 @@ dependencies {
     implementation libraries.firebase.config
 
     implementation libraries.voyager.hilt
-    implementation project(":common-navigation-voyager")
+    implementation project(":common:navigation:voyager")
 
-    testImplementation project(":common-test-jvm")
+    testImplementation project(":common:test:jvm")
 }

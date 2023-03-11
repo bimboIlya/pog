@@ -73,22 +73,22 @@ dependencies {
     implementation libraries.timber
 
     implementation libraries.voyager.core
-    implementation project(":common-navigation-voyager")
+    implementation project(":common:navigation:voyager")
 
-    implementation project(":common-ktx-jvm")
-    implementation project(":common-ktx-android")
-    implementation project(":common-ktx-compose")
-    implementation project(":common-ui-theme")
-    implementation project(":common-preferences")
+    implementation project(":common:ktx:jvm")
+    implementation project(":common:ktx:android")
+    implementation project(":common:ktx:compose")
+    implementation project(":common:ui:theme")
+    implementation project(":common:preferences")
 
-    implementation project(":feature-config")
-    implementation project(":feature-chooser")
-    implementation project(":feature-crashlytics")
-    implementation project(":feature-firestore")
-    implementation project(":feature-notification")
+    implementation project(":apps:firebase:feature:config")
+    implementation project(":apps:firebase:feature:chooser")
+    implementation project(":apps:firebase:feature:crashlytics")
+    implementation project(":apps:firebase:feature:firestore")
+    implementation project(":apps:firebase:feature:notification")
 
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api
     testImplementation testLibraries.mockk.core
-    testImplementation project(":common-test-jvm")
+    testImplementation project(":common:test:jvm")
 }

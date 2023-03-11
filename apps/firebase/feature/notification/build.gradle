@@ -14,11 +14,11 @@ dependencies {
 
     implementation libraries.firebase.messaging
 
-    implementation project(":common-preferences")
-    implementation project(":common-ktx-jvm")
-    implementation project(":common-ktx-android")
-    implementation project(":common-ktx-compose")
+    implementation project(":common:preferences")
+    implementation project(":common:ktx:jvm")
+    implementation project(":common:ktx:android")
+    implementation project(":common:ktx:compose")
 
     implementation libraries.voyager.hilt
-    implementation project(":common-navigation-voyager")
+    implementation project(":common:navigation:voyager")
 }

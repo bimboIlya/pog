@@ -49,12 +49,12 @@ dependencies {
     debugImplementation libraries.facebook.flipper
     debugImplementation libraries.facebook.soLoader
 
-    implementation project(":common-ktx-jvm")
-    implementation project(":common-ktx-android")
-    implementation project(":common-ktx-compose")
-    implementation project(":common-preferences")
-    implementation project(":common-ui-theme")
+    implementation project(":common:ktx:jvm")
+    implementation project(":common:ktx:android")
+    implementation project(":common:ktx:compose")
+    implementation project(":common:preferences")
+    implementation project(":common:ui:theme")
 
-    implementation project(":common-navigation-launcher")
-    implementation project(":common-permissions")
+    implementation project(":common:navigation:launcher")
+    implementation project(":common:permissions")
 }

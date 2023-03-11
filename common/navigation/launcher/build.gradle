@@ -5,5 +5,5 @@ dependencies {
     implementation libraries.lifecycle.runtime
     implementation libraries.javaX.inject
 
-    implementation project(":common-ktx-android")
+    implementation project(":common:ktx:android")
 }

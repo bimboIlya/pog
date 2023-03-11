@@ -75,15 +75,15 @@ dependencies {
 
     implementation libraries.timber
 
-    implementation project(":common-ktx-jvm")
-    implementation project(":common-ktx-android")
-    implementation project(":common-ktx-compose")
-    implementation project(":common-ui-theme")
+    implementation project(":common:ktx:jvm")
+    implementation project(":common:ktx:android")
+    implementation project(":common:ktx:compose")
+    implementation project(":common:ui:theme")
 
-    implementation project(":common-preferences")
+    implementation project(":common:preferences")
 
     testRuntimeOnly testLibraries.jupiter.engine
     testImplementation testLibraries.jupiter.api
     testImplementation testLibraries.mockk.core
-    testImplementation project(":common-test-jvm")
+    testImplementation project(":common:test:jvm")
 }

@@ -12,38 +12,28 @@ dependencyResolutionManagement {
 
 rootProject.name = "pog"
 
-def modules = [
-        ":authist-app"               : "apps/authist/app",
+include("apps:authist:app")
+include("apps:bluepoop:app")
+include("apps:compost:app")
+include("apps:dbpg:app")
 
-        ":bluepoop-app"              : "apps/bluepoop/app",
+include("apps:firebase:app")
+include("apps:firebase:feature:chooser")
+include("apps:firebase:feature:crashlytics")
+include("apps:firebase:feature:config")
+include("apps:firebase:feature:firestore")
+include("apps:firebase:feature:notification")
 
-        ":compost-app"               : "apps/compost/app",
+include("apps:navsample:app")
+include("apps:permissions:app")
 
-        ":dbpg-app"                  : "apps/dbpg/app",
+include("common:navigation:launcher")
+include("common:navigation:voyager")
+include("common:ktx:jvm")
+include("common:ktx:android")
+include("common:ktx:compose")
+include("common:permissions")
+include("common:preferences")
+include("common:test:jvm")
+include("common:ui:theme")
 
-        ":firebase-app"              : "apps/firebase/app",
-        ":feature-chooser"           : "apps/firebase/feature/chooser",
-        ":feature-crashlytics"       : "apps/firebase/feature/crashlytics",
-        ":feature-config"            : "apps/firebase/feature/config",
-        ":feature-firestore"         : "apps/firebase/feature/firestore",
-        ":feature-notification"      : "apps/firebase/feature/notification",
-
-        ":navsample-app"             : "apps/navsample/app",
-
-        ":permissions-app"           : "apps/permissions/app",
-
-        ":common-navigation-launcher": "common/navigation/launcher",
-        ":common-navigation-voyager" : "common/navigation/voyager",
-        ":common-ktx-jvm"            : "common/ktx/jvm",
-        ":common-ktx-android"        : "common/ktx/android",
-        ":common-ktx-compose"        : "common/ktx/compose",
-        ":common-permissions"        : "common/permissions",
-        ":common-preferences"        : "common/preferences",
-        ":common-test-jvm"           : "common/test/jvm",
-        ":common-ui-theme"           : "common/ui/theme",
-]
-
-modules.forEach { name, path ->
-    include(name)
-    project(name).projectDir = file(path)
-}

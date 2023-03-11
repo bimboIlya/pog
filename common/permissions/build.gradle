@@ -4,5 +4,5 @@ dependencies {
     implementation libraries.androidX.activity
     implementation libraries.javaX.inject
 
-    implementation project(":common-navigation-launcher")
+    implementation project(":common:navigation:launcher")
 }

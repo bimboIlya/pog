@@ -8,5 +8,5 @@ dependencies {
     implementation libraries.voyager.viewmodel
     implementation libraries.javaX.inject
 
-    implementation project(":common-ktx-android")
+    implementation project(":common:ktx:android")
 }
