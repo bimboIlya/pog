@@ -21,6 +21,8 @@ ext {
 
             "coil"                : "1.4.0",
 
+            "kable"               : "0.20.1",
+
             "compose"             : "1.3.0-rc01",
             "composeCompiler"     : "1.3.2",
             "composeMaterial3"    : "1.0.0-rc01",
@@ -85,6 +87,8 @@ ext {
                             "dataStore": "androidx.datastore:datastore-preferences:$versions.dataStore"],
 
             "coil"       : ["compose": "io.coil-kt:coil-compose:$versions.coil"],
+
+            "kable"      : "com.juul.kable:core:$versions.kable",
 
             "compose"    : ["ui"           : "androidx.compose.ui:ui:$versions.compose",
                             "uiTooling"    : "androidx.compose.ui:ui-tooling:$versions.compose",

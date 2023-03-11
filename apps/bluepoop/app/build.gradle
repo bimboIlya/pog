@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation libraries.kable
+
     implementation libraries.androidX.core
 
     implementation libraries.compose.ui
@@ -41,6 +43,11 @@ dependencies {
     implementation libraries.compose.viewmodel
 
     implementation libraries.lifecycle.runtime
+
+    implementation libraries.voyager.core
+    implementation libraries.voyager.viewmodel
+    implementation libraries.voyager.hilt
+    implementation libraries.voyager.transitions
 
     implementation libraries.timber
 
