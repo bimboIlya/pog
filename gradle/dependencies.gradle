@@ -1,6 +1,6 @@
 ext {
     versions = [
-            "AGP"                 : "7.2.1",
+            "AGP"                 : "7.4.1",
 
             "kotlin"              : "1.7.20",
             "kotlinx"             : "1.6.4",
