@@ -1,14 +1,21 @@
+pluginManagement {
+    includeBuild("gradle/build-logic")
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
     }
-    versionCatalogs {
-        create("deps") {
-            from(files("gradle/deps.versions.toml"))
-        }
-    }
 }
+
+apply(from = "gradle/version-catalogs.gradle")
+//apply(from = "gradle/build-logic/plugins/src/main/kotlin/settings/build-convention-plugin.settings.gradle.kts")
 
 rootProject.name = "pog"
 

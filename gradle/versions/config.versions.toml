@@ -1,0 +1,6 @@
+[versions]
+minSdk = "26"
+targetSdk = "33"
+versionCode = "1"
+versionName = "poggers"
+java = "11"
