@@ -1,9 +1,7 @@
-package plugins
-
-import configuration.configureAndroid
-import libraries
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import pog.bimboilya.buildlogic.configuration.configureAndroid
+import pog.bimboilya.buildlogic.utils.libraries
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {

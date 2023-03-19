@@ -1,40 +1,15 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'pog.android.application'
+    id 'pog.android.compose'
+    id 'pog.hilt'
+    id 'pog.kotlin.serialization'
 }
 
-apply from: "$rootDir/gradle/application.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
-apply from: "$rootDir/gradle/serialization.gradle"
-
 android {
-    compileSdkVersion application.targetSdk
-    buildToolsVersion application.buildTools
-
     defaultConfig {
         applicationId "com.bimboilya.compost"
-        minSdkVersion application.minSdk
-        targetSdkVersion application.targetSdk
-        versionCode application.versionCode
-        versionName application.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-
-    testOptions {
-        unitTests.all {
-            useJUnitPlatform()
-        }
     }
 }
 
@@ -62,9 +37,4 @@ dependencies {
     implementation project(":common:ktx:android")
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
-
-    testRuntimeOnly libraries.test.junit.jupiter.engine
-    testImplementation libraries.test.junit.jupiter.api
-    testImplementation libraries.test.mockk.core
-    testImplementation project(":common:test:jvm")
 }

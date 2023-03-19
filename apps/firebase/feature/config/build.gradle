@@ -1,17 +1,17 @@
-apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
+plugins {
+    id 'pog.android.library'
+    id 'pog.android.compose'
+    id 'pog.firebase'
+    id 'pog.hilt'
+}
 
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.ui.tooling
     implementation libraries.compose.material
 
-    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.config
 
     implementation libraries.voyager.hilt
     implementation project(":common:navigation:voyager")
-
-    testImplementation project(":common:test:jvm")
 }

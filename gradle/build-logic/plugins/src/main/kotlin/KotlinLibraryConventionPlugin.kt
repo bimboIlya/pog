@@ -1,10 +1,7 @@
-package plugins
-
-import configuration.configureKotlin
-import libraries
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.dependencies
+import pog.bimboilya.buildlogic.configuration.configureKotlin
+import pog.bimboilya.buildlogic.utils.libraries
 
 class KotlinLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -12,10 +9,6 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
             pluginManager.apply(libraries.plugins.kotlin.jvm.get().pluginId)
 
             configureKotlin()
-
-            dependencies {
-                add("implementation", libraries.kotlin.stdlib)
-            }
         }
     }
 }

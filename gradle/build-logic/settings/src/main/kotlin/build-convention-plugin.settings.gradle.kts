@@ -1,5 +1,3 @@
-package settings
-
 dependencyResolutionManagement {
     repositories {
         google()

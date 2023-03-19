@@ -1,33 +1,14 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'pog.android.application'
+    id 'pog.android.compose'
+    id 'pog.hilt'
 }
 
-apply from: "$rootDir/gradle/application.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
-
 android {
-    compileSdkVersion application.targetSdk
-    buildToolsVersion application.buildTools
-
     defaultConfig {
         applicationId "com.bimboilya.bluepoop"
-        minSdkVersion application.minSdk
-        targetSdkVersion application.targetSdk
-        versionCode application.versionCode
-        versionName application.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 

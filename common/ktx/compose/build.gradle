@@ -1,5 +1,7 @@
-apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
+plugins {
+    id 'pog.android.library'
+    id 'pog.android.compose'
+}
 
 dependencies {
     implementation libraries.compose.ui

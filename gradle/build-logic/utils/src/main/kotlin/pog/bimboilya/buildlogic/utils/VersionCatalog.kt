@@ -1,3 +1,5 @@
+package pog.bimboilya.buildlogic.utils
+
 import org.gradle.accessors.dm.LibrariesForConfig
 import org.gradle.accessors.dm.LibrariesForLibraries
 import org.gradle.api.Project

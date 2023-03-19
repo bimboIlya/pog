@@ -1,22 +1,9 @@
 pluginManagement {
     includeBuild("gradle/build-logic")
-
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
 }
 
 apply(from = "gradle/version-catalogs.gradle")
-//apply(from = "gradle/build-logic/plugins/src/main/kotlin/settings/build-convention-plugin.settings.gradle.kts")
+apply(from = "gradle/build-logic/settings/src/main/kotlin/build-convention-plugin.settings.gradle.kts")
 
 rootProject.name = "pog"
 
@@ -44,4 +31,3 @@ include("common:permissions")
 include("common:preferences")
 include("common:test:jvm")
 include("common:ui:theme")
-

@@ -11,6 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
@@ -24,6 +25,7 @@ class AppModule {
 
     @Provides
     @Singleton
+    @OptIn(ExperimentalSerializationApi::class)
     fun provideJson(): Json =
         Json {
             ignoreUnknownKeys = true

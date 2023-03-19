@@ -1,7 +1,10 @@
-apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
-apply from: "$rootDir/gradle/serialization.gradle"
+plugins {
+    id 'pog.android.library'
+    id 'pog.android.compose'
+    id 'pog.firebase'
+    id 'pog.hilt'
+    id 'pog.kotlin.serialization'
+}
 
 dependencies {
     implementation libraries.compose.ui
@@ -11,7 +14,6 @@ dependencies {
     implementation libraries.kotlinx.coroutines.tasks
     implementation libraries.kotlin.reflect
 
-    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.firestore
 
     implementation libraries.voyager.hilt

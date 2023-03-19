@@ -1,6 +1,9 @@
-apply from: "$rootDir/gradle/android-lib.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
+plugins {
+    id 'pog.android.library'
+    id 'pog.android.compose'
+    id 'pog.firebase'
+    id 'pog.hilt'
+}
 
 dependencies {
     implementation libraries.compose.ui
@@ -12,8 +15,9 @@ dependencies {
 
     implementation libraries.kotlinx.coroutines.tasks
 
-    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.messaging
+
+    implementation libraries.timber
 
     implementation project(":common:preferences")
     implementation project(":common:ktx:jvm")

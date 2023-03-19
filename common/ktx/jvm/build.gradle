@@ -1,1 +1,7 @@
-apply from: "$rootDir/gradle/kotlin-lib.gradle"
+plugins {
+    id 'pog.kotlin.library'
+}
+
+dependencies {
+    implementation libraries.kotlinx.coroutines.core
+}

@@ -1,23 +1,13 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'pog.android.application'
+    id 'pog.android.compose'
+    id 'pog.hilt'
+    id 'pog.kotlin.serialization'
 }
 
-apply from: "$rootDir/gradle/application.gradle"
-apply from: "$rootDir/gradle/compose.gradle"
-apply from: "$rootDir/gradle/hilt.gradle"
-apply from: "$rootDir/gradle/serialization.gradle"
-
 android {
-    compileSdkVersion application.targetSdk
-    buildToolsVersion application.buildTools
-
     defaultConfig {
         applicationId "com.bimboilya.authist"
-        minSdkVersion application.minSdk
-        targetSdkVersion application.targetSdk
-        versionCode application.versionCode
-        versionName application.versionName
 
         def properties = new Properties()
         properties.load(project.file('secret.properties').newDataInputStream())
@@ -30,34 +20,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
     signingConfigs {
         debug {
             storeFile rootProject.file("keystore/debug.keystore")
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-
-    testOptions {
-        unitTests.all {
-            useJUnitPlatform()
         }
     }
 }
@@ -95,9 +63,4 @@ dependencies {
     implementation project(":common:ktx:compose")
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
-
-    testRuntimeOnly libraries.test.junit.jupiter.engine
-    testImplementation libraries.test.junit.jupiter.api
-    testImplementation libraries.test.mockk.core
-    testImplementation project(":common:test:jvm")
 }

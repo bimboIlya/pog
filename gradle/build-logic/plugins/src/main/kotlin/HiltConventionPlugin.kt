@@ -1,9 +1,8 @@
-package plugins
-
-import configuration.kapt
-import libraries
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
+import pog.bimboilya.buildlogic.configuration.kapt
+import pog.bimboilya.buildlogic.utils.libraries
 
 class HiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -13,6 +12,11 @@ class HiltConventionPlugin : Plugin<Project> {
 
             kapt {
                 correctErrorTypes = true
+            }
+
+            dependencies {
+                add("implementation", libraries.hilt.core)
+                add("kapt", libraries.hilt.compiler)
             }
         }
     }

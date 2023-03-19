@@ -1,20 +1,16 @@
-/*
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
+plugins {
+    alias(libraries.plugins.android.application) apply false
+    alias(libraries.plugins.android.library) apply false
+    alias(libraries.plugins.firebase.crashlytics) apply false
+    alias(libraries.plugins.gms) apply false
+    alias(libraries.plugins.hilt) apply false
+    alias(libraries.plugins.kotlin.android) apply false
+    alias(libraries.plugins.kotlin.jvm) apply false
+    alias(libraries.plugins.kotlin.kapt) apply false
+    alias(libraries.plugins.kotlin.serialization) apply false
+    alias(libraries.plugins.versionUpdates)
 }
 
-plugins {
-    alias(deps.plugins.android.application) apply false
-    alias(deps.plugins.android.library) apply false
-    alias(deps.plugins.firebase.crashlytics) apply false
-    alias(deps.plugins.gms) apply false
-    alias(deps.plugins.hilt) apply false
-    alias(deps.plugins.kotlin.android) apply false
-    alias(deps.plugins.kotlin.jvm) apply false
-    alias(deps.plugins.kotlin.kapt) apply false
-    alias(deps.plugins.kotlin.serialization) apply false
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
 }
-*/

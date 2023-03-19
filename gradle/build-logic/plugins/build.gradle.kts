@@ -6,9 +6,10 @@ dependencies {
     implementation(libraries.gradle.android)
     implementation(libraries.gradle.kotlin)
 
-    // workaround for accessing version catalog: https://github.com/gradle/gradle/issues/15383
-    implementation(files(libraries.javaClass.superclass.protectionDomain.codeSource.location))
-    implementation(files(config.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(libraries.test.junit.jupiter.api)
+    runtimeOnly(libraries.test.junit.jupiter.engine)
+
+    implementation(project(":utils"))
 }
 
 gradlePlugin {
@@ -16,7 +17,9 @@ gradlePlugin {
         androidApplication()
         androidCompose()
         androidLibrary()
+        firebase()
         hilt()
+        junit5()
         kotlinLibrary()
         kotlinSerialization()
     }
@@ -43,10 +46,24 @@ fun NamedDomainObjectContainer<PluginDeclaration>.androidLibrary() {
     }
 }
 
+fun NamedDomainObjectContainer<PluginDeclaration>.firebase() {
+    register("firebase") {
+        id = "pog.firebase"
+        implementationClass = "FirebaseConventionPlugin"
+    }
+}
+
 fun NamedDomainObjectContainer<PluginDeclaration>.hilt() {
     register("hilt") {
         id = "pog.hilt"
         implementationClass = "HiltConventionPlugin"
+    }
+}
+
+fun NamedDomainObjectContainer<PluginDeclaration>.junit5() {
+    register("junit5") {
+        id = "pog.junit5"
+        implementationClass = "JUnit5ConventionPlugin"
     }
 }
 

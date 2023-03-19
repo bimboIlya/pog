@@ -1,9 +1,0 @@
-ext {
-    application = [
-            "minSdk"     : 26,
-            "targetSdk"  : 33,
-            "buildTools" : "30.0.3",
-            "versionCode": 1,
-            "versionName": "1.0",
-    ]
-}
