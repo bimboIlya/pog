@@ -11,11 +11,11 @@ fun <T : Any> SavedStateHandle.getOrThrow(key: String): T =
 fun <T : Any> SavedStateHandle.getOrDefault(key: String, default: T): T =
     this.get<T>(key) ?: default
 
-inline fun <reified T : Enum<*>> SavedStateHandle.getEnumOrNull(key: String): T? =
-    get<String>(key)?.findEnum()
+inline fun <reified E : Enum<E>> SavedStateHandle.getEnumOrNull(key: String): E? =
+    get<String>(key)?.findEnum<E>()
 
-inline fun <reified T : Enum<*>> SavedStateHandle.getEnumOrThrow(key: String): T =
-    getEnumOrNull(key) ?: throw IllegalStateException("No ${T::class} enum with key \"$key\"")
+inline fun <reified E : Enum<E>> SavedStateHandle.getEnumOrThrow(key: String): E =
+    getEnumOrNull<E>(key) ?: throw IllegalStateException("No ${E::class} enum with key \"$key\"")
 
 inline fun <reified T> SavedStateHandle.getObjectOrNull(key: String, serializer: Json = Json): T? {
     val jsonString = get<String>(key) ?: return null
