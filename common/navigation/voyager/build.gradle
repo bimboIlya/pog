@@ -6,7 +6,7 @@ dependencies {
     implementation libraries.lifecycle.runtime
     implementation libraries.voyager.core
     implementation libraries.voyager.viewmodel
-    implementation libraries.javaX.inject
+    implementation libraries.javax.inject
 
     implementation project(":common:ktx:android")
 }

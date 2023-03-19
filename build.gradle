@@ -1,23 +1,21 @@
 buildscript {
-    apply from: "$rootDir/gradle/dependencies.gradle"
-
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath classpaths.androidPlugin
-        classpath classpaths.hiltPlugin
-        classpath classpaths.kotlinPlugin
-        classpath classpaths.serializationPlugin
-        classpath classpaths.gmsPlugin
-        classpath classpaths.crashlyticsPlugin
+        classpath libraries.classpath.androidPlugin
+        classpath libraries.classpath.hiltPlugin
+        classpath libraries.classpath.kotlinPlugin
+        classpath libraries.classpath.serializationPlugin
+        classpath libraries.classpath.gmsPlugin
+        classpath libraries.classpath.crashlyticsPlugin
     }
 }
 
 plugins {
-    alias(deps.plugins.versionUpdates)
+    alias(libraries.plugins.versionUpdates)
 }
 
 task clean(type: Delete) {

@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation(deps.gradle.android)
-    implementation(deps.gradle.kotlin)
+    implementation(libraries.gradle.android)
+    implementation(libraries.gradle.kotlin)
 
     // workaround for accessing version catalog: https://github.com/gradle/gradle/issues/15383
-    implementation(files(deps.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(files(libraries.javaClass.superclass.protectionDomain.codeSource.location))
     implementation(files(config.javaClass.superclass.protectionDomain.codeSource.location))
 }
 

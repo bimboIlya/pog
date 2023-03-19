@@ -64,26 +64,26 @@ android {
 
 dependencies {
 
-    implementation libraries.androidX.core
-    implementation libraries.androidX.dataStore
-
+    implementation libraries.androidx.core
+    implementation libraries.androidx.dataStore
+    
     implementation libraries.compose.ui
-    debugImplementation libraries.compose.uiTooling
+    debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.compose.activity
-    implementation libraries.compose.viewmodel
+    implementation libraries.androidx.activity.compose
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.accompanist.flowLayout
 
     implementation libraries.lifecycle.runtime
 
-    implementation libraries.kotlinX.coroutines.tasks
+    implementation libraries.kotlinx.coroutines.tasks
 
     implementation libraries.timber
     debugImplementation libraries.leakCanary
 
-    implementation libraries.google.auth
-    implementation libraries.vkSdk.core
+    implementation libraries.gms.auth
+    implementation libraries.vk.sdk.core
     implementation libraries.yandex.auth
 
     implementation libraries.voyager.core
@@ -96,8 +96,8 @@ dependencies {
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
 
-    testRuntimeOnly testLibraries.jupiter.engine
-    testImplementation testLibraries.jupiter.api
-    testImplementation testLibraries.mockk.core
+    testRuntimeOnly libraries.test.junit.jupiter.engine
+    testImplementation libraries.test.junit.jupiter.api
+    testImplementation libraries.test.mockk.core
     testImplementation project(":common:test:jvm")
 }

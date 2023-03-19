@@ -1,8 +1,8 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
 
 dependencies {
-    implementation libraries.androidX.activity
-    implementation libraries.javaX.inject
+    implementation libraries.androidx.activity
+    implementation libraries.javax.inject
 
     implementation project(":common:navigation:launcher")
 }

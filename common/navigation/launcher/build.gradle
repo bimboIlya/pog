@@ -1,9 +1,9 @@
 apply from: "$rootDir/gradle/android-lib.gradle"
 
 dependencies {
-    implementation libraries.androidX.activity
+    implementation libraries.androidx.activity
     implementation libraries.lifecycle.runtime
-    implementation libraries.javaX.inject
+    implementation libraries.javax.inject
 
     implementation project(":common:ktx:android")
 }

@@ -32,22 +32,22 @@ android {
 }
 
 dependencies {
-    implementation libraries.androidX.core
+    implementation libraries.androidx.core
 
     implementation libraries.kotlin.reflect
 
     implementation libraries.compose.ui
-    debugImplementation libraries.compose.uiTooling
+    debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.compose.activity
-    implementation libraries.compose.viewmodel
+    implementation libraries.androidx.activity.compose
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.lifecycle.runtime
 
     implementation libraries.timber
 
-    debugImplementation libraries.facebook.flipper
-    debugImplementation libraries.facebook.soLoader
+    debugImplementation libraries.flipper
+    debugImplementation libraries.soLoader
 
     implementation project(":common:ktx:jvm")
     implementation project(":common:ktx:android")

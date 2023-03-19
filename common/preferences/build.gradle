@@ -2,5 +2,5 @@ apply from: "$rootDir/gradle/android-lib.gradle"
 apply from: "$rootDir/gradle/serialization.gradle"
 
 dependencies {
-    implementation libraries.androidX.dataStore
+    implementation libraries.androidx.dataStore
 }

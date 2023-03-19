@@ -1,7 +1,7 @@
 package plugins
 
 import com.android.build.gradle.BaseExtension
-import deps
+import libraries
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -15,12 +15,12 @@ class AndroidComposeConventionPlugin : Plugin<Project> {
                 buildFeatures.compose = true
 
                 composeOptions {
-                    kotlinCompilerExtensionVersion = deps.versions.composeCompiler.get()
+                    kotlinCompilerExtensionVersion = libraries.versions.composeCompiler.get()
                 }
             }
 
             dependencies {
-                add("implementation", platform(deps.compose.bom))
+                add("implementation", platform(libraries.compose.bom))
             }
         }
     }

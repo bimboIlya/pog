@@ -1,6 +1,6 @@
 dependencyResolutionManagement {
     versionCatalogs {
-        create("deps") { from(files("versions/deps.versions.toml")) }
+        create("libraries") { from(files("versions/libraries.versions.toml")) }
         create("config") { from(files("versions/config.versions.toml")) }
     }
 }

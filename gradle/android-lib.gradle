@@ -33,15 +33,15 @@ android {
 }
 
 dependencies {
-    implementation libraries.kotlin.stdLib
-    implementation libraries.kotlinX.coroutines.android
+    implementation libraries.kotlin.stdlib
+    implementation libraries.kotlinx.coroutines.android
 
     implementation libraries.timber
 
-    testRuntimeOnly testLibraries.jupiter.engine
-    testImplementation testLibraries.jupiter.api
+    testRuntimeOnly libraries.test.junit.jupiter.engine
+    testImplementation libraries.test.junit.jupiter.api
 
-    testImplementation testLibraries.mockk.core
-    testImplementation testLibraries.turbine
-    testImplementation testLibraries.coroutines
+    testImplementation libraries.test.mockk.core
+    testImplementation libraries.test.turbine
+    testImplementation libraries.test.coroutines
 }

@@ -45,25 +45,25 @@ android {
 }
 
 dependencies {
-    debugImplementation libraries.facebook.flipper
-    debugImplementation libraries.facebook.soLoader
+    debugImplementation libraries.flipper
+    debugImplementation libraries.soLoader
 
-    implementation libraries.androidX.core
+    implementation libraries.androidx.core
 
     implementation libraries.compose.ui
-    debugImplementation libraries.compose.uiTooling
+    debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.compose.activity
-    implementation libraries.compose.viewmodel
+    implementation libraries.androidx.activity.compose
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.lifecycle.runtime
 
-    implementation libraries.room.db
+    implementation libraries.room.core
     kapt libraries.room.compiler
 
     implementation libraries.timber
 
-    implementation libraries.accompanist.systemUi
+    implementation libraries.accompanist.systemUiController
 
     implementation libraries.voyager.core
     implementation libraries.voyager.transitions
@@ -74,8 +74,8 @@ dependencies {
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
 
-    testRuntimeOnly testLibraries.jupiter.engine
-    testImplementation testLibraries.jupiter.api
-    testImplementation testLibraries.mockk.core
+    testRuntimeOnly libraries.test.junit.jupiter.engine
+    testImplementation libraries.test.junit.jupiter.api
+    testImplementation libraries.test.mockk.core
     testImplementation project(":common:test:jvm")
 }

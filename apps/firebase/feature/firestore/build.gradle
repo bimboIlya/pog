@@ -5,12 +5,13 @@ apply from: "$rootDir/gradle/serialization.gradle"
 
 dependencies {
     implementation libraries.compose.ui
-    implementation libraries.compose.uiTooling
+    implementation libraries.compose.ui.tooling
     implementation libraries.compose.material
     implementation libraries.lifecycle.viewmodel
-    implementation libraries.kotlinX.coroutines.tasks
+    implementation libraries.kotlinx.coroutines.tasks
     implementation libraries.kotlin.reflect
 
+    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.firestore
 
     implementation libraries.voyager.hilt

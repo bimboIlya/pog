@@ -5,7 +5,7 @@ apply from: "$rootDir/gradle/hilt.gradle"
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.material
-    implementation libraries.compose.viewmodel
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation project(":common:navigation:voyager")
     implementation libraries.voyager.hilt

@@ -4,14 +4,15 @@ apply from: "$rootDir/gradle/hilt.gradle"
 
 dependencies {
     implementation libraries.compose.ui
-    implementation libraries.compose.uiTooling
+    implementation libraries.compose.ui.tooling
     implementation libraries.compose.material
 
-    implementation libraries.androidX.core
+    implementation libraries.androidx.core
     implementation libraries.lifecycle.viewmodel
 
-    implementation libraries.kotlinX.coroutines.tasks
+    implementation libraries.kotlinx.coroutines.tasks
 
+    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.messaging
 
     implementation project(":common:preferences")

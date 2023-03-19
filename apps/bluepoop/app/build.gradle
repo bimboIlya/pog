@@ -34,13 +34,13 @@ android {
 dependencies {
     implementation libraries.kable
 
-    implementation libraries.androidX.core
+    implementation libraries.androidx.core
 
     implementation libraries.compose.ui
-    debugImplementation libraries.compose.uiTooling
+    debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.compose.activity
-    implementation libraries.compose.viewmodel
+    implementation libraries.androidx.activity.compose
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.lifecycle.runtime
 

@@ -49,19 +49,20 @@ android {
 
 dependencies {
 
-    implementation libraries.androidX.core
-    implementation libraries.androidX.dataStore
+    implementation libraries.androidx.core
+    implementation libraries.androidx.dataStore
 
     implementation libraries.compose.ui
-    implementation libraries.compose.uiTooling
+    implementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.compose.activity
-    implementation libraries.compose.viewmodel
+    implementation libraries.androidx.activity.compose
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.lifecycle.runtime
 
-    implementation libraries.kotlinX.coroutines.tasks
+    implementation libraries.kotlinx.coroutines.tasks
 
+    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.analytics
     implementation libraries.firebase.auth
     implementation libraries.firebase.config
@@ -87,8 +88,8 @@ dependencies {
     implementation project(":apps:firebase:feature:firestore")
     implementation project(":apps:firebase:feature:notification")
 
-    testRuntimeOnly testLibraries.jupiter.engine
-    testImplementation testLibraries.jupiter.api
-    testImplementation testLibraries.mockk.core
+    testRuntimeOnly libraries.test.junit.jupiter.engine
+    testImplementation libraries.test.junit.jupiter.api
+    testImplementation libraries.test.mockk.core
     testImplementation project(":common:test:jvm")
 }

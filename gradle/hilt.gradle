@@ -8,6 +8,6 @@ android {
 }
 
 dependencies {
-    implementation libraries.hilt.android
+    implementation libraries.hilt.core
     kapt libraries.hilt.compiler
 }

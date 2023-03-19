@@ -4,10 +4,11 @@ apply from: "$rootDir/gradle/hilt.gradle"
 
 dependencies {
     implementation libraries.compose.ui
-    implementation libraries.compose.uiTooling
+    implementation libraries.compose.ui.tooling
     implementation libraries.compose.material
     implementation libraries.lifecycle.viewmodel
 
+    implementation platform(libraries.firebase.bom)
     implementation libraries.firebase.crashlytics
 
     implementation project(":common:preferences")
