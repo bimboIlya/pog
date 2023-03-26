@@ -60,7 +60,7 @@ private fun AppNavigation() {
 fun NavHostController.LogNavigation() {
     DisposableEffect(this) {
         val listener = NavController.OnDestinationChangedListener { controller, _, _ ->
-            controller.backQueue.joinToString(separator = " → ") { navBackStackEntry ->
+            controller.currentBackStack.value.joinToString(separator = " → ") { navBackStackEntry ->
                 navBackStackEntry.destination.route.orEmpty()
             }.apply(Timber::d)
         }

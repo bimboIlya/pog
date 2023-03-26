@@ -110,7 +110,7 @@ class JetpackNavigator(
     }
 
     private val NavHostController.backstackCount: Int
-        get() = backQueue.count { entry ->
+        get() = currentBackStack.value.count { entry ->
             entry.destination !is NavGraph
         }
 
@@ -125,12 +125,12 @@ class JetpackNavigator(
     }
 
     private fun popUpToRoot() {
-        navController.backQueue.firstOrNull { it.destination !is NavGraph }?.destination?.route
+        navController.currentBackStack.value.firstOrNull { it.destination !is NavGraph }?.destination?.route
             ?.let { navController.popBackStack(it, inclusive = false) }
     }
 
     private fun closeFlow() {
-        navController.backQueue.lastOrNull { it.destination is NavGraph }?.destination?.route
+        navController.currentBackStack.value.lastOrNull { it.destination is NavGraph }?.destination?.route
             ?.let { navController.popBackStack(it, inclusive = false) }
     }
 
