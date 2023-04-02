@@ -1,21 +1,13 @@
 package com.bimboilya.authist.ui
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.ProgressIndicatorDefaults
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +25,7 @@ import com.bimboilya.authist.presentation.AuthState
 import com.bimboilya.authist.presentation.AuthViewModel
 import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.compose.collectInComposition
+import com.bimboilya.common.ui.components.LoadingTopBar
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import kotlinx.coroutines.launch
@@ -72,24 +65,10 @@ private fun AuthScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { LoadingTopBar(state.isLoading) },
+        topBar = { LoadingTopBar(state.isLoading, title = { Text("Notification") }) },
         bottomBar = { BottomBar(state.isLoading, signIn) }
     ) { padding ->
         Content(user = state.user, modifier = Modifier.padding(padding))
-    }
-}
-
-@OptIn(ExperimentalAnimationApi::class)
-@Composable
-private fun LoadingTopBar(isLoading: Boolean) {
-    Column {
-        TopAppBar(title = { Text("Notification") })
-        AnimatedContent(targetState = isLoading) { visible ->
-            when (visible) {
-                true -> LinearProgressIndicator(Modifier.fillMaxWidth())
-                false -> Spacer(Modifier.height(ProgressIndicatorDefaults.StrokeWidth))
-            }
-        }
     }
 }
 

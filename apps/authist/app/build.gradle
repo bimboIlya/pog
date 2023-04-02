@@ -34,16 +34,16 @@ dependencies {
 
     implementation libraries.androidx.core
     implementation libraries.androidx.dataStore
-    
+    implementation libraries.androidx.activity.compose
+
     implementation libraries.compose.ui
     debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.androidx.activity.compose
-    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.accompanist.flowLayout
 
     implementation libraries.lifecycle.runtime
+    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.kotlinx.coroutines.tasks
 
@@ -61,6 +61,7 @@ dependencies {
     implementation project(":common:ktx:jvm")
     implementation project(":common:ktx:android")
     implementation project(":common:ktx:compose")
+    implementation project(":common:ui:components")
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
 }

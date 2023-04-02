@@ -35,6 +35,7 @@ dependencies {
 
     implementation project(":common:ktx:jvm")
     implementation project(":common:ktx:android")
+    implementation project(":common:ui:components")
     implementation project(":common:ui:theme")
     implementation project(":common:preferences")
 }

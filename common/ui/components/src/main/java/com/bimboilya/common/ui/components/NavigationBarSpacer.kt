@@ -1,4 +1,4 @@
-package com.bimboilya.compost.ui
+package com.bimboilya.common.ui.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets

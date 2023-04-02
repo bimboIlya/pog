@@ -23,10 +23,10 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.transitions.FadeTransition
+import com.bimboilya.common.ui.components.FlatToolbar
+import com.bimboilya.common.ui.components.NavigationBarSpacer
 import com.bimboilya.common.ui.theme.PogTheme
 import com.bimboilya.compost.swipe.SwipeScreen
-import com.bimboilya.compost.ui.FlatToolbar
-import com.bimboilya.compost.ui.NavigationBarSpacer
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalAnimationApi::class)

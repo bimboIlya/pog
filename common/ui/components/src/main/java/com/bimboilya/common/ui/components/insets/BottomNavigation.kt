@@ -1,4 +1,4 @@
-package com.bimboilya.compost.ui.insets
+package com.bimboilya.common.ui.components.insets
 
 /*
  * Copyright 2021 The Android Open Source Project
@@ -20,12 +20,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.material.AppBarDefaults
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
@@ -37,33 +37,29 @@ import androidx.compose.ui.unit.dp
 /**
  * **Accompanist fork**
  *
- * A wrapper around [TopAppBar] which supports internal padding.
+ * A wrapper around [BottomNavigation] which supports the setting internal padding.
  * This is especially useful in conjunction with insets.
  */
 @Composable
-fun TopAppBar(
-    title: @Composable () -> Unit,
+fun BottomNavigation(
     modifier: Modifier = Modifier,
-    addStatusBarPadding: Boolean = true,
-    navigationIcon: @Composable (() -> Unit)? = null,
-    actions: @Composable RowScope.() -> Unit = {},
+    addNavigationBarPadding: Boolean = true,
     backgroundColor: Color = MaterialTheme.colors.primarySurface,
     contentColor: Color = contentColorFor(backgroundColor),
-    elevation: Dp = AppBarDefaults.TopAppBarElevation,
+    elevation: Dp = BottomNavigationDefaults.Elevation,
+    content: @Composable RowScope.() -> Unit,
 ) {
     Surface(
+        modifier = modifier,
         color = backgroundColor,
         contentColor = contentColor,
         elevation = elevation,
-        modifier = modifier,
     ) {
-        TopAppBar(
-            title = title,
-            navigationIcon = navigationIcon,
-            actions = actions,
+        BottomNavigation(
+            modifier = Modifier.padding(if (addNavigationBarPadding) WindowInsets.navigationBars.asPaddingValues() else PaddingValues(0.dp)),
             backgroundColor = Color.Transparent,
             elevation = 0.dp,
-            modifier = Modifier.padding(if (addStatusBarPadding) WindowInsets.statusBars.asPaddingValues() else PaddingValues(0.dp)),
+            content = content,
         )
     }
 }

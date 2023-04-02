@@ -1,11 +1,11 @@
-package com.bimboilya.compost.ui
+package com.bimboilya.common.ui.components
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.bimboilya.compost.ui.insets.TopAppBar
+import com.bimboilya.common.ui.components.insets.TopAppBar
 
 @Composable
 fun FlatToolbar(
