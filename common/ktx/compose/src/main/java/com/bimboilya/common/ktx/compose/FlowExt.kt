@@ -6,7 +6,9 @@ import androidx.compose.runtime.DisallowComposableCalls
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -18,21 +20,23 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 @SuppressLint("ComposableNaming")
 @Composable
-inline fun <T> Flow<T>.collectInComposition(
+fun <T> Flow<T>.collectInComposition(
     lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    crossinline block: @DisallowComposableCalls suspend (T) -> Unit
+    block: @DisallowComposableCalls suspend (T) -> Unit
 ) {
+    val currentBlock by rememberUpdatedState(block)
     LaunchedEffect(this, lifecycle) {
-        observe(lifecycle, block)
+        observe(lifecycle, currentBlock)
     }
 }
 
 @SuppressLint("ComposableNaming")
 @Composable
-inline fun Flow<Unit>.collectInComposition(
+fun Flow<Unit>.collectInComposition(
     lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    crossinline block: @DisallowComposableCalls suspend () -> Unit
+    block: @DisallowComposableCalls suspend () -> Unit
 ) {
+    val currentBlock by rememberUpdatedState(block)
     LaunchedEffect(this, lifecycle) {
         observe(lifecycle, block)
     }
