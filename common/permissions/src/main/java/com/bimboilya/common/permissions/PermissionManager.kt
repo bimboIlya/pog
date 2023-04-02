@@ -50,6 +50,9 @@ object PermissionManager {
         return if (isGranted) permission.grantedState else permission.deniedState
     }
 
+    suspend fun requestPermissions(permissions: Iterable<Permission>): MultipleRequestResult =
+        requestPermissions(*permissions.toList().toTypedArray())
+
     suspend fun requestPermissions(vararg permissions: Permission): MultipleRequestResult {
         require(permissions.isNotEmpty()) { "Requested permissions cannot be empty" }
 

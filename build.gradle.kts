@@ -9,6 +9,7 @@ plugins {
     alias(libraries.plugins.kotlin.android) apply false
     alias(libraries.plugins.kotlin.jvm) apply false
     alias(libraries.plugins.kotlin.kapt) apply false
+    alias(libraries.plugins.kotlin.ksp) apply false
     alias(libraries.plugins.kotlin.serialization) apply false
     alias(libraries.plugins.versionUpdates)
 }

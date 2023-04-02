@@ -1,7 +1,7 @@
 package com.bimboilya.bluepoop.di
 
-import com.bimboilya.bluepoop.bluetooth.BluetoothStateObserver
-import com.bimboilya.bluepoop.bluetooth.BluetoothStateObserverImpl
+import com.bimboilya.bluepoop.shared.bluetooth.data.BluetoothStateRepositoryImpl
+import com.bimboilya.bluepoop.shared.bluetooth.domain.BluetoothStateRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -16,14 +16,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface AppModule {
 
-    @Binds
+  @Binds
+  @Singleton
+  fun bluetoothStateRepository(impl: BluetoothStateRepositoryImpl): BluetoothStateRepository
+
+  companion object {
+
+    @Provides
     @Singleton
-    fun bindBluetoothStateObserver(impl: BluetoothStateObserverImpl): BluetoothStateObserver
-
-    companion object {
-
-        @Provides
-        @Singleton
-        fun provideCoroutineScope() = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    }
+    fun coroutineScope() = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+  }
 }

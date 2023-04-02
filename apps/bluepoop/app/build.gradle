@@ -2,6 +2,7 @@ plugins {
     id 'pog.android.application'
     id 'pog.android.compose'
     id 'pog.hilt'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -16,19 +17,18 @@ dependencies {
     implementation libraries.kable
 
     implementation libraries.androidx.core
+    implementation libraries.androidx.activity.compose
 
     implementation libraries.compose.ui
     debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
-    implementation libraries.androidx.activity.compose
-    implementation libraries.lifecycle.viewmodel.compose
 
     implementation libraries.lifecycle.runtime
+    implementation libraries.lifecycle.viewmodel.compose
 
-    implementation libraries.voyager.core
-    implementation libraries.voyager.viewmodel
-    implementation libraries.voyager.hilt
-    implementation libraries.voyager.transitions
+    implementation libraries.compose.destinations.animations
+    ksp libraries.compose.destinations.compiler
+    implementation libraries.hilt.navigation.compose
 
     implementation libraries.timber
 
@@ -36,6 +36,7 @@ dependencies {
     implementation project(":common:ktx:android")
     implementation project(":common:ktx:compose")
     implementation project(":common:preferences")
+    implementation project(":common:ui:components")
     implementation project(":common:ui:theme")
 
     implementation project(":common:navigation:launcher")
