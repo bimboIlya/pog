@@ -21,45 +21,47 @@ import kotlin.coroutines.EmptyCoroutineContext
 @SuppressLint("ComposableNaming")
 @Composable
 fun <T> Flow<T>.collectInComposition(
-    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    block: @DisallowComposableCalls suspend (T) -> Unit
+  lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+  block: @DisallowComposableCalls suspend (T) -> Unit
 ) {
-    val currentBlock by rememberUpdatedState(block)
-    LaunchedEffect(this, lifecycle) {
-        observe(lifecycle, currentBlock)
-    }
+  val currentBlock by rememberUpdatedState(block)
+  LaunchedEffect(this, lifecycle) {
+    observe(lifecycle, currentBlock)
+  }
 }
 
 @SuppressLint("ComposableNaming")
 @Composable
 fun Flow<Unit>.collectInComposition(
-    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    block: @DisallowComposableCalls suspend () -> Unit
+  lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+  block: @DisallowComposableCalls suspend () -> Unit
 ) {
-    val currentBlock by rememberUpdatedState(block)
-    LaunchedEffect(this, lifecycle) {
-        observe(lifecycle, block)
-    }
+  val currentBlock by rememberUpdatedState(block)
+  LaunchedEffect(this, lifecycle) {
+    observe(lifecycle, block)
+  }
 }
 
+@Deprecated("", replaceWith = ReplaceWith("collectAsStateWithLifecycle()", imports = ["androidx.lifecycle.compose.collectAsStateWithLifecycle"]))
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun <T> StateFlow<T>.collectAsStateWithLifecycle(
-    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
-    context: CoroutineContext = EmptyCoroutineContext
+  lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+  minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+  context: CoroutineContext = EmptyCoroutineContext
 ): State<T> =
-    remember(this, lifecycle) {
-        flowWithLifecycle(lifecycle, minActiveState)
-    }.collectAsState(value, context)
+  remember(this, lifecycle) {
+    flowWithLifecycle(lifecycle, minActiveState)
+  }.collectAsState(value, context)
 
+@Deprecated("", replaceWith = ReplaceWith("collectAsStateWithLifecycle()", imports = ["androidx.lifecycle.compose.collectAsStateWithLifecycle"]))
 @Composable
 fun <T> Flow<T>.collectAsStateWithLifecycle(
-    initial: T,
-    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
-    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
-    context: CoroutineContext = EmptyCoroutineContext
+  initial: T,
+  lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+  minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+  context: CoroutineContext = EmptyCoroutineContext
 ): State<T> =
-    remember(this, lifecycle) {
-        flowWithLifecycle(lifecycle, minActiveState)
-    }.collectAsState(initial, context)
+  remember(this, lifecycle) {
+    flowWithLifecycle(lifecycle, minActiveState)
+  }.collectAsState(initial, context)

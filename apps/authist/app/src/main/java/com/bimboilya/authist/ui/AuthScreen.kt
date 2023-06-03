@@ -36,6 +36,7 @@ fun AuthScreen() {
     val viewModel: AuthViewModel = viewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
+    // that's fucking retarded; just hoist scaffold state
     var showSnackbar: (String) -> Unit by notNull()
     viewModel.event.collectInComposition { message ->
         showSnackbar(message)

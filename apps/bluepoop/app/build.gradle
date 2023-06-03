@@ -23,6 +23,9 @@ dependencies {
     debugImplementation libraries.compose.ui.tooling
     implementation libraries.compose.material
 
+    implementation libraries.accompanist.systemUiController
+
+    implementation libraries.lifecycle.compose
     implementation libraries.lifecycle.runtime
     implementation libraries.lifecycle.viewmodel.compose
 

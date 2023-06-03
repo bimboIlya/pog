@@ -46,7 +46,7 @@ private fun PrerequisitesContent(
   state: PrerequisitesState,
   onAction: (PrerequisitesAction) -> Unit,
 ) {
-  Column(Modifier.fillMaxHeight(fraction = 0.97f).fillMaxWidth()) {
+  Column(Modifier.fillMaxHeight(fraction = 0.95f).fillMaxWidth()) {
     Text(
       text = "To use this app you have to grant required permissions and enable bluetooth",
       modifier = Modifier.padding(12.dp),

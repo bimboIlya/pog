@@ -9,19 +9,23 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.core.view.WindowCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bimboilya.bluepoop.feature.NavGraphs
 import com.bimboilya.bluepoop.feature.prerequisites.ui.PrerequisitesBottomSheetLayout
 import com.bimboilya.bluepoop.feature.prerequisites.ui.rememberPrerequisitesBottomSheetState
 import com.bimboilya.bluepoop.shared.navigation.BluepoopNavigator
 import com.bimboilya.bluepoop.shared.navigation.NavigationCommand
-import com.bimboilya.common.ktx.compose.collectAsStateWithLifecycle
 import com.bimboilya.common.ktx.compose.collectInComposition
 import com.bimboilya.common.ui.theme.PogTheme
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +37,15 @@ class BluepoopActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+    WindowCompat.setDecorFitsSystemWindows(window, false)
+
     setContent {
+      val systemUiController = rememberSystemUiController()
+
+      SideEffect {
+        systemUiController.setSystemBarsColor(Color.Transparent)
+      }
+
       PogTheme {
         Surface(Modifier.fillMaxSize()) {
           BluepoopApplication()

@@ -1,25 +1,21 @@
 package com.bimboilya.common.ui.components
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Column
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProgressIndicatorDefaults
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import com.bimboilya.common.ui.components.insets.TopAppBar
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun LoadingTopBar(
   isProgressVisible: Boolean,
@@ -31,7 +27,7 @@ fun LoadingTopBar(
   contentColor: Color = contentColorFor(backgroundColor),
   elevation: Dp = AppBarDefaults.TopAppBarElevation,
 ) {
-  Column(modifier) {
+  Box(modifier) {
     TopAppBar(
       title = title,
       navigationIcon = navigationIcon,
@@ -41,11 +37,8 @@ fun LoadingTopBar(
       elevation = elevation,
     )
 
-    AnimatedContent(targetState = isProgressVisible) { visible ->
-      when (visible) {
-        true -> LinearProgressIndicator(Modifier.fillMaxWidth())
-        false -> Spacer(Modifier.height(ProgressIndicatorDefaults.StrokeWidth))
-      }
+    AnimatedVisibility(visible = isProgressVisible, Modifier.align(Alignment.BottomCenter)) {
+      LinearProgressIndicator(Modifier.fillMaxWidth())
     }
   }
 }
