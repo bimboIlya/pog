@@ -5,6 +5,8 @@ plugins {
 }
 
 android {
+    namespace = "com.bimboilya.permissions"
+
     defaultConfig {
         applicationId "com.bimboilya.permissions"
 

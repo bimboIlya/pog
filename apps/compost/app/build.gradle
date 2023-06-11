@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace = "com.bimboilya.compost"
+
     defaultConfig {
         applicationId "com.bimboilya.compost"
 

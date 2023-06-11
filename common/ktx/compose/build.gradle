@@ -3,6 +3,10 @@ plugins {
     id 'pog.android.compose'
 }
 
+android {
+  namespace = "com.bimboilya.common.ktx.compose"
+}
+
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.lifecycle.runtime

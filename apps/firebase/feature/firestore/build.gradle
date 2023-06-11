@@ -6,6 +6,10 @@ plugins {
     id 'pog.kotlin.serialization'
 }
 
+android {
+  namespace = "com.bimboilya.firebase.feature.firestore"
+}
+
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.ui.tooling

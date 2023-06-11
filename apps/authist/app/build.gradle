@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace = "com.bimboilya.authist"
+
     defaultConfig {
         applicationId "com.bimboilya.authist"
 

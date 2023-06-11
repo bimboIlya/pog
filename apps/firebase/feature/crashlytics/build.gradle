@@ -5,6 +5,10 @@ plugins {
     id 'pog.hilt'
 }
 
+android {
+  namespace = "com.bimboilya.feature.crashlytics"
+}
+
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.ui.tooling

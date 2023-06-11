@@ -2,6 +2,10 @@ plugins {
     id 'pog.android.library'
 }
 
+android {
+  namespace = "com.bimboilya.common.ktx.android"
+}
+
 dependencies {
     implementation libraries.androidx.core
     implementation libraries.kotlinx.serialization

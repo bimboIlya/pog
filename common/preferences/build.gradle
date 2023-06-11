@@ -3,6 +3,10 @@ plugins {
     id 'pog.kotlin.serialization'
 }
 
+android {
+  namespace = "com.bimboilya.common.preferences"
+}
+
 dependencies {
     implementation libraries.androidx.dataStore
 }

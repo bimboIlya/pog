@@ -2,6 +2,10 @@ plugins {
     id 'pog.android.library'
 }
 
+android {
+  namespace = "com.bimboilya.common.navigation.launcher"
+}
+
 dependencies {
     implementation libraries.androidx.activity
     implementation libraries.lifecycle.runtime

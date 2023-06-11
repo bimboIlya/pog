@@ -5,6 +5,10 @@ plugins {
     id 'pog.hilt'
 }
 
+android {
+  namespace = "com.bimboilya.firebase.feature.notification"
+}
+
 dependencies {
     implementation libraries.compose.ui
     implementation libraries.compose.ui.tooling

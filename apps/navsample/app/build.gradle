@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace = "com.bimboilya.navsample"
+
     defaultConfig {
         applicationId "com.bimboilya.navsample"
 

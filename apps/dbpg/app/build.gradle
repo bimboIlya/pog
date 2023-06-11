@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace = "com.bimboilya.dbpg"
+
     defaultConfig {
         applicationId "com.bimboilya.dbpg"
 
